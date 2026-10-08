@@ -1,0 +1,203 @@
+---
+title: "eTable 4. Weather distribution and partition of the per-mile risk effect"
+format:
+  html:
+    embed-resources: true
+    page-layout: full
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(tidyverse)
+library(here)
+library(gt)
+library(arrow)
+source(here::here("code", "utils.R"))
+
+## Non-breaking spaces so gt preserves indentation in HTML (same as Table 1).
+INDENT2 <- strrep("\u00a0", 4L)
+
+cat_label <- c(
+    good = "Good (clear or cloudy)",
+    adverse = "Adverse (rain/snow/sleet/hail/fog/smoke/etc.)",
+    unknown = "Unknown / not reported"
+)
+```
+
+```{r distribution-data}
+fp <- arrow::read_parquet(
+    here::here("data", "fars_persons_2018_2024.parquet")
+) |>
+    dplyr::filter(year %in% c(2021, 2024))
+
+pop <- arrow::read_parquet(here::here("data", "panel_state_year.parquet")) |>
+    dplyr::filter(year %in% c(2021, 2024)) |>
+    dplyr::group_by(year) |>
+    dplyr::summarise(pop = sum(population), .groups = "drop")
+pop_2021 <- pop$pop[pop$year == 2021]
+pop_2024 <- pop$pop[pop$year == 2024]
+
+counts <- fp |> dplyr::count(year, weather_cat, name = "deaths")
+tot <- function(yr) {
+    sum(counts$deaths[counts$year == yr])
+}
+get_d <- function(wc, yr) {
+    v <- counts$deaths[counts$weather_cat == wc & counts$year == yr]
+    if (length(v) == 0) 0L else v
+}
+
+dist_row <- function(label, wc, indent = "") {
+    d21 <- if (is.null(wc)) tot(2021) else get_d(wc, 2021)
+    d24 <- if (is.null(wc)) tot(2024) else get_d(wc, 2024)
+    tibble::tibble(
+        Category = paste0(indent, label),
+        d2021 = fmt_int(d21),
+        p2021 = fmt_pct(100 * d21 / tot(2021)),
+        r2021 = fmt_rate(d21, pop_2021),
+        d2024 = fmt_int(d24),
+        p2024 = fmt_pct(100 * d24 / tot(2024)),
+        r2024 = fmt_rate(d24, pop_2024)
+    )
+}
+
+dist_tbl <- dplyr::bind_rows(
+    dist_row("Total (all deaths)", NULL),
+    dist_row(cat_label["good"], "good", INDENT2),
+    dist_row(cat_label["adverse"], "adverse", INDENT2),
+    dist_row(cat_label["unknown"], "unknown", INDENT2)
+)
+
+## Adverse-of-known share by year across the analysis window (for Table Notes).
+adv_share_yr <- arrow::read_parquet(
+    here::here("data", "fars_persons_2018_2024.parquet")
+) |>
+    dplyr::filter(
+        year %in% config::get("year_i"):config::get("year_j"),
+        weather_cat %in% c("good", "adverse")
+    ) |>
+    dplyr::count(year, weather_cat) |>
+    tidyr::pivot_wider(names_from = weather_cat, values_from = n) |>
+    dplyr::mutate(adv_pct = 100 * adverse / (adverse + good))
+adv_min <- min(adv_share_yr$adv_pct)
+adv_max <- max(adv_share_yr$adv_pct)
+```
+
+## Table Notes — distribution
+
+- Distribution of US motor vehicle deaths by crash weather, 2021 and 2024.
+- Death counts are the observed FARS totals; the "% of deaths" column is each weather category's share of all motor vehicle deaths that year (good + adverse + unknown = 100%).
+- Crude rate is deaths per 100,000 total US population (the denominator shown in the year headers); it is not a weather-specific population rate, because exposure (driving) is not observed by weather.
+- Weather is taken from FARS `WEATHERNAME`, grouped as good (clear or cloudy), adverse (rain, snow, sleet, hail, fog, smoke, severe crosswinds, or other adverse conditions), or unknown.
+- Comparing the "% of deaths" columns shows whether the weather distribution of deaths shifted between 2021 and 2024.
+
+```{r tbl-distribution}
+band_idx <- which(dist_tbl$Category == "Total (all deaths)")
+
+gt::gt(dist_tbl) |>
+    gt::tab_spanner(
+        label = sprintf("2021 (N=%s)", fmt_int(pop_2021)),
+        columns = c(d2021, p2021, r2021)
+    ) |>
+    gt::tab_spanner(
+        label = sprintf("2024 (N=%s)", fmt_int(pop_2024)),
+        columns = c(d2024, p2024, r2024)
+    ) |>
+    gt::cols_label(
+        d2021 = "Deaths, N", p2021 = "% of deaths", r2021 = "Crude rate",
+        d2024 = "Deaths, N", p2024 = "% of deaths", r2024 = "Crude rate"
+    ) |>
+    gt::tab_style(
+        style = list(
+            gt::cell_text(weight = "bold"),
+            gt::cell_fill(color = "#f0f0f0")
+        ),
+        locations = gt::cells_body(rows = band_idx)
+    ) |>
+    gt::cols_align(align = "right", columns = -1) |>
+    gt::cols_align(align = "left", columns = 1) |>
+    gt::tab_options(table.width = gt::pct(100))
+```
+
+```{r decomposition-data}
+pt <- arrow::read_parquet(
+    here::here("data", "decomposition_weather.parquet")
+) |>
+    dplyr::select(weather_cat, mean = risk_contrib)
+
+w_ci <- arrow::read_parquet(
+    here::here("data", "summaries", "weather_ci.parquet")
+)
+n_iter <- max(w_ci$n[w_ci$geography == "national"])
+ui <- w_ci |>
+    dplyr::filter(geography == "national", component == "risk_contrib") |>
+    dplyr::select(weather_cat, p025, p975)
+
+risk_det <- arrow::read_parquet(
+    here::here("data", "decomposition_chained.parquet")
+) |>
+    dplyr::filter(geography == "national", scope == "cumulative_2021_2024") |>
+    dplyr::pull(risk_effect)
+risk_ui <- arrow::read_parquet(
+    here::here("data", "summaries", "main_ci.parquet")
+) |>
+    dplyr::filter(geography == "national", component == "risk_effect")
+
+dat <- pt |>
+    dplyr::left_join(ui, by = "weather_cat") |>
+    dplyr::mutate(ci = fmt_ci_signed(mean, p025, p975)) |>
+    dplyr::mutate(
+        weather_cat = factor(weather_cat, levels = names(cat_label))
+    ) |>
+    dplyr::arrange(weather_cat) |>
+    dplyr::transmute(
+        Category = paste0(INDENT2, cat_label[as.character(weather_cat)]),
+        ci
+    )
+
+total_row <- tibble::tibble(
+    Category = "Per-mile risk effect (total)",
+    ci = fmt_ci_signed(risk_det, risk_ui$p025, risk_ui$p975)
+)
+
+decomp_tbl <- dplyr::bind_rows(total_row, dat) |>
+    dplyr::rename(`Contribution to per-mile risk effect` = ci)
+```
+
+## Table Notes — partition
+
+- National per-mile risk effect partitioned by crash weather, 2021-2024.
+- FHWA does not report VMT by weather, so this is a partition of the per-mile risk effect, **not** a stratified decomposition.
+- Because the three categories exhaust all decedents, their contributions sum to the per-mile risk effect shown in the total row.
+- The partition assumes a stable weather mix of driving over the window (among fatalities with known weather, the adverse share held between `r fmt_pct(adv_min)` and `r fmt_pct(adv_max)` across `r config::get("year_i")`-`r config::get("year_j")`).
+- Death draws were taken negative-binomial at the state by age group by category by weather cell; method-of-moments dispersion from the 2021-2024 window (`r format(n_iter, big.mark = ",")` iterations).
+- All values per 100,000 population (95% uncertainty intervals).
+
+```{r tbl-weather}
+band_idx_d <- which(decomp_tbl$Category == "Per-mile risk effect (total)")
+
+gt::gt(decomp_tbl) |>
+    gt::tab_style(
+        style = list(
+            gt::cell_text(weight = "bold"),
+            gt::cell_fill(color = "#f0f0f0")
+        ),
+        locations = gt::cells_body(rows = band_idx_d)
+    ) |>
+    gt::cols_align(align = "right", columns = -1) |>
+    gt::cols_align(align = "left", columns = 1) |>
+    gt::tab_options(table.width = gt::pct(100))
+```
+
+```{r write-csv}
+readr::write_csv(
+    dist_tbl,
+    here::here("output", "etable04_weather_distribution.csv")
+)
+readr::write_csv(
+    decomp_tbl,
+    here::here("output", "etable04_weather.csv")
+)
+```

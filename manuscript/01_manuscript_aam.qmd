@@ -1,0 +1,284 @@
+---
+title: "Factors Associated With Postpandemic Decline in US Motor Vehicle Mortality"
+author:
+  - name: "Mathew V. Kiang, ScD"
+    affiliations:
+      - name: "Department of Epidemiology and Population Health, Stanford University School of Medicine"
+    email: "mkiang@stanford.edu"
+    corresponding: true
+  - name: "Monica J. Alexander, PhD"
+    affiliations:
+      - name: "Departments of Sociology and Statistical Sciences, University of Toronto"
+date: today
+format:
+  # docx: default
+  pdf:
+    toc: false
+    pdf-engine: xelatex
+    geometry:
+      - margin=1in
+    template-partials:
+      - title.tex
+bibliography: refs.bib
+csl: jama.csl
+header-includes:
+  - \usepackage{pdflscape}
+  - \usepackage{float}
+keywords:
+  - motor vehicle mortality
+  - traffic fatalities
+  - Kitagawa decomposition
+---
+
+::: {.callout-important title="This is the Author Accepted Manuscript (AAM) version"}
+This is the peer-reviewed, **accepted** version of this article (the "author accepted manuscript" or AAM per NIH parlance). That means it is **not** the final published version of record. It has not been copyedited, typeset, or paginated by the journal, so it differs from the published article. It is shared here only to document the source code of the numbers reproduced by the code in this repository (see the associated `qmd` file).\
+
+This paper was published open access in *JAMA Network Open* on October 8, 2026: \
+
+> Kiang MV, Alexander MJ. Factors Associated With Postpandemic Decline in US Motor Vehicle Mortality. *JAMA Network Open*. 2026;9(10):e2638041. doi:[10.1001/jamanetworkopen.2026.38041](https://doi.org/10.1001/jamanetworkopen.2026.38041)
+
+\
+Please cite the open-access published version, which is also [shared in this repository](https://github.com/mkiang/traffic_deaths/blob/main/manuscript/kiang_alexander_traffic.pdf). 
+:::
+
+{{< pagebreak >}}
+
+```{r manuscript-setup, include=FALSE}
+library(tidyverse)
+library(here)
+library(knitr)
+library(arrow)
+library(duckdb)
+source(here::here("code", "utils.R"))
+
+n_all_bins <- length(return_all_bins())
+n_behavioral <- length(return_behavioral_flagged())
+n_nonself <- length(return_nonself_driven())
+
+n_iter <- max(arrow::read_parquet(
+    here::here("data", "summaries", "main_ci.parquet")
+)$n)
+
+fars <- arrow::read_parquet(
+    here::here("data", "fars_persons_2018_2024.parquet")
+) |>
+    dplyr::filter(year >= 2021, year <= 2024)
+panel <- arrow::read_parquet(here::here("data", "panel_state_year.parquet"))
+main_ci <- arrow::read_parquet(
+    here::here("data", "summaries", "main_ci.parquet")
+) |>
+    dplyr::filter(geography == "national")
+part_ci <- arrow::read_parquet(
+    here::here("data", "summaries", "partition_ci.parquet")
+) |>
+    dplyr::filter(geography == "national")
+state_main <- arrow::read_parquet(
+    here::here("data", "summaries", "main_ci.parquet")
+) |>
+    dplyr::filter(geography == "state", component == "delta_rate")
+state_part <- arrow::read_parquet(
+    here::here("data", "summaries", "partition_ci.parquet")
+) |>
+    dplyr::filter(geography == "state")
+
+MINUS <- "−"
+fmt_signed <- function(x, d = 2) {
+    sprintf("%s%.*f", ifelse(x < 0, MINUS, "+"), d, abs(x))
+}
+fmt_plain <- function(x, d = 2) {
+    sprintf("%.*f", d, x)
+}
+fmt_abs <- function(x, d = 2) {
+    sprintf("%.*f", d, abs(x))
+}
+fmt_ui <- function(lower, upper, d = 2) {
+    sprintf("95%% UI, %s to %s", fmt_signed(lower, d), fmt_signed(upper, d))
+}
+fmt_ui_long <- function(lower, upper, d = 2) {
+    sprintf(
+        "95%% uncertainty interval [UI], %s to %s",
+        fmt_signed(lower, d),
+        fmt_signed(upper, d)
+    )
+}
+n_comma <- function(x) {
+    format(round(x), big.mark = ",", scientific = FALSE)
+}
+get_ci <- function(df, comp) {
+    r <- df |> dplyr::filter(component == comp)
+    list(mean = r$mean, lower = r$p025, upper = r$p975)
+}
+
+natl <- panel |>
+    dplyr::group_by(year) |>
+    dplyr::summarise(vmt = sum(vm2_total), .groups = "drop")
+vmt_2021_tn <- natl$vmt[natl$year == 2021] / 1000000
+vmt_2024_tn <- natl$vmt[natl$year == 2024] / 1000000
+
+rate_a <- get_ci(main_ci, "rate_a")
+rate_b <- get_ci(main_ci, "rate_b")
+crude_d <- get_ci(main_ci, "delta_rate")
+vmt_e <- get_ci(main_ci, "vmt_effect")
+risk_e <- get_ci(main_ci, "risk_effect")
+risk_total <- risk_e$mean
+pct_of_risk <- function(x) 100 * x / risk_total
+
+total_deaths <- nrow(fars)
+median_age <- stats::median(fars$age, na.rm = TRUE)
+iqr_age <- stats::quantile(fars$age, c(0.25, 0.75), na.rm = TRUE)
+n_male <- sum(fars$sex == 1, na.rm = TRUE)
+n_female <- sum(fars$sex == 2, na.rm = TRUE)
+n_sex_unk <- total_deaths - n_male - n_female
+pct_male <- 100 * n_male / total_deaths
+pct_female <- 100 * n_female / total_deaths
+pct_sex_unk <- 100 * n_sex_unk / total_deaths
+
+unr_only <- get_ci(part_ci, "unr_only_contrib")
+none_b <- get_ci(part_ci, "none_contrib")
+ped_b <- get_ci(part_ci, "ped_contrib")
+bike_b <- get_ci(part_ci, "bike_contrib")
+other_b <- get_ci(part_ci, "other_nonpv_contrib")
+
+## Subtotal UI for the four unrestrained-involving bins: sum per simulation
+## draw first, then take percentiles (same approach as Table 1 subtotals).
+sum_ci_for_components <- function(component_names) {
+    con <- duckdb::dbConnect(duckdb::duckdb(), read_only = TRUE)
+    on.exit(duckdb::dbDisconnect(con, shutdown = TRUE), add = TRUE)
+    sims <- dplyr::tbl(con, sprintf(
+        "read_parquet('%s')",
+        here::here("temp_output", "simulations", "partition", "*.parquet")
+    ))
+    sims |>
+        dplyr::filter(
+            geography == "national",
+            component %in% component_names
+        ) |>
+        dplyr::group_by(batch_id, sim_id) |>
+        dplyr::summarise(sum_value = sum(value), .groups = "drop") |>
+        dplyr::collect() |>
+        dplyr::summarise(
+            mean = mean(sum_value),
+            lower = stats::quantile(sum_value, 0.025),
+            upper = stats::quantile(sum_value, 0.975)
+        )
+}
+unr4 <- sum_ci_for_components(
+    c(
+        "unr_only_contrib",
+        "speed_unr_contrib",
+        "alc_unr_contrib",
+        "all_three_contrib"
+    )
+)
+
+state_vmt <- panel |>
+    dplyr::filter(year %in% c(2021, 2024)) |>
+    dplyr::select(state_abb, year, vm2_total) |>
+    tidyr::pivot_wider(
+        names_from = year,
+        values_from = vm2_total,
+        names_prefix = "v"
+    )
+n_vmt_increase <- sum(state_vmt$v2024 > state_vmt$v2021)
+n_sig_increase <- sum(
+    state_main$qval < 0.05 & state_main$mean > 0,
+    na.rm = TRUE
+)
+top3 <- state_main |> dplyr::arrange(mean) |> dplyr::slice_head(n = 3)
+behavioral_cols <- c(
+    "speed_only_contrib",
+    "alc_only_contrib",
+    "unr_only_contrib",
+    "speed_alc_contrib",
+    "speed_unr_contrib",
+    "alc_unr_contrib",
+    "all_three_contrib"
+)
+n_states_bin_decline <- state_part |>
+    dplyr::filter(component %in% behavioral_cols, qval < 0.05, mean < 0) |>
+    dplyr::distinct(state_abb) |>
+    nrow()
+```
+
+Motor vehicle deaths surged during the COVID-19 pandemic,[@chen2022excess; @tefft2024pandemic] and remain a leading cause of death in the US. The national motor vehicle mortality rate peaked in 2021 at `r fmt_plain(rate_a$mean, 1)` deaths per 100,000 before declining three consecutive years to `r fmt_plain(rate_b$mean, 1)` deaths per 100,000 in 2024.[@nhtsa_fars] Understanding factors of this decline is crucial to informing traffic-safety policies. We quantified how much of the decline reflects changes in driving distance, driving behavior, or fatalities among other road users.
+
+## Methods
+
+We decomposed the crude motor vehicle mortality rate change from 2021 to 2024 nationally and by state using three data sources. Death data came from the National Highway Traffic Safety Administration's Fatality Analysis Reporting System (FARS), a census of motor vehicle crashes on public roads where deaths occur within 30 days of the crash. FARS includes decedent demographics and restraint use, as well as crash-level behavioral indicators including excessive speeding or alcohol-impaired driving. State-level population estimates came from the US Census Bureau. State-level estimates of vehicle miles traveled (VMT) came from the Federal Highway Administration.[@fhwa_highwaystats_vm2] 
+
+We applied a Kitagawa decomposition[@kitagawa1955] to partition the mortality rate change into a VMT component and a per-mile risk component. We further partitioned the per-mile risk component into `r n_all_bins` mutually-exclusive categories. Seven categories represent behavioral risk factors: speeding involvement, alcohol-impairment, and unrestrained status (occupants without a seatbelt or helmet) in combination or alone. One category represents occupant fatalities not flagged by any of these behavioral risk factors. Three categories represent fatalities among other road users (pedestrians, bicyclists, other).
+
+Uncertainty intervals were obtained using Monte Carlo simulation where deaths were drawn from negative binomial, representing stochastic uncertainty, and VMT sampling error was incorporated using a lognormal model (eMethods). All tests were 2-sided; statistical significance was defined as a 95% UI excluding 0 for national estimates and as a Benjamini-Hochberg-adjusted *q* < 0.05 for state-level estimates.  This study used public, deidentified data so was not considered human subjects research by the Stanford University IRB, and followed the STROBE reporting guideline.
+
+## Results
+
+We identified `r n_comma(total_deaths)` motor vehicle deaths in the US between 2021 and 2024. Decedents had a median (IQR) age of `r round(median_age)` years (`r round(iqr_age[1])`-`r round(iqr_age[2])`); `r n_comma(n_female)` (`r fmt_plain(pct_female, 1)`%) were female, `r n_comma(n_male)` (`r fmt_plain(pct_male, 1)`%) were male, and sex was unknown or not reported for `r n_comma(n_sex_unk)` (`r fmt_plain(pct_sex_unk, 1)`%). Over this period, the national crude mortality rate declined by `r fmt_abs(crude_d$mean)` deaths per 100,000 (`r fmt_ui_long(crude_d$lower, crude_d$upper)`). The VMT component contributed `r fmt_signed(vmt_e$mean)` deaths per 100,000 (`r fmt_ui(vmt_e$lower, vmt_e$upper)`) over this period, reflecting the increase in driving from `r fmt_plain(vmt_2021_tn, 2)` trillion vehicle miles in 2021 to `r fmt_plain(vmt_2024_tn, 2)` trillion in 2024. This increase was offset by lower per-mile risk of mortality which declined `r fmt_abs(risk_e$mean)` deaths per 100,000 (`r fmt_ui(risk_e$lower, risk_e$upper)`).
+
+Unrestrained-only fatalities decreased by `r fmt_abs(unr_only$mean)` deaths per 100,000 (`r fmt_ui(unr_only$lower, unr_only$upper)`) — the single largest contribution and `r round(pct_of_risk(unr_only$mean))`% of the per-mile risk decline (Table). Speed-only and alcohol-only fatalities each declined by ~0.10 deaths per 100,000, while their combinations with unrestrained each declined ~0.20 deaths per 100,000. Fatalities not flagged by any of the behavioral risk factors declined `r fmt_abs(none_b$mean)` (`r fmt_ui(none_b$lower, none_b$upper)`), or `r round(pct_of_risk(none_b$mean))`% of the per-mile risk decline. Pedestrian deaths declined `r fmt_abs(ped_b$mean)` (`r fmt_ui(ped_b$lower, ped_b$upper)`). Conversely, the bicyclist contribution (`r fmt_signed(bike_b$mean)`; `r fmt_ui(bike_b$lower, bike_b$upper)`) and the other road user contribution (`r fmt_signed(other_b$mean)`; `r fmt_ui(other_b$lower, other_b$upper)`) remained flat.
+
+Motor vehicle mortality rate changes varied by state (Figure A). Although VMT increased in `r n_vmt_increase` of 51 jurisdictions, no state experienced a statistically significant increase in mortality. The three largest decreases occurred in `r top3$state_name[1]` (`r fmt_signed(top3$mean[1])`; `r fmt_ui(top3$p025[1], top3$p975[1])`), `r top3$state_name[2]` (`r fmt_signed(top3$mean[2])`; `r fmt_ui(top3$p025[2], top3$p975[2])`), and `r top3$state_name[3]` (`r fmt_signed(top3$mean[3])`; `r fmt_ui(top3$p025[3], top3$p975[3])`). Declines in specific behavioral risk factors had similar geographic variation (Figure B); `r n_states_bin_decline` states had at least one behavioral risk category with a statistically significant decline (Benjamini-Hochberg *q* < 0.05).
+
+## Discussion
+
+The post-pandemic decline in motor vehicle mortality reflects decreases in per-mile driving risk, not a reduction in driving. Fatalities involving an unrestrained occupant — alone or combined with speeding or alcohol — accounted for half (`r round(pct_of_risk(unr4$mean))`%) of the per-mile risk decline, even as seat belt use remained stable near 91%,[@nhtsa2023seatbelt] indicating the decline was not driven by increased belt use. Speeding-involved fatalities also declined even as self-reported speeding remained stable across 2019-2024,[@zhang2025tsci] suggesting this decline was not explained by reduced speeding. Pedestrian deaths declined while bicyclist deaths did not, perpetuating a long-standing gap relative to peer countries.[@naumann2025mmwr] Sustained progress will likely depend on continued attention to occupant restraint and speeding, and on improving safety for cyclists and other road users,[@marshall2019bicycling] who saw no comparable decline.
+
+## Limitations
+
+Both VMT and FARS data quality vary by state. FARS 2024 data are preliminary and subject to revision. Uncertainty intervals reflect stochasticity in death counts and sampling error in VMT but do not capture systematic biases. Decomposition by sociodemographic factors such as age, race, and ethnicity was not possible because VMT is not stratified by these factors; therefore, we could not assess whether the decline narrowed the pandemic-era disparities concentrated among American Indian/Alaska Native and Black populations.[@matthews2025cdc]
+
+### Conflict of Interest Disclosures 
+
+None reported.
+
+### Funding/Support
+
+This study received no funding.
+
+## Role of the Funder/Sponsor
+
+Not applicable.
+
+### Access to Data and Data Analysis
+
+Dr Kiang had full access to all the data in the study and takes responsibility for the integrity of the data and the accuracy of the data analysis.
+
+### Data Sharing Statement 
+
+All code and data will be made available upon publication at `https://github.com/mkiang/traffic_deaths`.
+
+::: {.content-visible when-format="pdf"}
+```{=latex}
+\begin{landscape}
+```
+:::
+
+{{< include 03_table1_aam.qmd >}}
+
+::: {.content-visible when-format="pdf"}
+```{=latex}
+\end{landscape}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=8in,keepaspectratio]{../plots/01_figure1_geographic.pdf}
+\par\medskip
+{\textbf{Figure.} State-level decomposition of motor vehicle mortality rate change, 2021-2024. A: Total change in state motor vehicle mortality rate per 100,000 population. B: Behavioral risk-factor contribution to the rate change in deaths per 100,000 population.\par}
+\end{figure}
+```
+:::
+
+::: {.content-visible when-format="docx"}
+```{r}
+#| echo: false
+knitr::include_graphics(here::here("plots", "01_figure1_geographic.jpg"))
+```
+
+**Figure.** State-level decomposition of motor vehicle mortality rate change, 2021-2024. A: Total change in state motor vehicle mortality rate per 100,000 population. B: Behavioral risk-factor contribution to the rate change in deaths per 100,000 population.
+:::
+
+\newpage
+
+## References {.unnumbered}
+
+::: {#refs}
+:::

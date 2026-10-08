@@ -1,0 +1,52 @@
+state_name,state_abb,state_fips,category,contribution
+Alabama,AL,1,speed_alcohol,0.05231370523996308
+Alaska,AK,2,speed_alcohol,-0.2323527657402618
+Arizona,AZ,4,speed_alcohol,0.13988083537365914
+Arkansas,AR,5,speed_alcohol,0.1833271532070339
+California,CA,6,speed_alcohol,-0.3256993428457143
+Colorado,CO,8,speed_alcohol,0.19096787963782982
+Connecticut,CT,9,speed_alcohol,-0.0985613902685086
+Delaware,DE,10,speed_alcohol,-0.458239685103664
+District of Columbia,DC,11,speed_alcohol,-0.183920752672611
+Florida,FL,12,speed_alcohol,-0.08649027534954755
+Georgia,GA,13,speed_alcohol,-0.10423779364713542
+Hawaii,HI,15,speed_alcohol,0.17214486743895752
+Idaho,ID,16,speed_alcohol,-0.016002790930129324
+Illinois,IL,17,speed_alcohol,-0.06773340250584645
+Indiana,IN,18,speed_alcohol,-0.06419857130764517
+Iowa,IA,19,speed_alcohol,0.022930662496703946
+Kansas,KS,20,speed_alcohol,0.034093993641109044
+Kentucky,KY,21,speed_alcohol,-0.050249887296242815
+Louisiana,LA,22,speed_alcohol,-0.16026122040440494
+Maine,ME,23,speed_alcohol,-0.15636405222765892
+Maryland,MD,24,speed_alcohol,-0.14885295271635407
+Massachusetts,MA,25,speed_alcohol,-0.015012684918350921
+Michigan,MI,26,speed_alcohol,-0.15182239426434113
+Minnesota,MN,27,speed_alcohol,-0.22337089432808976
+Mississippi,MS,28,speed_alcohol,0.05726427030764591
+Missouri,MO,29,speed_alcohol,-0.20909051339857823
+Montana,MT,30,speed_alcohol,-0.46139408122140524
+Nebraska,NE,31,speed_alcohol,0.4414597232454519
+Nevada,NV,32,speed_alcohol,0.4559313974934819
+New Hampshire,NH,33,speed_alcohol,0.05213170121409161
+New Jersey,NJ,34,speed_alcohol,-0.12323378064771157
+New Mexico,NM,35,speed_alcohol,-0.17024895420760358
+New York,NY,36,speed_alcohol,-0.16213481457596568
+North Carolina,NC,37,speed_alcohol,0.08569491149233967
+North Dakota,ND,38,speed_alcohol,-0.028898630937523456
+Ohio,OH,39,speed_alcohol,-0.1751956188731955
+Oklahoma,OK,40,speed_alcohol,0.005071440948303859
+Oregon,OR,41,speed_alcohol,-0.36595681142834546
+Pennsylvania,PA,42,speed_alcohol,-0.15995200282235056
+Rhode Island,RI,44,speed_alcohol,-0.09710681575770452
+South Carolina,SC,45,speed_alcohol,-0.2116913424881412
+South Dakota,SD,46,speed_alcohol,0.3072561291764858
+Tennessee,TN,47,speed_alcohol,0.1459712816981747
+Texas,TX,48,speed_alcohol,-0.15537642656844125
+Utah,UT,49,speed_alcohol,-0.02566376162498457
+Vermont,VT,50,speed_alcohol,0.5680967808900392
+Virginia,VA,51,speed_alcohol,-0.06448514925722601
+Washington,WA,53,speed_alcohol,0.06683648348202421
+West Virginia,WV,54,speed_alcohol,-0.1414276040798254
+Wisconsin,WI,55,speed_alcohol,-0.032948903551882736
+Wyoming,WY,56,speed_alcohol,0.23726820760243117

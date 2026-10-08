@@ -1,0 +1,1072 @@
+state,year,rate_cat,rate_100k
+Alabama,2018,Age-adjusted CDC WONDER,20.779138408
+Alabama,2018,Crude rate CDC WONDER,21.056384500211383
+Alabama,2018,Crude rate FARS (primary),19.48226643563247
+Alabama,2019,Age-adjusted CDC WONDER,19.817026708
+Alabama,2019,Crude rate CDC WONDER,19.987917599249382
+Alabama,2019,Crude rate FARS (primary),18.948790384609506
+Alabama,2020,Age-adjusted CDC WONDER,19.233890361
+Alabama,2020,Crude rate CDC WONDER,18.91480667756255
+Alabama,2020,Crude rate FARS (primary),18.55717377819687
+Alabama,2021,Age-adjusted CDC WONDER,20.541205129
+Alabama,2021,Crude rate CDC WONDER,20.49831299874277
+Alabama,2021,Crude rate FARS (primary),19.4684460654726
+Alabama,2022,Age-adjusted CDC WONDER,19.482582249
+Alabama,2022,Crude rate CDC WONDER,19.79834840404627
+Alabama,2022,Crude rate FARS (primary),19.463450968355936
+Alabama,2023,Age-adjusted CDC WONDER,20.227844809
+Alabama,2023,Crude rate CDC WONDER,20.653918294506116
+Alabama,2023,Crude rate FARS (primary),19.032087435051046
+Alabama,2024,Age-adjusted CDC WONDER,19.775269609
+Alabama,2024,Crude rate CDC WONDER,20.008922583500897
+Alabama,2024,Crude rate FARS (primary),18.651728222216924
+Alaska,2018,Age-adjusted CDC WONDER,10.969554287
+Alaska,2018,Crude rate CDC WONDER,11.131866461043897
+Alaska,2018,Crude rate FARS (primary),10.860357522969656
+Alaska,2019,Age-adjusted CDC WONDER,9.822004607
+Alaska,2019,Crude rate CDC WONDER,9.814572732118053
+Alaska,2019,Crude rate FARS (primary),9.133005181276522
+Alaska,2020,Age-adjusted CDC WONDER,9.55444809
+Alaska,2020,Crude rate CDC WONDER,9.685996368433475
+Alaska,2020,Crude rate FARS (primary),8.731038979996372
+Alaska,2021,Age-adjusted CDC WONDER,11.605007808
+Alaska,2021,Crude rate CDC WONDER,11.437597015331827
+Alaska,2021,Crude rate FARS (primary),9.531330846109855
+Alaska,2022,Age-adjusted CDC WONDER,13.122029714
+Alaska,2022,Crude rate CDC WONDER,13.343463472949532
+Alaska,2022,Crude rate FARS (primary),11.164938824304711
+Alaska,2023,Age-adjusted CDC WONDER,11.153487224
+Alaska,2023,Crude rate CDC WONDER,11.26936497807226
+Alaska,2023,Crude rate FARS (primary),8.282304381474793
+Alaska,2024,Age-adjusted CDC WONDER,11.626420769
+Alaska,2024,Crude rate CDC WONDER,11.619533246051724
+Alaska,2024,Crude rate FARS (primary),9.45775961887931
+Arizona,2018,Age-adjusted CDC WONDER,13.458166343
+Arizona,2018,Crude rate CDC WONDER,13.972196306426875
+Arizona,2018,Crude rate FARS (primary),14.11177868711046
+Arizona,2019,Age-adjusted CDC WONDER,12.57281853
+Arizona,2019,Crude rate CDC WONDER,12.959686597750391
+Arizona,2019,Crude rate FARS (primary),13.42596103618797
+Arizona,2020,Age-adjusted CDC WONDER,13.054898372
+Arizona,2020,Crude rate CDC WONDER,13.955491304949748
+Arizona,2020,Crude rate FARS (primary),14.651178807689016
+Arizona,2021,Age-adjusted CDC WONDER,17.955353309
+Arizona,2021,Crude rate CDC WONDER,18.284104184750287
+Arizona,2021,Crude rate FARS (primary),16.386956532498
+Arizona,2022,Age-adjusted CDC WONDER,17.265532641
+Arizona,2022,Crude rate CDC WONDER,17.946298277778876
+Arizona,2022,Crude rate FARS (primary),17.89207985397894
+Arizona,2023,Age-adjusted CDC WONDER,16.690901554
+Arizona,2023,Crude rate CDC WONDER,17.34237009982702
+Arizona,2023,Crude rate FARS (primary),17.50294760075134
+Arizona,2024,Age-adjusted CDC WONDER,14.938845327
+Arizona,2024,Crude rate CDC WONDER,15.404126195666166
+Arizona,2024,Crude rate FARS (primary),16.20862251239188
+Arkansas,2018,Age-adjusted CDC WONDER,17.293565699
+Arkansas,2018,Crude rate CDC WONDER,17.761334802488978
+Arkansas,2018,Crude rate FARS (primary),17.263353452886484
+Arkansas,2019,Age-adjusted CDC WONDER,17.468471378
+Arkansas,2019,Crude rate CDC WONDER,17.676353904438454
+Arkansas,2019,Crude rate FARS (primary),16.91501281866676
+Arkansas,2020,Age-adjusted CDC WONDER,21.483278044
+Arkansas,2020,Crude rate CDC WONDER,21.628464120302027
+Arkansas,2020,Crude rate FARS (primary),21.59529162931997
+Arkansas,2021,Age-adjusted CDC WONDER,22.908001799
+Arkansas,2021,Crude rate CDC WONDER,23.027087387301073
+Arkansas,2021,Crude rate FARS (primary),22.861900246789588
+Arkansas,2022,Age-adjusted CDC WONDER,19.844316341
+Arkansas,2022,Crude rate CDC WONDER,20.277559763021607
+Arkansas,2022,Crude rate FARS (primary),20.900979885185702
+Arkansas,2023,Age-adjusted CDC WONDER,19.905288438
+Arkansas,2023,Crude rate CDC WONDER,20.36186785766761
+Arkansas,2023,Crude rate FARS (primary),19.417077189071833
+Arkansas,2024,Age-adjusted CDC WONDER,19.000895604
+Arkansas,2024,Crude rate CDC WONDER,19.589723198830185
+Arkansas,2024,Crude rate FARS (primary),19.52496378329686
+California,2018,Age-adjusted CDC WONDER,9.801097999
+California,2018,Crude rate CDC WONDER,10.244066663213097
+California,2018,Crude rate FARS (primary),9.630436927446372
+California,2019,Age-adjusted CDC WONDER,9.422132252
+California,2019,Crude rate CDC WONDER,9.851002634287422
+California,2019,Crude rate FARS (primary),9.430084632410534
+California,2020,Age-adjusted CDC WONDER,10.630632357
+California,2020,Crude rate CDC WONDER,10.958465165111505
+California,2020,Crude rate FARS (primary),10.070351271564025
+California,2021,Age-adjusted CDC WONDER,12.017080745
+California,2021,Crude rate CDC WONDER,12.43658917089363
+California,2021,Crude rate FARS (primary),11.529648095366259
+California,2022,Age-adjusted CDC WONDER,12.104756345
+California,2022,Crude rate CDC WONDER,12.577149687293176
+California,2022,Crude rate FARS (primary),11.596116683043617
+California,2023,Age-adjusted CDC WONDER,11.38521004
+California,2023,Crude rate CDC WONDER,11.783556150711453
+California,2023,Crude rate FARS (primary),10.6355586906941
+California,2024,Age-adjusted CDC WONDER,10.447861883
+California,2024,Crude rate CDC WONDER,10.841651204527738
+California,2024,Crude rate FARS (primary),9.829763758771815
+Colorado,2018,Age-adjusted CDC WONDER,11.204109036
+Colorado,2018,Crude rate CDC WONDER,11.496966468351308
+Colorado,2018,Crude rate FARS (primary),11.093256195416835
+Colorado,2019,Age-adjusted CDC WONDER,10.254640736
+Colorado,2019,Crude rate CDC WONDER,10.662524837257571
+Colorado,2019,Crude rate FARS (primary),10.367308351535456
+Colorado,2020,Age-adjusted CDC WONDER,10.881010844
+Colorado,2020,Crude rate CDC WONDER,11.26638096368683
+Colorado,2020,Crude rate FARS (primary),10.747989201554
+Colorado,2021,Age-adjusted CDC WONDER,12.119644389
+Colorado,2021,Crude rate CDC WONDER,12.573021563677969
+Colorado,2021,Crude rate FARS (primary),11.885031327635398
+Colorado,2022,Age-adjusted CDC WONDER,13.339243428
+Colorado,2022,Crude rate CDC WONDER,13.929397609100084
+Colorado,2022,Crude rate FARS (primary),13.057742053193207
+Colorado,2023,Age-adjusted CDC WONDER,12.553360845
+Colorado,2023,Crude rate CDC WONDER,13.13261278499676
+Colorado,2023,Crude rate FARS (primary),12.200620909932475
+Colorado,2024,Age-adjusted CDC WONDER,12.00741095
+Colorado,2024,Crude rate CDC WONDER,12.57240251897904
+Colorado,2024,Crude rate FARS (primary),11.565267470729719
+Connecticut,2018,Age-adjusted CDC WONDER,8.03111561
+Connecticut,2018,Crude rate CDC WONDER,8.224786204515743
+Connecticut,2018,Crude rate FARS (primary),8.196810741235078
+Connecticut,2019,Age-adjusted CDC WONDER,6.613943303
+Connecticut,2019,Crude rate CDC WONDER,7.150825205228683
+Connecticut,2019,Crude rate FARS (primary),6.98257049451742
+Connecticut,2020,Age-adjusted CDC WONDER,8.726898525
+Connecticut,2020,Crude rate CDC WONDER,8.910818627689238
+Connecticut,2020,Crude rate FARS (primary),8.35214661341405
+Connecticut,2021,Age-adjusted CDC WONDER,8.734147979
+Connecticut,2021,Crude rate CDC WONDER,8.8171514112849
+Connecticut,2021,Crude rate FARS (primary),8.401248042828065
+Connecticut,2022,Age-adjusted CDC WONDER,10.130672201
+Connecticut,2022,Crude rate CDC WONDER,10.55853838871729
+Connecticut,2022,Crude rate FARS (primary),10.116295943116565
+Connecticut,2023,Age-adjusted CDC WONDER,8.759844248
+Connecticut,2023,Crude rate CDC WONDER,8.811363529684002
+Connecticut,2023,Crude rate FARS (primary),8.45451703159711
+Connecticut,2024,Age-adjusted CDC WONDER,8.7231207650000009
+Connecticut,2024,Crude rate CDC WONDER,9.06105436387725
+Connecticut,2024,Crude rate FARS (primary),8.435215774180023
+Delaware,2018,Age-adjusted CDC WONDER,11.790201895
+Delaware,2018,Crude rate CDC WONDER,12.202878017756221
+Delaware,2018,Crude rate FARS (primary),11.478978474330004
+Delaware,2019,Age-adjusted CDC WONDER,13.213899553
+Delaware,2019,Crude rate CDC WONDER,13.412950972080584
+Delaware,2019,Crude rate FARS (primary),13.515339910798756
+Delaware,2020,Age-adjusted CDC WONDER,11.944982426
+Delaware,2020,Crude rate CDC WONDER,12.400093555177392
+Delaware,2020,Crude rate FARS (primary),11.694397173988435
+Delaware,2021,Age-adjusted CDC WONDER,14.148606342
+Delaware,2021,Crude rate CDC WONDER,14.227977975488079
+Delaware,2021,Crude rate FARS (primary),13.531503529135517
+Delaware,2022,Age-adjusted CDC WONDER,14.58423189
+Delaware,2022,Crude rate CDC WONDER,14.892835272504593
+Delaware,2022,Crude rate FARS (primary),15.872627066748317
+Delaware,2023,Age-adjusted CDC WONDER,14.293502074
+Delaware,2023,Crude rate CDC WONDER,14.183398091319857
+Delaware,2023,Crude rate FARS (primary),13.02556967570191
+Delaware,2024,Age-adjusted CDC WONDER,12.458542521
+Delaware,2024,Crude rate CDC WONDER,13.118905769181408
+Delaware,2024,Crude rate FARS (primary),11.978131354469982
+District of Columbia,2018,Age-adjusted CDC WONDER,5.579176242
+District of Columbia,2018,Crude rate CDC WONDER,5.82264782779732
+District of Columbia,2018,Crude rate FARS (primary),4.402489821017486
+District of Columbia,2019,Age-adjusted CDC WONDER,6.088258625
+District of Columbia,2019,Crude rate CDC WONDER,6.212469272985783
+District of Columbia,2019,Crude rate FARS (primary),3.2474271199698412
+District of Columbia,2020,Age-adjusted CDC WONDER,6.077663896
+District of Columbia,2020,Crude rate CDC WONDER,6.558188270680278
+District of Columbia,2020,Crude rate FARS (primary),5.365790403283864
+District of Columbia,2021,Age-adjusted CDC WONDER,7.978325389
+District of Columbia,2021,Crude rate CDC WONDER,8.516920281626163
+District of Columbia,2021,Crude rate FARS (primary),6.1262058166082936
+District of Columbia,2022,Age-adjusted CDC WONDER,8.409294187
+District of Columbia,2022,Crude rate CDC WONDER,8.718460231260853
+District of Columbia,2022,Crude rate FARS (primary),4.7286563966160555
+District of Columbia,2023,Age-adjusted CDC WONDER,7.542153368
+District of Columbia,2023,Crude rate CDC WONDER,8.002048524422252
+District of Columbia,2023,Crude rate FARS (primary),6.401638819537801
+District of Columbia,2024,Age-adjusted CDC WONDER,6.288935432
+District of Columbia,2024,Crude rate CDC WONDER,6.550373798504806
+District of Columbia,2024,Crude rate FARS (primary),6.692773228907084
+Florida,2018,Age-adjusted CDC WONDER,14.281529192
+Florida,2018,Crude rate CDC WONDER,14.871846648631005
+Florida,2018,Crude rate FARS (primary),14.749522063732426
+Florida,2019,Age-adjusted CDC WONDER,14.339354065
+Florida,2019,Crude rate CDC WONDER,14.917139616609969
+Florida,2019,Crude rate FARS (primary),14.819429095103791
+Florida,2020,Age-adjusted CDC WONDER,15.373841445
+Florida,2020,Crude rate CDC WONDER,15.885487403109526
+Florida,2020,Crude rate FARS (primary),15.417722322143327
+Florida,2021,Age-adjusted CDC WONDER,17.017118264
+Florida,2021,Crude rate CDC WONDER,17.49729261459891
+Florida,2021,Crude rate FARS (primary),17.13543761026558
+Florida,2022,Age-adjusted CDC WONDER,15.456106755
+Florida,2022,Crude rate CDC WONDER,16.09969064285801
+Florida,2022,Crude rate FARS (primary),15.853927949170197
+Florida,2023,Age-adjusted CDC WONDER,14.944902529
+Florida,2023,Crude rate CDC WONDER,15.429034561561323
+Florida,2023,Crude rate FARS (primary),14.734858982815355
+Florida,2024,Age-adjusted CDC WONDER,13.213635966
+Florida,2024,Crude rate CDC WONDER,13.961021666110808
+Florida,2024,Crude rate FARS (primary),13.426198586655138
+Georgia,2018,Age-adjusted CDC WONDER,13.680257509
+Georgia,2018,Crude rate CDC WONDER,14.012220671751942
+Georgia,2018,Crude rate FARS (primary),14.306914593613755
+Georgia,2019,Age-adjusted CDC WONDER,13.767381559
+Georgia,2019,Crude rate CDC WONDER,14.03836274301328
+Georgia,2019,Crude rate FARS (primary),14.03836274301328
+Georgia,2020,Age-adjusted CDC WONDER,15.797924396
+Georgia,2020,Crude rate CDC WONDER,16.174584138025107
+Georgia,2020,Crude rate FARS (primary),15.447845910625361
+Georgia,2021,Age-adjusted CDC WONDER,17.531995251
+Georgia,2021,Crude rate CDC WONDER,17.809389495610663
+Georgia,2021,Crude rate FARS (primary),16.76232341184167
+Georgia,2022,Age-adjusted CDC WONDER,16.608377847
+Georgia,2022,Crude rate CDC WONDER,16.950540189840563
+Georgia,2022,Crude rate FARS (primary),16.42912583969436
+Georgia,2023,Age-adjusted CDC WONDER,15.747024324
+Georgia,2023,Crude rate CDC WONDER,16.13277572676121
+Georgia,2023,Crude rate FARS (primary),14.551131047666974
+Georgia,2024,Age-adjusted CDC WONDER,12.929693074
+Georgia,2024,Crude rate CDC WONDER,13.433649843956799
+Georgia,2024,Crude rate FARS (primary),12.548209541325825
+Hawaii,2018,Age-adjusted CDC WONDER,7.638663205
+Hawaii,2018,Crude rate CDC WONDER,7.799862553773377
+Hawaii,2018,Crude rate FARS (primary),8.221476745869236
+Hawaii,2019,Age-adjusted CDC WONDER,8.249569428
+Hawaii,2019,Crude rate CDC WONDER,8.335599721675738
+Hawaii,2019,Crude rate FARS (primary),7.629192965601523
+Hawaii,2020,Age-adjusted CDC WONDER,5.691694406
+Hawaii,2020,Crude rate CDC WONDER,5.925917759286464
+Hawaii,2020,Crude rate FARS (primary),5.857011738829645
+Hawaii,2021,Age-adjusted CDC WONDER,6.228635001
+Hawaii,2021,Crude rate CDC WONDER,6.426961726406312
+Hawaii,2021,Crude rate FARS (primary),6.496068841744015
+Hawaii,2022,Age-adjusted CDC WONDER,7.253901013
+Hawaii,2022,Crude rate CDC WONDER,7.775839217861658
+Hawaii,2022,Crude rate FARS (primary),8.053547761356718
+Hawaii,2023,Age-adjusted CDC WONDER,6.30027257
+Hawaii,2023,Crude rate CDC WONDER,6.7990067899877
+Hawaii,2023,Crude rate FARS (primary),6.452118688457714
+Hawaii,2024,Age-adjusted CDC WONDER,6.916092823
+Hawaii,2024,Crude rate CDC WONDER,7.5372749362789095
+Hawaii,2024,Crude rate FARS (primary),7.053229756884851
+Idaho,2018,Age-adjusted CDC WONDER,13.158066889
+Idaho,2018,Crude rate CDC WONDER,13.127299417718659
+Idaho,2018,Crude rate FARS (primary),13.355600277157244
+Idaho,2019,Age-adjusted CDC WONDER,13.507810239
+Idaho,2019,Crude rate CDC WONDER,13.470761181849687
+Idaho,2019,Crude rate FARS (primary),12.520541513420456
+Idaho,2020,Age-adjusted CDC WONDER,12.111278128
+Idaho,2020,Crude rate CDC WONDER,12.05786694711571
+Idaho,2020,Crude rate FARS (primary),11.571226577052744
+Idaho,2021,Age-adjusted CDC WONDER,15.109742069
+Idaho,2021,Crude rate CDC WONDER,15.119316606889369
+Idaho,2021,Crude rate FARS (primary),14.331852200280547
+Idaho,2022,Age-adjusted CDC WONDER,12.694438905
+Idaho,2022,Crude rate CDC WONDER,12.960969480517143
+Idaho,2022,Crude rate FARS (primary),11.057969993298356
+Idaho,2023,Age-adjusted CDC WONDER,15.020956716
+Idaho,2023,Crude rate CDC WONDER,15.4734207218021
+Idaho,2023,Crude rate FARS (primary),13.951444913100255
+Idaho,2024,Age-adjusted CDC WONDER,12.210161923
+Idaho,2024,Crude rate CDC WONDER,12.43992987676476
+Idaho,2024,Crude rate FARS (primary),11.890374741646637
+Illinois,2018,Age-adjusted CDC WONDER,8.734345075
+Illinois,2018,Crude rate CDC WONDER,9.045410554367358
+Illinois,2018,Crude rate FARS (primary),8.133796632293844
+Illinois,2019,Age-adjusted CDC WONDER,8.384262791
+Illinois,2019,Crude rate CDC WONDER,8.69975938297075
+Illinois,2019,Crude rate FARS (primary),7.9655691628107865
+Illinois,2020,Age-adjusted CDC WONDER,9.77498121
+Illinois,2020,Crude rate CDC WONDER,9.906955870605781
+Illinois,2020,Crude rate FARS (primary),9.320976619584146
+Illinois,2021,Age-adjusted CDC WONDER,10.967688416
+Illinois,2021,Crude rate CDC WONDER,11.24352699993646
+Illinois,2021,Crude rate FARS (primary),10.503406875290782
+Illinois,2022,Age-adjusted CDC WONDER,10.037461422
+Illinois,2022,Crude rate CDC WONDER,10.386773826058855
+Illinois,2022,Crude rate FARS (primary),10.046093982793767
+Illinois,2023,Age-adjusted CDC WONDER,9.853211511
+Illinois,2023,Crude rate CDC WONDER,10.27506239193486
+Illinois,2023,Crude rate FARS (primary),9.816283624627529
+Illinois,2024,Age-adjusted CDC WONDER,9.399411165
+Illinois,2024,Crude rate CDC WONDER,9.779579451333335
+Illinois,2024,Crude rate FARS (primary),9.260309745952805
+Indiana,2018,Age-adjusted CDC WONDER,12.334145905
+Indiana,2018,Crude rate CDC WONDER,12.450583945822942
+Indiana,2018,Crude rate FARS (primary),12.838731646771858
+Indiana,2019,Age-adjusted CDC WONDER,12.08041809
+Indiana,2019,Crude rate CDC WONDER,12.464696977125275
+Indiana,2019,Crude rate FARS (primary),12.03385524609234
+Indiana,2020,Age-adjusted CDC WONDER,13.439686611
+Indiana,2020,Crude rate CDC WONDER,13.592524965403857
+Indiana,2020,Crude rate FARS (primary),13.209636938209384
+Indiana,2021,Age-adjusted CDC WONDER,14.212395835
+Indiana,2021,Crude rate CDC WONDER,14.216743274226014
+Indiana,2021,Crude rate FARS (primary),13.673895491825226
+Indiana,2022,Age-adjusted CDC WONDER,14.06103688
+Indiana,2022,Crude rate CDC WONDER,14.303361289903128
+Indiana,2022,Crude rate FARS (primary),14.259530765010677
+Indiana,2023,Age-adjusted CDC WONDER,13.35951304
+Indiana,2023,Crude rate CDC WONDER,13.691599767504426
+Indiana,2023,Crude rate FARS (primary),13.139284702573251
+Indiana,2024,Age-adjusted CDC WONDER,12.408581658
+Indiana,2024,Crude rate CDC WONDER,12.810005379624581
+Indiana,2024,Crude rate FARS (primary),12.015698394416743
+Iowa,2018,Age-adjusted CDC WONDER,10.257990422
+Iowa,2018,Crude rate CDC WONDER,10.825740499698403
+Iowa,2018,Crude rate FARS (primary),10.127305628750118
+Iowa,2019,Age-adjusted CDC WONDER,10.598221195
+Iowa,2019,Crude rate CDC WONDER,11.109015203209525
+Iowa,2019,Crude rate FARS (primary),10.634270963756126
+Iowa,2020,Age-adjusted CDC WONDER,10.600349881
+Iowa,2020,Crude rate CDC WONDER,10.654496307120244
+Iowa,2020,Crude rate FARS (primary),10.748506568653657
+Iowa,2021,Age-adjusted CDC WONDER,10.615051783
+Iowa,2021,Crude rate CDC WONDER,11.036033430740137
+Iowa,2021,Crude rate FARS (primary),11.12982408312603
+Iowa,2022,Age-adjusted CDC WONDER,10.603198052
+Iowa,2022,Crude rate CDC WONDER,11.24009466657508
+Iowa,2022,Crude rate FARS (primary),10.490755022136742
+Iowa,2023,Age-adjusted CDC WONDER,11.869080923
+Iowa,2023,Crude rate CDC WONDER,12.33526824081675
+Iowa,2023,Crude rate FARS (primary),11.775986557354026
+Iowa,2024,Age-adjusted CDC WONDER,11.313629153
+Iowa,2024,Crude rate CDC WONDER,11.4762109253528
+Iowa,2024,Crude rate FARS (primary),10.982610455445153
+Kansas,2018,Age-adjusted CDC WONDER,13.503666359
+Kansas,2018,Crude rate CDC WONDER,13.629740712207166
+Kansas,2018,Crude rate FARS (primary),13.904395436886404
+Kansas,2019,Age-adjusted CDC WONDER,12.783672903
+Kansas,2019,Crude rate CDC WONDER,13.149605082682863
+Kansas,2019,Crude rate FARS (primary),14.076600741253195
+Kansas,2020,Age-adjusted CDC WONDER,13.228713745
+Kansas,2020,Crude rate CDC WONDER,13.681976412544943
+Kansas,2020,Crude rate FARS (primary),14.498810825234193
+Kansas,2021,Age-adjusted CDC WONDER,14.893191384
+Kansas,2021,Crude rate CDC WONDER,15.212681454618222
+Kansas,2021,Crude rate FARS (primary),14.395893188598453
+Kansas,2022,Age-adjusted CDC WONDER,14.802146373
+Kansas,2022,Crude rate CDC WONDER,15.01366549961802
+Kansas,2022,Crude rate FARS (primary),13.958283117558704
+Kansas,2023,Age-adjusted CDC WONDER,12.728371231
+Kansas,2023,Crude rate CDC WONDER,13.34914450279519
+Kansas,2023,Crude rate FARS (primary),13.111976960867356
+Kansas,2024,Age-adjusted CDC WONDER,11.747831094
+Kansas,2024,Crude rate CDC WONDER,12.253392068823668
+Kansas,2024,Crude rate FARS (primary),11.411812943217647
+Kentucky,2018,Age-adjusted CDC WONDER,16.102640358
+Kentucky,2018,Crude rate CDC WONDER,16.44164682581016
+Kentucky,2018,Crude rate FARS (primary),16.217646187856342
+Kentucky,2019,Age-adjusted CDC WONDER,16.080129016
+Kentucky,2019,Crude rate CDC WONDER,16.43433143015577
+Kentucky,2019,Crude rate FARS (primary),16.367252526359213
+Kentucky,2020,Age-adjusted CDC WONDER,18.046495532
+Kentucky,2020,Crude rate CDC WONDER,18.12205793823772
+Kentucky,2020,Crude rate FARS (primary),17.301352743972362
+Kentucky,2021,Age-adjusted CDC WONDER,17.109206836
+Kentucky,2021,Crude rate CDC WONDER,17.437282907491664
+Kentucky,2021,Crude rate FARS (primary),17.8809796735856
+Kentucky,2022,Age-adjusted CDC WONDER,16.011557087
+Kentucky,2022,Crude rate CDC WONDER,16.59573648891305
+Kentucky,2022,Crude rate FARS (primary),16.462970597001746
+Kentucky,2023,Age-adjusted CDC WONDER,17.908588871
+Kentucky,2023,Crude rate CDC WONDER,18.32727368618829
+Kentucky,2023,Crude rate FARS (primary),17.887770720092647
+Kentucky,2024,Age-adjusted CDC WONDER,14.487753673
+Kentucky,2024,Crude rate CDC WONDER,15.190573039849427
+Kentucky,2024,Crude rate FARS (primary),15.408515264237511
+Louisiana,2018,Age-adjusted CDC WONDER,16.752051255
+Louisiana,2018,Crude rate CDC WONDER,16.89373881164982
+Louisiana,2018,Crude rate FARS (primary),16.529279979418796
+Louisiana,2019,Age-adjusted CDC WONDER,15.849636462
+Louisiana,2019,Crude rate CDC WONDER,15.62806912844534
+Louisiana,2019,Crude rate FARS (primary),15.60660200052165
+Louisiana,2020,Age-adjusted CDC WONDER,17.525770728
+Louisiana,2020,Crude rate CDC WONDER,17.647181469986574
+Louisiana,2020,Crude rate FARS (primary),17.797644649389625
+Louisiana,2021,Age-adjusted CDC WONDER,22.025388126
+Louisiana,2021,Crude rate CDC WONDER,21.694172240923724
+Louisiana,2021,Crude rate FARS (primary),20.981116778821647
+Louisiana,2022,Age-adjusted CDC WONDER,19.95621207
+Louisiana,2022,Crude rate CDC WONDER,20.13633057715948
+Louisiana,2022,Crude rate FARS (primary),19.72271946260161
+Louisiana,2023,Age-adjusted CDC WONDER,17.908834476
+Louisiana,2023,Crude rate CDC WONDER,17.959617451430024
+Louisiana,2023,Crude rate FARS (primary),17.67627397222057
+Louisiana,2024,Age-adjusted CDC WONDER,16.697363565
+Louisiana,2024,Crude rate CDC WONDER,16.87785738210512
+Louisiana,2024,Crude rate FARS (primary),16.35586179296785
+Maine,2018,Age-adjusted CDC WONDER,10.425172584
+Maine,2018,Crude rate CDC WONDER,11.193002433358728
+Maine,2018,Crude rate FARS (primary),10.148322206245247
+Maine,2019,Age-adjusted CDC WONDER,11.097001805
+Maine,2019,Crude rate CDC WONDER,11.814797476537596
+Maine,2019,Crude rate FARS (primary),11.666183671801274
+Maine,2020,Age-adjusted CDC WONDER,12.14620687
+Maine,2020,Crude rate CDC WONDER,12.53141097092053
+Maine,2020,Crude rate FARS (primary),12.018429235268814
+Maine,2021,Age-adjusted CDC WONDER,11.791080109
+Maine,2021,Crude rate CDC WONDER,12.4734305052247
+Maine,2021,Crude rate FARS (primary),11.095551554066157
+Maine,2022,Age-adjusted CDC WONDER,13.082144709
+Maine,2022,Crude rate CDC WONDER,13.731898697410783
+Maine,2022,Crude rate FARS (primary),13.08484587920818
+Maine,2023,Age-adjusted CDC WONDER,9.557049983
+Maine,2023,Crude rate CDC WONDER,9.573849387630872
+Maine,2023,Crude rate FARS (primary),9.645296024851998
+Maine,2024,Age-adjusted CDC WONDER,11.119405213
+Maine,2024,Crude rate CDC WONDER,11.53015063216542
+Maine,2024,Crude rate FARS (primary),12.597757172180735
+Maryland,2018,Age-adjusted CDC WONDER,8.255637106
+Maryland,2018,Crude rate CDC WONDER,8.424149471223254
+Maryland,2018,Crude rate FARS (primary),8.473800646888618
+Maryland,2019,Age-adjusted CDC WONDER,8.646431139
+Maryland,2019,Crude rate CDC WONDER,8.868770927078884
+Maryland,2019,Crude rate FARS (primary),8.835740122881198
+Maryland,2020,Age-adjusted CDC WONDER,10.000136586
+Maryland,2020,Crude rate CDC WONDER,10.003342540832818
+Maryland,2020,Crude rate FARS (primary),9.2749438121314
+Maryland,2021,Age-adjusted CDC WONDER,10.269167495
+Maryland,2021,Crude rate CDC WONDER,10.37317035318784
+Maryland,2021,Crude rate FARS (primary),9.110912494297589
+Maryland,2022,Age-adjusted CDC WONDER,9.599348696
+Maryland,2022,Crude rate CDC WONDER,9.899167371827584
+Maryland,2022,Crude rate FARS (primary),9.14017737757653
+Maryland,2023,Age-adjusted CDC WONDER,9.915074491
+Maryland,2023,Crude rate CDC WONDER,10.197742921013173
+Maryland,2023,Crude rate FARS (primary),9.98864093682836
+Maryland,2024,Age-adjusted CDC WONDER,9.936214511
+Maryland,2024,Crude rate CDC WONDER,10.202419841551151
+Maryland,2024,Crude rate FARS (primary),9.22847991927475
+Massachusetts,2018,Age-adjusted CDC WONDER,5.227315819
+Massachusetts,2018,Crude rate CDC WONDER,5.605804476510808
+Massachusetts,2018,Crude rate FARS (primary),5.155597381246986
+Massachusetts,2019,Age-adjusted CDC WONDER,4.904489642
+Massachusetts,2019,Crude rate CDC WONDER,5.482326531139107
+Massachusetts,2019,Crude rate FARS (primary),4.873179138790317
+Massachusetts,2020,Age-adjusted CDC WONDER,5.074962969
+Massachusetts,2020,Crude rate CDC WONDER,5.3898737282685865
+Massachusetts,2020,Crude rate FARS (primary),4.903784320414125
+Massachusetts,2021,Age-adjusted CDC WONDER,5.899671685
+Massachusetts,2021,Crude rate CDC WONDER,6.385281910910604
+Massachusetts,2021,Crude rate FARS (primary),5.899600512765279
+Massachusetts,2022,Age-adjusted CDC WONDER,6.17916227
+Massachusetts,2022,Crude rate CDC WONDER,6.692803726553115
+Massachusetts,2022,Crude rate FARS (primary),6.194403449043841
+Massachusetts,2023,Age-adjusted CDC WONDER,5.54296435
+Massachusetts,2023,Crude rate CDC WONDER,5.9434792108418115
+Massachusetts,2023,Crude rate FARS (primary),4.839690214542618
+Massachusetts,2024,Age-adjusted CDC WONDER,5.257017949
+Massachusetts,2024,Crude rate CDC WONDER,5.8014304870216815
+Massachusetts,2024,Crude rate FARS (primary),5.086761513982779
+Michigan,2018,Age-adjusted CDC WONDER,9.413641009
+Michigan,2018,Crude rate CDC WONDER,9.89257742293552
+Michigan,2018,Crude rate FARS (primary),9.782437390898789
+Michigan,2019,Age-adjusted CDC WONDER,9.759974047
+Michigan,2019,Crude rate CDC WONDER,10.185487033033727
+Michigan,2019,Crude rate FARS (primary),9.875014960247055
+Michigan,2020,Age-adjusted CDC WONDER,11.363326302
+Michigan,2020,Crude rate CDC WONDER,11.665190565035026
+Michigan,2020,Crude rate FARS (primary),10.781614428619607
+Michigan,2021,Age-adjusted CDC WONDER,12.694951243
+Michigan,2021,Crude rate CDC WONDER,12.966382710852354
+Michigan,2021,Crude rate FARS (primary),11.32317752860148
+Michigan,2022,Age-adjusted CDC WONDER,11.224655671
+Michigan,2022,Crude rate CDC WONDER,11.660673988946437
+Michigan,2022,Crude rate FARS (primary),11.18310372318754
+Michigan,2023,Age-adjusted CDC WONDER,11.337560247
+Michigan,2023,Crude rate CDC WONDER,11.7917090302078
+Michigan,2023,Crude rate FARS (primary),10.869397053917366
+Michigan,2024,Age-adjusted CDC WONDER,10.653317439
+Michigan,2024,Crude rate CDC WONDER,11.271679122217249
+Michigan,2024,Crude rate FARS (primary),10.827912227641766
+Minnesota,2018,Age-adjusted CDC WONDER,7.623699787
+Minnesota,2018,Crude rate CDC WONDER,7.969673164951552
+Minnesota,2018,Crude rate FARS (primary),6.792942898985552
+Minnesota,2019,Age-adjusted CDC WONDER,7.245850291
+Minnesota,2019,Crude rate CDC WONDER,7.464468862260691
+Minnesota,2019,Crude rate FARS (primary),6.453840061432047
+Minnesota,2020,Age-adjusted CDC WONDER,7.566071187
+Minnesota,2020,Crude rate CDC WONDER,7.757320204842284
+Minnesota,2020,Crude rate FARS (primary),6.899287044487268
+Minnesota,2021,Age-adjusted CDC WONDER,9.422868523
+Minnesota,2021,Crude rate CDC WONDER,9.722557382323831
+Minnesota,2021,Crude rate FARS (primary),8.53346763052883
+Minnesota,2022,Age-adjusted CDC WONDER,8.602625612
+Minnesota,2022,Crude rate CDC WONDER,8.948513017552195
+Minnesota,2022,Crude rate FARS (primary),7.760038632408543
+Minnesota,2023,Age-adjusted CDC WONDER,7.382447906
+Minnesota,2023,Crude rate CDC WONDER,7.752412286495784
+Minnesota,2023,Crude rate FARS (primary),6.987600312043286
+Minnesota,2024,Age-adjusted CDC WONDER,8.621141076
+Minnesota,2024,Crude rate CDC WONDER,9.235043243305759
+Minnesota,2024,Crude rate FARS (primary),8.233860985152985
+Mississippi,2018,Age-adjusted CDC WONDER,22.106783204
+Mississippi,2018,Crude rate CDC WONDER,22.42799657646187
+Mississippi,2018,Crude rate FARS (primary),22.226848625103464
+Mississippi,2019,Age-adjusted CDC WONDER,24.151575209
+Mississippi,2019,Crude rate CDC WONDER,24.309765508136216
+Mississippi,2019,Crude rate FARS (primary),21.556449525170514
+Mississippi,2020,Age-adjusted CDC WONDER,27.796656918
+Mississippi,2020,Crude rate CDC WONDER,27.581209084493143
+Mississippi,2020,Crude rate FARS (primary),25.282774994118714
+Mississippi,2021,Age-adjusted CDC WONDER,28.011995405
+Mississippi,2021,Crude rate CDC WONDER,28.36582000122828
+Mississippi,2021,Crude rate FARS (primary),25.990691532225913
+Mississippi,2022,Age-adjusted CDC WONDER,25.129687616
+Mississippi,2022,Crude rate CDC WONDER,25.221461083999362
+Mississippi,2022,Crude rate FARS (primary),23.895804773654383
+Mississippi,2023,Age-adjusted CDC WONDER,26.732863585
+Mississippi,2023,Crude rate CDC WONDER,27.28348869858778
+Mississippi,2023,Crude rate FARS (primary),24.905102386133056
+Mississippi,2024,Age-adjusted CDC WONDER,26.318357049
+Mississippi,2024,Crude rate CDC WONDER,26.944881916518437
+Mississippi,2024,Crude rate FARS (primary),25.585745375962652
+Missouri,2018,Age-adjusted CDC WONDER,14.648434831
+Missouri,2018,Crude rate CDC WONDER,14.952694962084472
+Missouri,2018,Crude rate FARS (primary),15.034314476069648
+Missouri,2019,Age-adjusted CDC WONDER,14.842197657
+Missouri,2019,Crude rate CDC WONDER,15.080266591753896
+Missouri,2019,Crude rate FARS (primary),14.347424262780974
+Missouri,2020,Age-adjusted CDC WONDER,16.127061136
+Missouri,2020,Crude rate CDC WONDER,16.15014369403504
+Missouri,2020,Crude rate FARS (primary),16.03641028773902
+Missouri,2021,Age-adjusted CDC WONDER,15.973091894
+Missouri,2021,Crude rate CDC WONDER,16.34968161061054
+Missouri,2021,Crude rate FARS (primary),16.463108539524587
+Missouri,2022,Age-adjusted CDC WONDER,16.643887626
+Missouri,2022,Crude rate CDC WONDER,17.29937498927892
+Missouri,2022,Crude rate FARS (primary),17.105181818211243
+Missouri,2023,Age-adjusted CDC WONDER,15.682630829
+Missouri,2023,Crude rate CDC WONDER,16.172581417832816
+Missouri,2023,Crude rate FARS (primary),15.963175483139763
+Missouri,2024,Age-adjusted CDC WONDER,14.644224038
+Missouri,2024,Crude rate CDC WONDER,15.339127616738287
+Missouri,2024,Crude rate FARS (primary),15.291092770339315
+Montana,2018,Age-adjusted CDC WONDER,16.043629659
+Montana,2018,Crude rate CDC WONDER,16.104454812406647
+Montana,2018,Crude rate FARS (primary),17.04623579558832
+Montana,2019,Age-adjusted CDC WONDER,15.962758118
+Montana,2019,Crude rate CDC WONDER,16.259813124285714
+Montana,2019,Crude rate FARS (primary),17.194285142922823
+Montana,2020,Age-adjusted CDC WONDER,18.318798907
+Montana,2020,Crude rate CDC WONDER,17.751533714117528
+Montana,2020,Crude rate FARS (primary),19.59107088656494
+Montana,2021,Age-adjusted CDC WONDER,21.789721292
+Montana,2021,Crude rate CDC WONDER,21.960702091779467
+Montana,2021,Crude rate FARS (primary),21.599209053231657
+Montana,2022,Age-adjusted CDC WONDER,18.68657654
+Montana,2022,Crude rate CDC WONDER,19.249707021241516
+Montana,2022,Crude rate FARS (primary),19.160588007254287
+Montana,2023,Age-adjusted CDC WONDER,17.24304739
+Montana,2023,Crude rate CDC WONDER,17.943926555420216
+Montana,2023,Crude rate FARS (primary),18.385895189790173
+Montana,2024,Age-adjusted CDC WONDER,16.95384644
+Montana,2024,Crude rate CDC WONDER,17.76241104505409
+Montana,2024,Crude rate FARS (primary),18.11414195683734
+Nebraska,2018,Age-adjusted CDC WONDER,12.607223448
+Nebraska,2018,Crude rate CDC WONDER,12.620020025842477
+Nebraska,2018,Crude rate FARS (primary),11.944874921579299
+Nebraska,2019,Age-adjusted CDC WONDER,12.777427849
+Nebraska,2019,Crude rate CDC WONDER,13.091368958760118
+Nebraska,2019,Crude rate FARS (primary),12.832646252065254
+Nebraska,2020,Age-adjusted CDC WONDER,11.519338486
+Nebraska,2020,Crude rate CDC WONDER,11.66351819585237
+Nebraska,2020,Crude rate FARS (primary),11.867247771325776
+Nebraska,2021,Age-adjusted CDC WONDER,11.95995777
+Nebraska,2021,Crude rate CDC WONDER,12.31842413759578
+Nebraska,2021,Crude rate FARS (primary),11.24946997689532
+Nebraska,2022,Age-adjusted CDC WONDER,13.914001608
+Nebraska,2022,Crude rate CDC WONDER,13.791383022199057
+Nebraska,2022,Crude rate FARS (primary),12.371681828737389
+Nebraska,2023,Age-adjusted CDC WONDER,13.073287803
+Nebraska,2023,Crude rate CDC WONDER,13.330891851756459
+Nebraska,2023,Crude rate FARS (primary),11.419292265466852
+Nebraska,2024,Age-adjusted CDC WONDER,12.611012038
+Nebraska,2024,Crude rate CDC WONDER,12.9147105534128
+Nebraska,2024,Crude rate FARS (primary),12.515800574929006
+Nevada,2018,Age-adjusted CDC WONDER,11.359843658
+Nevada,2018,Crude rate CDC WONDER,11.746364318768611
+Nevada,2018,Crude rate FARS (primary),10.855488373244025
+Nevada,2019,Age-adjusted CDC WONDER,9.112223836
+Nevada,2019,Crude rate CDC WONDER,9.512189676944685
+Nevada,2019,Crude rate FARS (primary),9.835733543507429
+Nevada,2020,Age-adjusted CDC WONDER,10.50197797
+Nevada,2020,Crude rate CDC WONDER,10.972204710540728
+Nevada,2020,Crude rate FARS (primary),10.683462481315972
+Nevada,2021,Age-adjusted CDC WONDER,12.096493468
+Nevada,2021,Crude rate CDC WONDER,12.674146424826588
+Nevada,2021,Crude rate FARS (primary),12.22943953272741
+Nevada,2022,Age-adjusted CDC WONDER,13.019225956
+Nevada,2022,Crude rate CDC WONDER,13.444093351754155
+Nevada,2022,Crude rate FARS (primary),13.12924339035476
+Nevada,2023,Age-adjusted CDC WONDER,12.92541838
+Nevada,2023,Crude rate CDC WONDER,13.346345761197476
+Nevada,2023,Crude rate FARS (primary),12.630807410364044
+Nevada,2024,Age-adjusted CDC WONDER,12.144247241
+Nevada,2024,Crude rate CDC WONDER,12.486736667883715
+Nevada,2024,Crude rate FARS (primary),12.762179388498797
+New Hampshire,2018,Age-adjusted CDC WONDER,9.75797505
+New Hampshire,2018,Crude rate CDC WONDER,10.47920983805931
+New Hampshire,2018,Crude rate FARS (primary),10.848196099962806
+New Hampshire,2019,Age-adjusted CDC WONDER,7.045311417
+New Hampshire,2019,Crude rate CDC WONDER,7.569171572543161
+New Hampshire,2019,Crude rate FARS (primary),7.42219736725106
+New Hampshire,2020,Age-adjusted CDC WONDER,7.556330517
+New Hampshire,2020,Crude rate CDC WONDER,8.123264740099046
+New Hampshire,2020,Crude rate FARS (primary),7.543031544377685
+New Hampshire,2021,Age-adjusted CDC WONDER,9.3751475
+New Hampshire,2021,Crude rate CDC WONDER,9.440237173347976
+New Hampshire,2021,Crude rate FARS (primary),8.503419743931765
+New Hampshire,2022,Age-adjusted CDC WONDER,9.568060514
+New Hampshire,2022,Crude rate CDC WONDER,10.668171189064337
+New Hampshire,2022,Crude rate FARS (primary),10.453375795995928
+New Hampshire,2023,Age-adjusted CDC WONDER,8.582711016
+New Hampshire,2023,Crude rate CDC WONDER,9.41378506189207
+New Hampshire,2023,Crude rate FARS (primary),9.05720229439616
+New Hampshire,2024,Age-adjusted CDC WONDER,9.603982772
+New Hampshire,2024,Crude rate CDC WONDER,10.432694218442165
+New Hampshire,2024,Crude rate FARS (primary),9.439104292876245
+New Jersey,2018,Age-adjusted CDC WONDER,6.25158826
+New Jersey,2018,Crude rate CDC WONDER,6.579147140095347
+New Jersey,2018,Crude rate FARS (primary),6.331726222006291
+New Jersey,2019,Age-adjusted CDC WONDER,6.262854246
+New Jersey,2019,Crude rate CDC WONDER,6.568249397329377
+New Jersey,2019,Crude rate FARS (primary),6.275827335119507
+New Jersey,2020,Age-adjusted CDC WONDER,6.417705044
+New Jersey,2020,Crude rate CDC WONDER,6.513678617253872
+New Jersey,2020,Crude rate FARS (primary),6.31956236707081
+New Jersey,2021,Age-adjusted CDC WONDER,7.36841259
+New Jersey,2021,Crude rate CDC WONDER,7.572373607969589
+New Jersey,2021,Crude rate FARS (primary),7.464505038055492
+New Jersey,2022,Age-adjusted CDC WONDER,7.088923552
+New Jersey,2022,Crude rate CDC WONDER,7.49847206528684
+New Jersey,2022,Crude rate FARS (primary),7.412406388784265
+New Jersey,2023,Age-adjusted CDC WONDER,6.608516329
+New Jersey,2023,Crude rate CDC WONDER,6.8765950768696715
+New Jersey,2023,Crude rate FARS (primary),6.450139568226591
+New Jersey,2024,Age-adjusted CDC WONDER,6.99167546
+New Jersey,2024,Crude rate CDC WONDER,7.40986254810227
+New Jersey,2024,Crude rate FARS (primary),7.051999868222331
+New Mexico,2018,Age-adjusted CDC WONDER,18.262025923
+New Mexico,2018,Crude rate CDC WONDER,18.10145795542361
+New Mexico,2018,Crude rate FARS (primary),18.722352291625473
+New Mexico,2019,Age-adjusted CDC WONDER,19.07799359
+New Mexico,2019,Crude rate CDC WONDER,18.765175263879325
+New Mexico,2019,Crude rate FARS (primary),20.24162306382922
+New Mexico,2020,Age-adjusted CDC WONDER,19.549290478
+New Mexico,2020,Crude rate CDC WONDER,19.352347722983886
+New Mexico,2020,Crude rate FARS (primary),18.785937545725822
+New Mexico,2021,Age-adjusted CDC WONDER,22.075181459
+New Mexico,2021,Crude rate CDC WONDER,21.86713190603462
+New Mexico,2021,Crude rate FARS (primary),22.81171643761279
+New Mexico,2022,Age-adjusted CDC WONDER,22.771314903
+New Mexico,2022,Crude rate CDC WONDER,22.423349045446546
+New Mexico,2022,Crude rate FARS (primary),22.044895897000192
+New Mexico,2023,Age-adjusted CDC WONDER,21.803109641
+New Mexico,2023,Crude rate CDC WONDER,21.921925885975813
+New Mexico,2023,Crude rate FARS (primary),20.743327720063135
+New Mexico,2024,Age-adjusted CDC WONDER,20.736437152
+New Mexico,2024,Crude rate CDC WONDER,21.124221689787518
+New Mexico,2024,Crude rate FARS (primary),19.199570380273546
+New York,2018,Age-adjusted CDC WONDER,4.858079249
+New York,2018,Crude rate CDC WONDER,5.239433408489868
+New York,2018,Crude rate FARS (primary),4.9324353572111646
+New York,2019,Age-adjusted CDC WONDER,5.125914673
+New York,2019,Crude rate CDC WONDER,5.507849687699271
+New York,2019,Crude rate FARS (primary),4.798816798797685
+New York,2020,Age-adjusted CDC WONDER,5.768304929
+New York,2020,Crude rate CDC WONDER,5.754738420280036
+New York,2020,Crude rate FARS (primary),5.197667803969437
+New York,2021,Age-adjusted CDC WONDER,6.382360086
+New York,2021,Crude rate CDC WONDER,6.715948528728641
+New York,2021,Crude rate FARS (primary),5.824183420262798
+New York,2022,Age-adjusted CDC WONDER,6.278607365
+New York,2022,Crude rate CDC WONDER,6.6840078691631595
+New York,2022,Crude rate FARS (primary),5.998858998747802
+New York,2023,Age-adjusted CDC WONDER,5.953068639
+New York,2023,Crude rate CDC WONDER,6.297699181456169
+New York,2023,Crude rate FARS (primary),5.6593161590398555
+New York,2024,Age-adjusted CDC WONDER,6.106164746
+New York,2024,Crude rate CDC WONDER,6.503165410730263
+New York,2024,Crude rate FARS (primary),5.54178414645048
+North Carolina,2018,Age-adjusted CDC WONDER,14.291996754
+North Carolina,2018,Crude rate CDC WONDER,14.743020113444269
+North Carolina,2018,Crude rate FARS (primary),13.819175511035228
+North Carolina,2019,Age-adjusted CDC WONDER,14.311016755
+North Carolina,2019,Crude rate CDC WONDER,14.864707356668417
+North Carolina,2019,Crude rate FARS (primary),13.874361703181219
+North Carolina,2020,Age-adjusted CDC WONDER,15.603330537
+North Carolina,2020,Crude rate CDC WONDER,16.191926774212195
+North Carolina,2020,Crude rate FARS (primary),14.718193486251982
+North Carolina,2021,Age-adjusted CDC WONDER,17.206686809
+North Carolina,2021,Crude rate CDC WONDER,17.672694503763612
+North Carolina,2021,Crude rate FARS (primary),16.025641025641026
+North Carolina,2022,Age-adjusted CDC WONDER,16.197959972
+North Carolina,2022,Crude rate CDC WONDER,16.796141985005217
+North Carolina,2022,Crude rate FARS (primary),15.227630671230413
+North Carolina,2023,Age-adjusted CDC WONDER,15.755944836
+North Carolina,2023,Crude rate CDC WONDER,16.091991417482042
+North Carolina,2023,Crude rate FARS (primary),14.492901465088053
+North Carolina,2024,Age-adjusted CDC WONDER,15.021362373
+North Carolina,2024,Crude rate CDC WONDER,15.725115208875158
+North Carolina,2024,Crude rate FARS (primary),14.656857526291812
+North Dakota,2018,Age-adjusted CDC WONDER,12.508984268
+North Dakota,2018,Crude rate CDC WONDER,13.156821417200176
+North Dakota,2018,Crude rate FARS (primary),13.814662488060184
+North Dakota,2019,Age-adjusted CDC WONDER,12.851831484
+North Dakota,2019,Crude rate CDC WONDER,12.70092337022275
+North Dakota,2019,Crude rate FARS (primary),13.093735433219331
+North Dakota,2020,Age-adjusted CDC WONDER,12.818260398
+North Dakota,2020,Crude rate CDC WONDER,12.699422625240038
+North Dakota,2020,Crude rate FARS (primary),12.827699621454585
+North Dakota,2021,Age-adjusted CDC WONDER,14.401984815
+North Dakota,2021,Crude rate CDC WONDER,14.525056364931116
+North Dakota,2021,Crude rate FARS (primary),12.98257250316852
+North Dakota,2022,Age-adjusted CDC WONDER,13.169619233
+North Dakota,2022,Crude rate CDC WONDER,13.443321038029234
+North Dakota,2022,Crude rate FARS (primary),12.547099635493952
+North Dakota,2023,Age-adjusted CDC WONDER,13.343779029
+North Dakota,2023,Crude rate CDC WONDER,13.56066241934891
+North Dakota,2023,Crude rate FARS (primary),13.433927256551257
+North Dakota,2024,Age-adjusted CDC WONDER,12.123933806
+North Dakota,2024,Crude rate CDC WONDER,12.67939460284621
+North Dakota,2024,Crude rate FARS (primary),11.298470438179791
+Ohio,2018,Age-adjusted CDC WONDER,9.708288203
+Ohio,2018,Crude rate CDC WONDER,10.016358339756929
+Ohio,2018,Crude rate FARS (primary),9.143137356290941
+Ohio,2019,Age-adjusted CDC WONDER,10.102818126
+Ohio,2019,Crude rate CDC WONDER,10.42191485030531
+Ohio,2019,Crude rate FARS (primary),9.857643824776064
+Ohio,2020,Age-adjusted CDC WONDER,11.155353571
+Ohio,2020,Crude rate CDC WONDER,11.255281740127579
+Ohio,2020,Crude rate FARS (primary),10.424696190027804
+Ohio,2021,Age-adjusted CDC WONDER,11.973897291
+Ohio,2021,Crude rate CDC WONDER,12.339233050380782
+Ohio,2021,Crude rate FARS (primary),11.506419800423952
+Ohio,2022,Age-adjusted CDC WONDER,11.15841646
+Ohio,2022,Crude rate CDC WONDER,11.445189513829066
+Ohio,2022,Crude rate FARS (primary),10.816892760102546
+Ohio,2023,Age-adjusted CDC WONDER,10.993280574
+Ohio,2023,Crude rate CDC WONDER,11.366679087695452
+Ohio,2023,Crude rate FARS (primary),10.50402933550428
+Ohio,2024,Age-adjusted CDC WONDER,10.101910022
+Ohio,2024,Crude rate CDC WONDER,10.52737521483924
+Ohio,2024,Crude rate FARS (primary),9.736349419319744
+Oklahoma,2018,Age-adjusted CDC WONDER,16.6698102
+Oklahoma,2018,Crude rate CDC WONDER,16.990035217553597
+Oklahoma,2018,Crude rate FARS (primary),16.609661294772547
+Oklahoma,2019,Age-adjusted CDC WONDER,16.47439077
+Oklahoma,2019,Crude rate CDC WONDER,16.891055971253394
+Oklahoma,2019,Crude rate FARS (primary),16.15885773034704
+Oklahoma,2020,Age-adjusted CDC WONDER,16.973262981
+Oklahoma,2020,Crude rate CDC WONDER,17.274358421501912
+Oklahoma,2020,Crude rate FARS (primary),16.467381093782112
+Oklahoma,2021,Age-adjusted CDC WONDER,20.05730525
+Oklahoma,2021,Crude rate CDC WONDER,20.214225704980514
+Oklahoma,2021,Crude rate FARS (primary),19.08703839801134
+Oklahoma,2022,Age-adjusted CDC WONDER,18.294904862
+Oklahoma,2022,Crude rate CDC WONDER,18.702363924158313
+Oklahoma,2022,Crude rate FARS (primary),17.63436704668314
+Oklahoma,2023,Age-adjusted CDC WONDER,17.487697879
+Oklahoma,2023,Crude rate CDC WONDER,17.889298951101434
+Oklahoma,2023,Crude rate FARS (primary),17.495586732095077
+Oklahoma,2024,Age-adjusted CDC WONDER,17.366336325
+Oklahoma,2024,Crude rate CDC WONDER,17.82490715787227
+Oklahoma,2024,Crude rate FARS (primary),15.74940426962687
+Oregon,2018,Age-adjusted CDC WONDER,10.776031777
+Oregon,2018,Crude rate CDC WONDER,11.521348676646417
+Oregon,2018,Crude rate FARS (primary),11.999412937088177
+Oregon,2019,Age-adjusted CDC WONDER,11.244675018
+Oregon,2019,Crude rate CDC WONDER,12.001567319305256
+Oregon,2019,Crude rate FARS (primary),11.693226656951564
+Oregon,2020,Age-adjusted CDC WONDER,11.265640626
+Oregon,2020,Crude rate CDC WONDER,11.829079695243319
+Oregon,2020,Crude rate FARS (primary),11.946899214120245
+Oregon,2021,Age-adjusted CDC WONDER,12.991079658
+Oregon,2021,Crude rate CDC WONDER,13.72735221941198
+Oregon,2021,Crude rate FARS (primary),14.079938320937973
+Oregon,2022,Age-adjusted CDC WONDER,13.32831386
+Oregon,2022,Crude rate CDC WONDER,13.985118327285672
+Oregon,2022,Crude rate FARS (primary),14.173470089269317
+Oregon,2023,Age-adjusted CDC WONDER,12.412309205
+Oregon,2023,Crude rate CDC WONDER,12.906553496488783
+Oregon,2023,Crude rate FARS (primary),13.799903283130993
+Oregon,2024,Age-adjusted CDC WONDER,11.055035882
+Oregon,2024,Crude rate CDC WONDER,11.656291085207721
+Oregon,2024,Crude rate FARS (primary),12.592539365144084
+Pennsylvania,2018,Age-adjusted CDC WONDER,9.053914178
+Pennsylvania,2018,Crude rate CDC WONDER,9.680612395540141
+Pennsylvania,2018,Crude rate FARS (primary),9.290265121526426
+Pennsylvania,2019,Age-adjusted CDC WONDER,7.911694246
+Pennsylvania,2019,Crude rate CDC WONDER,8.430423186148353
+Pennsylvania,2019,Crude rate FARS (primary),8.274159549704455
+Pennsylvania,2020,Age-adjusted CDC WONDER,8.82349129
+Pennsylvania,2020,Crude rate CDC WONDER,9.041143976332055
+Pennsylvania,2020,Crude rate FARS (primary),8.687192807896928
+Pennsylvania,2021,Age-adjusted CDC WONDER,9.650731029
+Pennsylvania,2021,Crude rate CDC WONDER,10.080233898305345
+Pennsylvania,2021,Crude rate FARS (primary),9.450219279661262
+Pennsylvania,2022,Age-adjusted CDC WONDER,9.418328405
+Pennsylvania,2022,Crude rate CDC WONDER,9.880639107153721
+Pennsylvania,2022,Crude rate FARS (primary),9.079714347103849
+Pennsylvania,2023,Age-adjusted CDC WONDER,9.39389966
+Pennsylvania,2023,Crude rate CDC WONDER,9.91725049261695
+Pennsylvania,2023,Crude rate FARS (primary),9.302703599193745
+Pennsylvania,2024,Age-adjusted CDC WONDER,8.658062335
+Pennsylvania,2024,Crude rate CDC WONDER,9.17518805885975
+Pennsylvania,2024,Crude rate FARS (primary),8.617030785279114
+Rhode Island,2018,Age-adjusted CDC WONDER,6.109453386
+Rhode Island,2018,Crude rate CDC WONDER,6.230306096826508
+Rhode Island,2018,Crude rate FARS (primary),5.569516056254
+Rhode Island,2019,Age-adjusted CDC WONDER,6.148737942
+Rhode Island,2019,Crude rate CDC WONDER,6.709773020664211
+Rhode Island,2019,Crude rate FARS (primary),5.3867191856036625
+Rhode Island,2020,Age-adjusted CDC WONDER,5.864247336
+Rhode Island,2020,Crude rate CDC WONDER,6.292577494459796
+Rhode Island,2020,Crude rate FARS (primary),6.110183943895744
+Rhode Island,2021,Age-adjusted CDC WONDER,6.519311617
+Rhode Island,2021,Crude rate CDC WONDER,7.108706707520465
+Rhode Island,2021,Crude rate FARS (primary),5.741647725304991
+Rhode Island,2022,Age-adjusted CDC WONDER,6.109566904
+Rhode Island,2022,Crude rate CDC WONDER,6.639393614176652
+Rhode Island,2022,Crude rate FARS (primary),4.729431067632683
+Rhode Island,2023,Age-adjusted CDC WONDER,5.749656794
+Rhode Island,2023,Crude rate CDC WONDER,6.434487402451811
+Rhode Island,2023,Crude rate FARS (primary),6.434487402451811
+Rhode Island,2024,Age-adjusted CDC WONDER,5.086528625
+Rhode Island,2024,Crude rate CDC WONDER,5.753802004480773
+Rhode Island,2024,Crude rate FARS (primary),4.674964128640628
+South Carolina,2018,Age-adjusted CDC WONDER,19.692496541
+South Carolina,2018,Crude rate CDC WONDER,19.973674814433366
+South Carolina,2018,Crude rate FARS (primary),20.346830981074696
+South Carolina,2019,Age-adjusted CDC WONDER,18.898937005
+South Carolina,2019,Crude rate CDC WONDER,19.058875444917135
+South Carolina,2019,Crude rate FARS (primary),19.504810475673082
+South Carolina,2020,Age-adjusted CDC WONDER,20.816031285
+South Carolina,2020,Crude rate CDC WONDER,21.17979856394341
+South Carolina,2020,Crude rate FARS (primary),20.77062122278167
+South Carolina,2021,Age-adjusted CDC WONDER,23.077593403
+South Carolina,2021,Crude rate CDC WONDER,23.237126112330618
+South Carolina,2021,Crude rate FARS (primary),23.063858394840164
+South Carolina,2022,Age-adjusted CDC WONDER,20.840241568
+South Carolina,2022,Crude rate CDC WONDER,21.029002814898444
+South Carolina,2022,Crude rate FARS (primary),20.688605287319152
+South Carolina,2023,Age-adjusted CDC WONDER,19.46757229
+South Carolina,2023,Crude rate CDC WONDER,19.822451710614477
+South Carolina,2023,Crude rate FARS (primary),19.4326844016979
+South Carolina,2024,Age-adjusted CDC WONDER,17.996161221
+South Carolina,2024,Crude rate CDC WONDER,18.544101834862218
+South Carolina,2024,Crude rate FARS (primary),18.94564734703443
+South Dakota,2018,Age-adjusted CDC WONDER,16.596696144
+South Dakota,2018,Crude rate CDC WONDER,16.829924515514232
+South Dakota,2018,Crude rate FARS (primary),14.783041804167908
+South Dakota,2019,Age-adjusted CDC WONDER,14.685649704
+South Dakota,2019,Crude rate CDC WONDER,14.541322719294982
+South Dakota,2019,Crude rate FARS (primary),11.497790057116964
+South Dakota,2020,Age-adjusted CDC WONDER,15.814457115
+South Dakota,2020,Crude rate CDC WONDER,16.104546662642406
+South Dakota,2020,Crude rate FARS (primary),15.879308247780276
+South Dakota,2021,Age-adjusted CDC WONDER,18.657065565
+South Dakota,2021,Crude rate CDC WONDER,18.405072214810616
+South Dakota,2021,Crude rate FARS (primary),16.50879204722407
+South Dakota,2022,Age-adjusted CDC WONDER,17.471674124
+South Dakota,2022,Crude rate CDC WONDER,17.367924082385517
+South Dakota,2022,Crude rate FARS (primary),15.059529109410228
+South Dakota,2023,Age-adjusted CDC WONDER,15.253828548
+South Dakota,2023,Crude rate CDC WONDER,15.245479443104415
+South Dakota,2023,Crude rate FARS (primary),15.245479443104415
+South Dakota,2024,Age-adjusted CDC WONDER,15.82769597
+South Dakota,2024,Crude rate CDC WONDER,16.330167876288705
+South Dakota,2024,Crude rate FARS (primary),15.789433840650005
+Tennessee,2018,Age-adjusted CDC WONDER,15.325938713
+Tennessee,2018,Crude rate CDC WONDER,15.800701663278343
+Tennessee,2018,Crude rate FARS (primary),15.343351755190922
+Tennessee,2019,Age-adjusted CDC WONDER,16.017428162
+Tennessee,2019,Crude rate CDC WONDER,16.660993437354737
+Tennessee,2019,Crude rate FARS (primary),16.631712253809297
+Tennessee,2020,Age-adjusted CDC WONDER,17.636248885
+Tennessee,2020,Crude rate CDC WONDER,17.725418827974522
+Tennessee,2020,Crude rate FARS (primary),17.56664064629071
+Tennessee,2021,Age-adjusted CDC WONDER,19.678231638
+Tennessee,2021,Crude rate CDC WONDER,19.9691633623994
+Tennessee,2021,Crude rate FARS (primary),19.050380864057516
+Tennessee,2022,Age-adjusted CDC WONDER,18.051764899
+Tennessee,2022,Crude rate CDC WONDER,18.478616559077693
+Tennessee,2022,Crude rate FARS (primary),18.591895434535644
+Tennessee,2023,Age-adjusted CDC WONDER,18.021370381
+Tennessee,2023,Crude rate CDC WONDER,18.479907961384967
+Tennessee,2023,Crude rate FARS (primary),18.507886625974496
+Tennessee,2024,Age-adjusted CDC WONDER,16.343732266
+Tennessee,2024,Crude rate CDC WONDER,17.01774411123794
+Tennessee,2024,Crude rate FARS (primary),16.56117048874131
+Texas,2018,Age-adjusted CDC WONDER,12.782556689
+Texas,2018,Crude rate CDC WONDER,12.852597510306182
+Texas,2018,Crude rate FARS (primary),12.744298917531111
+Texas,2019,Age-adjusted CDC WONDER,12.759528938
+Texas,2019,Crude rate CDC WONDER,12.857579213485975
+Texas,2019,Crude rate FARS (primary),12.484995753583512
+Texas,2020,Age-adjusted CDC WONDER,13.257691768
+Texas,2020,Crude rate CDC WONDER,13.423590018594664
+Texas,2020,Crude rate FARS (primary),13.256008894795649
+Texas,2021,Age-adjusted CDC WONDER,14.977884142
+Texas,2021,Crude rate CDC WONDER,15.028566958843337
+Texas,2021,Crude rate FARS (primary),15.217945840412918
+Texas,2022,Age-adjusted CDC WONDER,14.74780624
+Texas,2022,Crude rate CDC WONDER,14.850488259613101
+Texas,2022,Crude rate FARS (primary),14.637958910638316
+Texas,2023,Age-adjusted CDC WONDER,14.065993133
+Texas,2023,Crude rate CDC WONDER,14.169537836799078
+Texas,2023,Crude rate FARS (primary),13.974275487187699
+Texas,2024,Age-adjusted CDC WONDER,13.382638064
+Texas,2024,Crude rate CDC WONDER,13.550295292573086
+Texas,2024,Crude rate FARS (primary),13.294629343656613
+Utah,2018,Age-adjusted CDC WONDER,7.808301595
+Utah,2018,Crude rate CDC WONDER,7.574909996440743
+Utah,2018,Crude rate FARS (primary),8.240487862236792
+Utah,2019,Age-adjusted CDC WONDER,7.593685965
+Utah,2019,Crude rate CDC WONDER,7.211126487216795
+Utah,2019,Crude rate FARS (primary),7.741815449479503
+Utah,2020,Age-adjusted CDC WONDER,9.497703254
+Utah,2020,Crude rate CDC WONDER,9.104536830287476
+Utah,2020,Crude rate FARS (primary),8.404187843342285
+Utah,2021,Age-adjusted CDC WONDER,10.24600388
+Utah,2021,Crude rate CDC WONDER,9.910957087052937
+Utah,2021,Crude rate FARS (primary),9.940899555593882
+Utah,2022,Age-adjusted CDC WONDER,9.299776186
+Utah,2022,Crude rate CDC WONDER,9.141816408144946
+Utah,2022,Crude rate FARS (primary),9.407223981284638
+Utah,2023,Age-adjusted CDC WONDER,8.565893965
+Utah,2023,Crude rate CDC WONDER,8.393301390383774
+Utah,2023,Crude rate FARS (primary),8.131918302101926
+Utah,2024,Age-adjusted CDC WONDER,7.668954308
+Utah,2024,Crude rate CDC WONDER,7.5921627188847625
+Utah,2024,Crude rate FARS (primary),7.906124335079245
+Vermont,2018,Age-adjusted CDC WONDER,11.103230409
+Vermont,2018,Crude rate CDC WONDER,11.683701396602444
+Vermont,2018,Crude rate FARS (primary),10.883447876287208
+Vermont,2019,Age-adjusted CDC WONDER,7.699990938
+Vermont,2019,Crude rate CDC WONDER,8.172474465023411
+Vermont,2019,Crude rate FARS (primary),7.531496075609811
+Vermont,2020,Age-adjusted CDC WONDER,8.16427927
+Vermont,2020,Crude rate CDC WONDER,8.865013834087378
+Vermont,2020,Crude rate FARS (primary),9.642646626551183
+Vermont,2021,Age-adjusted CDC WONDER,10.523012204
+Vermont,2021,Crude rate CDC WONDER,10.352126821279029
+Vermont,2021,Crude rate FARS (primary),11.433692310069375
+Vermont,2022,Age-adjusted CDC WONDER,11.100513212
+Vermont,2022,Crude rate CDC WONDER,12.188687046974275
+Vermont,2022,Crude rate FARS (primary),11.725825513544871
+Vermont,2023,Age-adjusted CDC WONDER,9.585904103
+Vermont,2023,Crude rate CDC WONDER,10.944831881216203
+Vermont,2023,Crude rate FARS (primary),10.636526757801661
+Vermont,2024,Age-adjusted CDC WONDER,8.585387722
+Vermont,2024,Crude rate CDC WONDER,8.48120180171567
+Vermont,2024,Crude rate FARS (primary),9.098016478204082
+Virginia,2018,Age-adjusted CDC WONDER,10.051223481
+Virginia,2018,Crude rate CDC WONDER,10.457153868206962
+Virginia,2018,Crude rate FARS (primary),9.634681092055853
+Virginia,2019,Age-adjusted CDC WONDER,9.651470609
+Virginia,2019,Crude rate CDC WONDER,10.167540023294185
+Virginia,2019,Crude rate FARS (primary),9.711753746387894
+Virginia,2020,Age-adjusted CDC WONDER,10.165397098
+Virginia,2020,Crude rate CDC WONDER,10.535315593482691
+Virginia,2020,Crude rate FARS (primary),9.840679400505811
+Virginia,2021,Age-adjusted CDC WONDER,11.015867062
+Virginia,2021,Crude rate CDC WONDER,11.514151319276907
+Virginia,2021,Crude rate FARS (primary),11.236980174178967
+Virginia,2022,Age-adjusted CDC WONDER,11.443028239
+Virginia,2022,Crude rate CDC WONDER,12.126566808861122
+Virginia,2022,Crude rate FARS (primary),11.585305042463713
+Virginia,2023,Age-adjusted CDC WONDER,10.291788449
+Virginia,2023,Crude rate CDC WONDER,10.796039009992919
+Virginia,2023,Crude rate FARS (primary),10.464029326758778
+Virginia,2024,Age-adjusted CDC WONDER,10.566794011
+Virginia,2024,Crude rate CDC WONDER,11.156262005323908
+Virginia,2024,Crude rate FARS (primary),10.4072149123927
+Washington,2018,Age-adjusted CDC WONDER,8.379608746
+Washington,2018,Crude rate CDC WONDER,8.675673689976595
+Washington,2018,Crude rate FARS (primary),7.161084408724938
+Washington,2019,Age-adjusted CDC WONDER,7.562515255
+Washington,2019,Crude rate CDC WONDER,7.932730445819451
+Washington,2019,Crude rate FARS (primary),7.065908907037856
+Washington,2020,Age-adjusted CDC WONDER,8.045964354
+Washington,2020,Crude rate CDC WONDER,8.295362529989806
+Washington,2020,Crude rate FARS (primary),7.428296555716301
+Washington,2021,Age-adjusted CDC WONDER,9.239063347
+Washington,2021,Crude rate CDC WONDER,9.465685920018183
+Washington,2021,Crude rate FARS (primary),8.703782142008533
+Washington,2022,Age-adjusted CDC WONDER,10.028781281
+Washington,2022,Crude rate CDC WONDER,10.469426771940858
+Washington,2022,Crude rate FARS (primary),9.532823641607914
+Washington,2023,Age-adjusted CDC WONDER,10.735001168
+Washington,2023,Crude rate CDC WONDER,11.034296681311185
+Washington,2023,Crude rate FARS (primary),10.296131505398787
+Washington,2024,Age-adjusted CDC WONDER,9.288281535
+Washington,2024,Crude rate CDC WONDER,9.7007104639503
+Washington,2024,Crude rate FARS (primary),9.172951604512589
+West Virginia,2018,Age-adjusted CDC WONDER,16.06772096
+West Virginia,2018,Crude rate CDC WONDER,16.777845270613355
+West Virginia,2018,Crude rate FARS (primary),16.279493430892167
+West Virginia,2019,Age-adjusted CDC WONDER,15.685927881
+West Virginia,2019,Crude rate CDC WONDER,16.48783493003532
+West Virginia,2019,Crude rate FARS (primary),14.48255770881481
+West Virginia,2020,Age-adjusted CDC WONDER,14.834547409
+West Virginia,2020,Crude rate CDC WONDER,15.237385063790503
+West Virginia,2020,Crude rate FARS (primary),14.90249747997093
+West Virginia,2021,Age-adjusted CDC WONDER,14.732805875
+West Virginia,2021,Crude rate CDC WONDER,15.456833432458678
+West Virginia,2021,Crude rate FARS (primary),15.792851550555605
+West Virginia,2022,Age-adjusted CDC WONDER,14.130222926
+West Virginia,2022,Crude rate CDC WONDER,15.162429641253533
+West Virginia,2022,Crude rate FARS (primary),14.993331912912415
+West Virginia,2023,Age-adjusted CDC WONDER,14.27473835
+West Virginia,2023,Crude rate CDC WONDER,15.193491085826281
+West Virginia,2023,Crude rate FARS (primary),14.685158670315364
+West Virginia,2024,Age-adjusted CDC WONDER,13.811856097
+West Virginia,2024,Crude rate CDC WONDER,14.858933354576523
+West Virginia,2024,Crude rate FARS (primary),14.463448436393879
+Wisconsin,2018,Age-adjusted CDC WONDER,9.403781348
+Wisconsin,2018,Crude rate CDC WONDER,10.035599697658194
+Wisconsin,2018,Crude rate FARS (primary),10.138882027308192
+Wisconsin,2019,Age-adjusted CDC WONDER,9.264870149
+Wisconsin,2019,Crude rate CDC WONDER,9.73460580254614
+Wisconsin,2019,Crude rate FARS (primary),9.73460580254614
+Wisconsin,2020,Age-adjusted CDC WONDER,10.742492615
+Wisconsin,2020,Crude rate CDC WONDER,10.987939549375781
+Wisconsin,2020,Crude rate FARS (primary),10.37749846329935
+Wisconsin,2021,Age-adjusted CDC WONDER,10.504322705
+Wisconsin,2021,Crude rate CDC WONDER,10.847373711406812
+Wisconsin,2021,Crude rate FARS (primary),10.541334954658659
+Wisconsin,2022,Age-adjusted CDC WONDER,9.896739779
+Wisconsin,2022,Crude rate CDC WONDER,10.518337221956394
+Wisconsin,2022,Crude rate FARS (primary),10.2303956232877
+Wisconsin,2023,Age-adjusted CDC WONDER,10.203156575
+Wisconsin,2023,Crude rate CDC WONDER,10.45459795747508
+Wisconsin,2023,Crude rate FARS (primary),9.881281295290963
+Wisconsin,2024,Age-adjusted CDC WONDER,9.420292643
+Wisconsin,2024,Crude rate CDC WONDER,10.065467478055185
+Wisconsin,2024,Crude rate FARS (primary),9.981588582404724
+Wyoming,2018,Age-adjusted CDC WONDER,16.036534854
+Wyoming,2018,Crude rate CDC WONDER,16.06067827870976
+Wyoming,2018,Crude rate FARS (primary),19.169196655234227
+Wyoming,2019,Age-adjusted CDC WONDER,18.436942328
+Wyoming,2019,Crude rate CDC WONDER,18.099828310200028
+Wyoming,2019,Crude rate FARS (primary),25.33975963428004
+Wyoming,2020,Age-adjusted CDC WONDER,16.727929464
+Wyoming,2020,Crude rate CDC WONDER,17.82990958677886
+Wyoming,2020,Crude rate FARS (primary),21.984451626416657
+Wyoming,2021,Age-adjusted CDC WONDER,15.915483773
+Wyoming,2021,Crude rate CDC WONDER,16.044552098213362
+Wyoming,2021,Crude rate FARS (primary),18.977427212940537
+Wyoming,2022,Age-adjusted CDC WONDER,17.362973503
+Wyoming,2022,Crude rate CDC WONDER,17.35460790614078
+Wyoming,2022,Crude rate FARS (primary),23.02492534082044
+Wyoming,2023,Age-adjusted CDC WONDER,15.099976334
+Wyoming,2023,Crude rate CDC WONDER,15.211932992289771
+Wyoming,2023,Crude rate FARS (primary),24.612565740334013
+Wyoming,2024,Age-adjusted CDC WONDER,14.176196726
+Wyoming,2024,Crude rate CDC WONDER,14.295001174232238
+Wyoming,2024,Crude rate FARS (primary),18.209108638605354

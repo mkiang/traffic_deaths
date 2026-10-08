@@ -1,0 +1,52 @@
+state_name,state_abb,state_fips,category,contribution
+Alabama,AL,1,all_three,0.41279859580978984
+Alaska,AK,2,all_three,-0.5195748798991822
+Arizona,AZ,4,all_three,0.24311137045051429
+Arkansas,AR,5,all_three,0.10319399107172855
+California,CA,6,all_three,-0.09584064920656081
+Colorado,CO,8,all_three,-0.12203032945230477
+Connecticut,CT,9,all_three,-0.29349073375781265
+Delaware,DE,10,all_three,0.14507950318622803
+District of Columbia,DC,11,all_three,-0.32635462808364574
+Florida,FL,12,all_three,-0.12404394604864018
+Georgia,GA,13,all_three,-0.09714969470080684
+Hawaii,HI,15,all_three,-0.1178547091095006
+Idaho,ID,16,all_three,-0.38044039480591796
+Illinois,IL,17,all_three,-0.23524795856149006
+Indiana,IN,18,all_three,-0.19910981801673946
+Iowa,IA,19,all_three,-0.1346432274050308
+Kansas,KS,20,all_three,0.10196187895744975
+Kentucky,KY,21,all_three,-0.07882352141402797
+Louisiana,LA,22,all_three,-0.44315674292051693
+Maine,ME,23,all_three,0.18816624046887148
+Maryland,MD,24,all_three,-0.16597494914065572
+Massachusetts,MA,25,all_three,-0.14353109866650204
+Michigan,MI,26,all_three,-0.14058720574699032
+Minnesota,MN,27,all_three,-0.18824308240589957
+Mississippi,MS,28,all_three,0.02086712938279711
+Missouri,MO,29,all_three,-0.4025738249842049
+Montana,MT,30,all_three,0.11376850218885969
+Nebraska,NE,31,all_three,0.5322772747688469
+Nevada,NV,32,all_three,-0.11359450907864449
+New Hampshire,NH,33,all_three,-0.3296718145327061
+New Jersey,NJ,34,all_three,-0.06174984376988817
+New Mexico,NM,35,all_three,-1.1955555093582955
+New York,NY,36,all_three,-0.09961542711502896
+North Carolina,NC,37,all_three,0.2264129103549528
+North Dakota,ND,38,all_three,-0.32240095573041594
+Ohio,OH,39,all_three,-0.3600373732355164
+Oklahoma,OK,40,all_three,0.4969659702043778
+Oregon,OR,41,all_three,-0.03321977985458452
+Pennsylvania,PA,42,all_three,0.12115236330121082
+Rhode Island,RI,44,all_three,-0.09725238225851385
+South Carolina,SC,45,all_three,-0.3269472392660036
+South Dakota,SD,46,all_three,-1.0381671466489637
+Tennessee,TN,47,all_three,-0.06703761028323058
+Texas,TX,48,all_three,-0.17652201990547123
+Utah,UT,49,all_three,0.06185568463019586
+Vermont,VT,50,all_three,-0.5377004689610039
+Virginia,VA,51,all_three,-0.49105284581425945
+Washington,WA,53,all_three,-0.03220703727906157
+West Virginia,WV,54,all_three,0.23844496799425108
+Wisconsin,WI,55,all_three,0.11294766816530177
+Wyoming,WY,56,all_three,-0.28542080548106774

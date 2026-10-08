@@ -1,0 +1,52 @@
+state_name,state_abb,state_fips,category,contribution
+Alabama,AL,1,pedestrian,-0.016192466576797397
+Alaska,AK,2,pedestrian,-0.17952216247011427
+Arizona,AZ,4,pedestrian,0.16591867142797964
+Arkansas,AR,5,pedestrian,-0.3526878651705591
+California,CA,6,pedestrian,-0.3657238708411069
+Colorado,CO,8,pedestrian,0.3000259775589208
+Connecticut,CT,9,pedestrian,0.05668098623436629
+Delaware,DE,10,pedestrian,-0.026913293449546308
+District of Columbia,DC,11,pedestrian,-0.2226489309673847
+Florida,FL,12,pedestrian,-1.126178838765335
+Georgia,GA,13,pedestrian,-0.23304232320038004
+Hawaii,HI,15,pedestrian,0.5702696044414728
+Idaho,ID,16,pedestrian,-0.3952065491044817
+Illinois,IL,17,pedestrian,-0.07540898078044408
+Indiana,IN,18,pedestrian,-0.3000072972605421
+Iowa,IA,19,pedestrian,-0.02120730390061008
+Kansas,KS,20,pedestrian,-0.303746194701671
+Kentucky,KY,21,pedestrian,0.3953285922957406
+Louisiana,LA,22,pedestrian,-0.5842234095999004
+Maine,ME,23,pedestrian,-0.4795709778210602
+Maryland,MD,24,pedestrian,0.35459189162693755
+Massachusetts,MA,25,pedestrian,-0.021537794401967778
+Michigan,MI,26,pedestrian,-0.29676416926543947
+Minnesota,MN,27,pedestrian,0.09224494101336789
+Mississippi,MS,28,pedestrian,0.3218731709202404
+Missouri,MO,29,pedestrian,0.2701482960478366
+Montana,MT,30,pedestrian,-0.7468832310000072
+Nebraska,NE,31,pedestrian,0.1757825400958723
+Nevada,NV,32,pedestrian,0.7317755619723101
+New Hampshire,NH,33,pedestrian,0.09739846039907457
+New Jersey,NJ,34,pedestrian,-0.16730589854648387
+New Mexico,NM,35,pedestrian,-0.8697773608928321
+New York,NY,36,pedestrian,-0.20585698536404667
+North Carolina,NC,37,pedestrian,-0.15406614135043983
+North Dakota,ND,38,pedestrian,-0.7145622120996584
+Ohio,OH,39,pedestrian,-0.418100869921724
+Oklahoma,OK,40,pedestrian,-0.7966168945830079
+Oregon,OR,41,pedestrian,0.19982934149036882
+Pennsylvania,PA,42,pedestrian,0.08092810339722423
+Rhode Island,RI,44,pedestrian,0.5266295095915419
+South Carolina,SC,45,pedestrian,-0.8873197348219933
+South Dakota,SD,46,pedestrian,-0.6072985081395861
+Tennessee,TN,47,pedestrian,-0.15144396300114998
+Texas,TX,48,pedestrian,-0.3827348671277423
+Utah,UT,49,pedestrian,-0.11715577811466335
+Vermont,VT,50,pedestrian,-0.3978839080287786
+Virginia,VA,51,pedestrian,-0.16564131032536059
+Washington,WA,53,pedestrian,0.028792605281877263
+West Virginia,WV,54,pedestrian,-0.6655059158649644
+Wisconsin,WI,55,pedestrian,0.1056268978507108
+Wyoming,WY,56,pedestrian,-0.9899464795754042

@@ -1,0 +1,221 @@
+---
+title: "eTable 1 (interactive). Category-level deaths and per-capita rates by state, 2021 and 2024"
+format:
+  html:
+    embed-resources: true
+    page-layout: full
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(tidyverse)
+library(here)
+library(arrow)
+library(reactable)
+library(htmltools)
+source(here::here("code", "utils.R"))
+
+cats_self <- c(
+    "speeding_only", "alcohol_only", "unrestrained_only", "speed_alc",
+    "speed_unr", "alc_unr", "all_three", "none_flagged"
+)
+cats_other <- c("pedestrian", "bicyclist", "other_nonpv")
+cats_all <- c(cats_self, cats_other)
+
+## Row metadata: label, styling role, indent depth, display order.
+comp_meta <- tibble::tribble(
+    ~component,           ~label,                        ~role,      ~indent,
+    "total_crude",        "Total (crude rate)",          "total",    0L,
+    "behavioral",         "Behavioral risk factors",     "subtotal", 0L,
+    "speeding_only",      "Speed-only",                  "cat",      1L,
+    "alcohol_only",       "Alcohol-only",                "cat",      1L,
+    "unrestrained_only",  "Unrestrained-only",           "cat",      1L,
+    "speed_alc",          "Speed and Alcohol",           "cat",      1L,
+    "speed_unr",          "Speed and Unrestrained",      "cat",      1L,
+    "alc_unr",            "Alcohol and Unrestrained",    "cat",      1L,
+    "all_three",          "All three flagged",           "cat",      1L,
+    "none_flagged",       "No behavioral risk factor flagged", "subtotal", 0L,
+    "other",              "Other road users",            "subtotal", 0L,
+    "pedestrian",         "Pedestrian",                  "cat",      1L,
+    "bicyclist",          "Bicyclist",                   "cat",      1L,
+    "other_nonpv",        "Other (truck/bus/ATV/etc.)",  "cat",      1L
+) |>
+    dplyr::mutate(ord = dplyr::row_number())
+```
+
+```{r deaths-and-population}
+panel <- arrow::read_parquet(here::here("data", "panel_state_year.parquet")) |>
+    dplyr::filter(year %in% c(2021, 2024))
+
+state_d <- panel |>
+    dplyr::group_by(geo = state_name, year) |>
+    dplyr::summarise(population = sum(population),
+        dplyr::across(dplyr::all_of(cats_all), sum), .groups = "drop")
+nat_d <- panel |>
+    dplyr::group_by(year) |>
+    dplyr::summarise(population = sum(population),
+        dplyr::across(dplyr::all_of(cats_all), sum), .groups = "drop") |>
+    dplyr::mutate(geo = "United States")
+
+deaths_wide <- dplyr::bind_rows(state_d, nat_d) |>
+    dplyr::mutate(
+        behavioral = rowSums(
+            dplyr::across(dplyr::all_of(return_behavioral_flagged()))
+        ),
+        other = rowSums(dplyr::across(dplyr::all_of(cats_other))),
+        total_crude = rowSums(dplyr::across(dplyr::all_of(cats_all)))
+    )
+
+deaths_long <- deaths_wide |>
+    dplyr::select(
+        geo,
+        year,
+        dplyr::all_of(c(cats_all, "behavioral", "other", "total_crude"))
+    ) |>
+    tidyr::pivot_longer(
+        -c(geo, year),
+        names_to = "component",
+        values_to = "deaths"
+    ) |>
+    dplyr::mutate(col = dplyr::if_else(year == 2021, "d2021", "d2024")) |>
+    dplyr::select(-year) |>
+    tidyr::pivot_wider(names_from = col, values_from = deaths)
+
+pop_line <- deaths_wide |>
+    dplyr::select(geo, year, population) |>
+    tidyr::pivot_wider(names_from = year, values_from = population,
+        names_prefix = "pop") |>
+    dplyr::mutate(line = sprintf("2021 population: %s  |  2024 population: %s",
+        fmt_int(pop2021),
+        fmt_int(pop2024))) |>
+    dplyr::select(geo, line) |>
+    tibble::deframe()
+```
+
+```{r rates}
+cr_raw <- arrow::read_parquet(
+    here::here("data", "summaries", "category_rates_ci.parquet")
+)
+n_iter <- max(cr_raw$n[cr_raw$geography == "national"])
+
+rates_wide <- cr_raw |>
+    dplyr::filter(component %in% comp_meta$component) |>
+    dplyr::mutate(
+        geo = dplyr::if_else(
+            geography == "national", "United States", state_name
+        ),
+        cell = dplyr::if_else(metric == "rate_change",
+            fmt_val_ci(mean, p025, p975),
+            fmt_rate_ci(mean, p025, p975))
+    ) |>
+    dplyr::select(geo, component, metric, cell) |>
+    tidyr::pivot_wider(names_from = metric, values_from = cell) |>
+    dplyr::rename(r2021 = rate_a, r2024 = rate_b, change = rate_change)
+```
+
+```{r assemble}
+dat <- deaths_long |>
+    dplyr::left_join(rates_wide, by = c("geo", "component")) |>
+    dplyr::left_join(comp_meta, by = "component") |>
+    dplyr::mutate(
+        Category = paste0(strrep("\u00a0", indent * 4L), label),
+        d2021 = fmt_int(d2021),
+        d2024 = fmt_int(d2024)
+    ) |>
+    dplyr::arrange(geo, ord) |>
+    dplyr::transmute(
+        state = geo, Category, d2021, r2021, d2024, r2024, change, role
+    )
+
+geo_levels <- c("United States",
+    sort(setdiff(unique(dat$state), "United States")))
+```
+
+## Table Notes
+
+- Category-level US motor vehicle deaths and per-capita mortality rates by state, 2021 and 2024.
+- Select a state from the dropdown to view its decomposition; the national total is the default.
+- Death counts are the observed FARS totals; rates are deaths per 100,000 population for each of the `r length(return_all_bins())` mutually exclusive categories, grouped into behavioral risk factors, fatalities with no behavioral flag, and other road users.
+- Population denominators for the selected state are shown above the table.
+- The rate change column is the simple 2024-minus-2021 difference in per-capita rates, **not** the Kitagawa per-mile risk contribution shown in Table 1.
+- FARS death counts and US Census Bureau population estimates were used to calculate crude mortality rates (2018-2024).
+- 95% uncertainty intervals were calculated using the percentile method from a `r format(n_iter, big.mark = ",")`-iteration negative-binomial Monte Carlo simulation.
+
+```{r widget}
+tbl <- reactable::reactable(
+    dat,
+    sortable = FALSE,
+    filterable = FALSE,
+    searchable = FALSE,
+    pagination = FALSE,
+    highlight = TRUE,
+    defaultColDef = reactable::colDef(align = "right", vAlign = "center",
+        headerStyle = list(fontWeight = 600)),
+    columnGroups = list(
+        reactable::colGroup(name = "2021", columns = c("d2021", "r2021")),
+        reactable::colGroup(name = "2024", columns = c("d2024", "r2024"))
+    ),
+    columns = list(
+        state = reactable::colDef(show = FALSE, filterable = TRUE,
+            filterMethod = reactable::JS(
+                "function(rows, columnId, filterValue) {
+                   return rows.filter(function(row) {
+                     return row.values[columnId] === filterValue
+                   })
+                 }")),
+        role = reactable::colDef(show = FALSE),
+        Category = reactable::colDef(name = "", align = "left", minWidth = 240),
+        d2021 = reactable::colDef(name = "Deaths, N", minWidth = 90),
+        r2021 = reactable::colDef(name = "Rate (95% UI)", minWidth = 150),
+        d2024 = reactable::colDef(name = "Deaths, N", minWidth = 90),
+        r2024 = reactable::colDef(name = "Rate (95% UI)", minWidth = 150),
+        change = reactable::colDef(
+            name = "Rate change (95% UI)", minWidth = 160
+        )
+    ),
+    rowStyle = reactable::JS(
+        "function(rowInfo) {
+           var r = rowInfo.values['role']
+           if (r === 'total' || r === 'subtotal') {
+             return { fontWeight: 'bold', background: '#f0f0f0' }
+           }
+           return null
+         }"),
+    theme = reactable::reactableTheme(
+        style = list(fontFamily = "Georgia, 'Times New Roman', serif")
+    ),
+    elementId = "etable1"
+)
+
+controls <- htmltools::tags$div(
+    style = "margin-bottom: 12px; font-family: Georgia, 'Times New Roman', serif;",
+    htmltools::tags$label(
+        `for` = "state-select",
+        style = "font-weight: 600; margin-right: 6px;",
+        "State:"
+    ),
+    do.call(htmltools::tags$select,
+        c(list(id = "state-select", onchange = "applyState(this.value)",
+            style = "padding: 3px 6px; font-size: 14px;"),
+          lapply(geo_levels, \(g) htmltools::tags$option(value = g, g)))),
+    htmltools::tags$div(id = "pop-line",
+        style = "margin-top: 6px; font-style: italic; color: #444;")
+)
+
+wiring <- htmltools::tags$script(htmltools::HTML(sprintf(
+    "var POP = %s;
+     function applyState(v) {
+       Reactable.setFilter('etable1', 'state', v);
+       document.getElementById('pop-line').innerText = POP[v];
+     }
+     window.addEventListener('load', function() {
+       applyState(document.getElementById('state-select').value);
+     });",
+    jsonlite::toJSON(as.list(pop_line), auto_unbox = TRUE)
+)))
+
+htmltools::browsable(htmltools::tagList(controls, wiring, tbl))
+```

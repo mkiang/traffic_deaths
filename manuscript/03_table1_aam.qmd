@@ -1,0 +1,236 @@
+```{r setup, include=FALSE}
+## No YAML frontmatter: this file is `{{< include >}}`d into manuscript/01_manuscript.qmd,
+## and any YAML here either breaks it. 
+## 
+## Render standalone with: quarto render qmd/01_table1.qmd --to html --embed-resources
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+suppressPackageStartupMessages({
+    library(tidyverse)
+    library(here)
+    library(gt)
+    library(arrow)
+    library(duckdb)
+})
+source(here::here("code", "utils.R"))
+
+main_ci <- arrow::read_parquet(
+    here::here("data", "summaries", "main_ci.parquet")
+) |>
+    dplyr::filter(geography == "national") |>
+    dplyr::select(component, mean, p025, p975)
+
+part_ci <- arrow::read_parquet(
+    here::here("data", "summaries", "partition_ci.parquet")
+) |>
+    dplyr::filter(geography == "national") |>
+    dplyr::select(component, mean, p025, p975)
+
+get_ci <- function(df, comp) {
+    row <- df |> dplyr::filter(component == comp)
+    list(mean = row$mean, lower = row$p025, upper = row$p975)
+}
+
+rate_a <- get_ci(main_ci, "rate_a")
+rate_b <- get_ci(main_ci, "rate_b")
+crude_d <- get_ci(main_ci, "delta_rate")
+vmt_e <- get_ci(main_ci, "vmt_effect")
+risk_e <- get_ci(main_ci, "risk_effect")
+risk_total <- risk_e$mean
+
+n_iter_table1 <- max(arrow::read_parquet(
+    here::here("data", "summaries", "main_ci.parquet")
+)$n)
+n_all_bins   <- length(return_all_bins())
+n_behavioral <- length(return_behavioral_flagged())
+n_nonself    <- length(return_nonself_driven())
+
+pct_of <- function(x, total) {
+    100 * x / total
+}
+```
+
+```{r panel-a-data}
+panel_a <- tibble::tibble(
+    Population = "Total",
+    `2021 rate (95% UI)` = fmt_rate_ci(rate_a$mean, rate_a$lower, rate_a$upper),
+    `2024 rate (95% UI)` = fmt_rate_ci(rate_b$mean, rate_b$lower, rate_b$upper),
+    `Rate change (95% UI)` = fmt_val_ci(crude_d$mean, crude_d$lower, crude_d$upper),
+    `% change` = fmt_pct(100 * crude_d$mean / rate_a$mean)
+)
+```
+
+```{r panel-b-data}
+## HTML collapses runs of ASCII spaces; use non-breaking spaces so gt
+## preserves the visible indentation in both HTML and DOCX output. Note that
+## in RStudio this sometimes results in a weird red highlighted character. 
+INDENT2 <- strrep("\u00a0", 4)
+INDENT4 <- strrep("\u00a0", 8)
+
+bin_row <- function(label, comp) {
+    ci <- get_ci(part_ci, comp)
+    tibble::tibble(
+        Component = paste0(INDENT4, label),
+        `Contribution to rate change (95% UI)` = fmt_val_ci(ci$mean, ci$lower, ci$upper),
+        `% of per-mile risk component` = fmt_pct(pct_of(ci$mean, risk_total))
+    )
+}
+
+panel_b_top <- tibble::tibble(
+    Component = c(
+        "Total crude rate change",
+        paste0(INDENT2, "VMT component"),
+        paste0(INDENT2, "Per-mile risk component")
+    ),
+    `Contribution to rate change (95% UI)` = c(
+        fmt_val_ci(crude_d$mean, crude_d$lower, crude_d$upper),
+        fmt_val_ci(vmt_e$mean, vmt_e$lower, vmt_e$upper),
+        fmt_val_ci(risk_e$mean, risk_e$lower, risk_e$upper)
+    ),
+    `% of per-mile risk component` = c("—", "—", fmt_pct(100))
+)
+
+behavioral_bins <- dplyr::bind_rows(
+    bin_row("Speed-only", "speed_only_contrib"),
+    bin_row("Alcohol-only", "alc_only_contrib"),
+    bin_row("Unrestrained-only", "unr_only_contrib"),
+    bin_row("Speed and Alcohol", "speed_alc_contrib"),
+    bin_row("Speed and Unrestrained", "speed_unr_contrib"),
+    bin_row("Alcohol and Unrestrained", "alc_unr_contrib"),
+    bin_row("All three flagged", "all_three_contrib")
+)
+
+other_bins <- dplyr::bind_rows(
+    bin_row("Pedestrian", "ped_contrib"),
+    bin_row("Bicyclist", "bike_contrib"),
+    bin_row("Other (truck/bus/ATV/etc.)", "other_nonpv_contrib")
+)
+
+## Behavioral subtotal covers only the 7 flagged bins; none_flagged is a
+## self-driven death with no flagged behavior and is shown as its own row.
+behavioral_cols <- unname(return_bin_map()[return_behavioral_flagged()])
+other_cols <- c(
+    "ped_contrib",
+    "bike_contrib",
+    "other_nonpv_contrib"
+)
+
+## Subtotal CIs come from the raw partition sims: sum per simulation
+## iteration first, then take mean / 2.5th / 97.5th percentiles.
+sum_ci_for_components <- function(component_names) {
+    con <- duckdb::dbConnect(duckdb::duckdb(), read_only = TRUE)
+    on.exit(duckdb::dbDisconnect(con, shutdown = TRUE), add = TRUE)
+
+    sims <- dplyr::tbl(
+        con,
+        sprintf(
+            "read_parquet('%s')",
+            here::here("temp_output", "simulations", "partition", "*.parquet")
+        )
+    )
+
+    sims |>
+        dplyr::filter(
+            geography == "national",
+            component %in% component_names
+        ) |>
+        dplyr::group_by(batch_id, sim_id) |>
+        dplyr::summarise(sum_value = sum(value), .groups = "drop") |>
+        dplyr::collect() |>
+        dplyr::summarise(
+            mean = mean(sum_value),
+            lower = stats::quantile(sum_value, 0.025),
+            upper = stats::quantile(sum_value, 0.975)
+        )
+}
+
+behavioral_ci <- sum_ci_for_components(behavioral_cols)
+none_ci <- get_ci(part_ci, "none_contrib")
+other_ci <- sum_ci_for_components(other_cols)
+
+## Additivity: the 7 behavioral bins + none-flagged + 3 other-road-user bins
+## reconstruct the per-mile risk effect.
+stopifnot(
+    abs((behavioral_ci$mean + none_ci$mean + other_ci$mean) - risk_total) < 1e-6
+)
+
+empty_row <- tibble::tibble(
+    Component = "",
+    `Contribution to rate change (95% UI)` = "",
+    `% of per-mile risk component` = ""
+)
+
+risk_components_header <- tibble::tibble(
+    Component = "Per-mile risk components",
+    `Contribution to rate change (95% UI)` = "",
+    `% of per-mile risk component` = ""
+)
+
+behavioral_subtotal <- tibble::tibble(
+    Component = paste0(INDENT2, "Behavioral risk factors"),
+    `Contribution to rate change (95% UI)` = fmt_val_ci(
+        behavioral_ci$mean, behavioral_ci$lower, behavioral_ci$upper
+    ),
+    `% of per-mile risk component` = fmt_pct(pct_of(behavioral_ci$mean, risk_total))
+)
+
+none_subtotal <- tibble::tibble(
+    Component = paste0(INDENT2, "No behavioral risk factor flagged"),
+    `Contribution to rate change (95% UI)` = fmt_val_ci(
+        none_ci$mean, none_ci$lower, none_ci$upper
+    ),
+    `% of per-mile risk component` = fmt_pct(pct_of(none_ci$mean, risk_total))
+)
+
+other_subtotal <- tibble::tibble(
+    Component = paste0(INDENT2, "Other road users"),
+    `Contribution to rate change (95% UI)` = fmt_val_ci(
+        other_ci$mean, other_ci$lower, other_ci$upper
+    ),
+    `% of per-mile risk component` = fmt_pct(pct_of(other_ci$mean, risk_total))
+)
+
+panel_b <- dplyr::bind_rows(
+    panel_b_top,
+    empty_row,
+    risk_components_header,
+    behavioral_subtotal,
+    behavioral_bins,
+    none_subtotal,
+    other_subtotal,
+    other_bins
+)
+```
+
+```{r}
+#| tbl-cap: !expr sprintf("Kitagawa decomposition of the change in US motor vehicle mortality rate from 2021 to 2024. The total rate change is partitioned into a vehicle miles traveled (VMT) component and a per-mile risk component. The per-mile risk component is further partitioned into %d mutually exclusive bins (%d behavioral; 1 with no behavioral flag; %d other road-user groups). FARS death counts and US Census Bureau population estimates were used to calculate crude mortality rates. VMT data came from the Federal Highway Administration (FHWA). 95%% uncertainty intervals were obtained using Monte Carlo simulation of %s iterations and the percentile method.", n_all_bins, n_behavioral, n_nonself, format(n_iter_table1, big.mark = ","))
+
+bold_idx <- which(
+    panel_b$Component %in% c(
+        "Total crude rate change",
+        "Per-mile risk components"
+    )
+)
+italic_idx <- which(
+    panel_b$Component %in% c(
+        paste0(INDENT2, "Behavioral risk factors"),
+        paste0(INDENT2, "No behavioral risk factor flagged"),
+        paste0(INDENT2, "Other road users")
+    )
+)
+
+gt::gt(panel_b) |>
+    gt::tab_style(
+        style = gt::cell_text(weight = "bold"),
+        locations = gt::cells_body(rows = bold_idx)
+    ) |>
+    gt::tab_style(
+        style = gt::cell_text(style = "italic"),
+        locations = gt::cells_body(rows = italic_idx)
+    ) |>
+    gt::cols_align(align = "right", columns = -1) |>
+    gt::cols_align(align = "left", columns = 1)
+```
+
+```{r write-csv}
+readr::write_csv(panel_b, here::here("output", "table1.csv"))
+```

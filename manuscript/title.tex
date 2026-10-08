@@ -1,0 +1,16 @@
+\usepackage{authblk}
+\renewcommand\Authfont{\normalsize\bfseries}
+\renewcommand\Affilfont{\small\normalfont\itshape}
+\setlength{\affilsep}{0.4em}
+
+\title{$title$}
+
+$for(by-author)$
+\author[$for(by-author.affiliations)$$by-author.affiliations.number$$sep$,$endfor$]{$by-author.name.literal$$if(by-author.attributes.corresponding)$\thanks{Corresponding author: \href{mailto:$by-author.email$}{\nolinkurl{$by-author.email$}}}$endif$}
+$endfor$
+
+$for(by-affiliation)$
+\affil[$by-affiliation.number$]{$by-affiliation.name$}
+$endfor$
+
+\date{$date$}

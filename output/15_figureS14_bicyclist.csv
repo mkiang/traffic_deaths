@@ -1,0 +1,52 @@
+state_name,state_abb,state_fips,category,contribution
+Alabama,AL,1,bicyclist,0.056741295934863926
+Alaska,AK,2,bicyclist,-0.12522615774573229
+Arizona,AZ,4,bicyclist,0.012865159701765633
+Arkansas,AR,5,bicyclist,-0.20205185194043693
+California,CA,6,bicyclist,0.0548379388786896
+Colorado,CO,8,bicyclist,-0.022661672232194965
+Connecticut,CT,9,bicyclist,0.02080325924155247
+Delaware,DE,10,bicyclist,0.3066573671776085
+District of Columbia,DC,11,bicyclist,-0.32347802864912084
+Florida,FL,12,bicyclist,-0.07918249611495469
+Georgia,GA,13,bicyclist,0.0821808183881722
+Hawaii,HI,15,bicyclist,0.17827482927686872
+Idaho,ID,16,bicyclist,-0.006989507863122774
+Illinois,IL,17,bicyclist,0.005341520333885727
+Indiana,IN,18,bicyclist,-0.055615974167516236
+Iowa,IA,19,bicyclist,-0.22082929845284135
+Kansas,KS,20,bicyclist,0.06785336348600485
+Kentucky,KY,21,bicyclist,0.01615793756617105
+Louisiana,LA,22,bicyclist,0.21108840231342096
+Maine,ME,23,bicyclist,-0.07473241758134938
+Maryland,MD,24,bicyclist,0.07977713058027348
+Massachusetts,MA,25,bicyclist,0.06386831563268328
+Michigan,MI,26,bicyclist,-0.008218373098282078
+Minnesota,MN,27,bicyclist,-0.03903162112437095
+Mississippi,MS,28,bicyclist,-0.24344857768669512
+Missouri,MO,29,bicyclist,0.17210442425032457
+Montana,MT,30,bicyclist,-0.09454557899043743
+Nebraska,NE,31,bicyclist,0.14468374422248254
+Nevada,NV,32,bicyclist,0.2647089037694348
+New Hampshire,NH,33,bicyclist,0.13341182800268747
+New Jersey,NJ,34,bicyclist,0.0029327178145405024
+New Mexico,NM,35,bicyclist,-0.024346030983224298
+New York,NY,36,bicyclist,0.042521174968025766
+North Carolina,NC,37,bicyclist,0.15616989226025582
+North Dakota,ND,38,bicyclist,-0.00597937881551161
+Ohio,OH,39,bicyclist,-0.05575244520071431
+Oklahoma,OK,40,bicyclist,-0.0363783635833
+Oregon,OR,41,bicyclist,-0.16909578623683616
+Pennsylvania,PA,42,bicyclist,0.02114223805641064
+Rhode Island,RI,44,bicyclist,0.2660178404020995
+South Carolina,SC,45,bicyclist,0.1668993880896329
+South Dakota,SD,46,bicyclist,0.43015981170255335
+Tennessee,TN,47,bicyclist,0.036047981881320176
+Texas,TX,48,bicyclist,-0.06228467622798198
+Utah,UT,49,bicyclist,0.043211207612261125
+Vermont,VT,50,bicyclist,0.3010133645188876
+Virginia,VA,51,bicyclist,0.0751851083156419
+Washington,WA,53,bicyclist,-0.020787533326776735
+West Virginia,WV,54,bicyclist,0.2583993982843737
+Wisconsin,WI,55,bicyclist,-0.026986099418226845
+Wyoming,WY,56,bicyclist,0.1787471124812529

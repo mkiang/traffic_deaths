@@ -1,0 +1,52 @@
+state_name,state_abb,state_fips,category,contribution
+Alabama,AL,1,alcohol_unrestrained,0.2165183672126958
+Alaska,AK,2,alcohol_unrestrained,-0.126856422307495
+Arizona,AZ,4,alcohol_unrestrained,-0.049366031419559524
+Arkansas,AR,5,alcohol_unrestrained,-0.4603729758597853
+California,CA,6,alcohol_unrestrained,0.06974463224221397
+Colorado,CO,8,alcohol_unrestrained,-0.30894475878513505
+Connecticut,CT,9,alcohol_unrestrained,-0.33339210984791456
+Delaware,DE,10,alcohol_unrestrained,-3.771045834888298e-5
+District of Columbia,DC,11,alcohol_unrestrained,0.28590790594492205
+Florida,FL,12,alcohol_unrestrained,-0.6844038783050095
+Georgia,GA,13,alcohol_unrestrained,-0.4974910015172883
+Hawaii,HI,15,alcohol_unrestrained,0.12308814804334475
+Idaho,ID,16,alcohol_unrestrained,-0.45921698869676153
+Illinois,IL,17,alcohol_unrestrained,-0.20551028449855513
+Indiana,IN,18,alcohol_unrestrained,-0.05714361294126407
+Iowa,IA,19,alcohol_unrestrained,-0.17770479530080244
+Kansas,KS,20,alcohol_unrestrained,-0.1008654069644386
+Kentucky,KY,21,alcohol_unrestrained,-0.3163995501743493
+Louisiana,LA,22,alcohol_unrestrained,-0.40534466435912275
+Maine,ME,23,alcohol_unrestrained,-0.12131733478663564
+Maryland,MD,24,alcohol_unrestrained,-0.019745006325591813
+Massachusetts,MA,25,alcohol_unrestrained,-0.10945942341671805
+Michigan,MI,26,alcohol_unrestrained,0.0019822478841816163
+Minnesota,MN,27,alcohol_unrestrained,-0.11674359689261493
+Mississippi,MS,28,alcohol_unrestrained,-0.22073751749276124
+Missouri,MO,29,alcohol_unrestrained,-0.009589172368411308
+Montana,MT,30,alcohol_unrestrained,-1.1361706147827053
+Nebraska,NE,31,alcohol_unrestrained,-0.2896891522820324
+Nevada,NV,32,alcohol_unrestrained,-0.11917042376734693
+New Hampshire,NH,33,alcohol_unrestrained,-0.41024057596500074
+New Jersey,NJ,34,alcohol_unrestrained,-0.09620646950295239
+New Mexico,NM,35,alcohol_unrestrained,-0.9950836178549193
+New York,NY,36,alcohol_unrestrained,-0.15682077621751225
+North Carolina,NC,37,alcohol_unrestrained,-0.5442867114131924
+North Dakota,ND,38,alcohol_unrestrained,-0.24716096247115693
+Ohio,OH,39,alcohol_unrestrained,0.0020203169156489953
+Oklahoma,OK,40,alcohol_unrestrained,-0.4819418215853944
+Oregon,OR,41,alcohol_unrestrained,0.10883110444334029
+Pennsylvania,PA,42,alcohol_unrestrained,-0.10941975622902382
+Rhode Island,RI,44,alcohol_unrestrained,-0.2805671306718803
+South Carolina,SC,45,alcohol_unrestrained,-0.18123142439103845
+South Dakota,SD,46,alcohol_unrestrained,0.24037613879533137
+Tennessee,TN,47,alcohol_unrestrained,0.01521679078549864
+Texas,TX,48,alcohol_unrestrained,-0.3601924874171736
+Utah,UT,49,alcohol_unrestrained,-0.23884195609160694
+Vermont,VT,50,alcohol_unrestrained,-0.3719370034595715
+Virginia,VA,51,alcohol_unrestrained,0.13402585779960002
+Washington,WA,53,alcohol_unrestrained,-0.09402808181232097
+West Virginia,WV,54,alcohol_unrestrained,-0.28732482131875564
+Wisconsin,WI,55,alcohol_unrestrained,-0.15049980971335078
+Wyoming,WY,56,alcohol_unrestrained,0.3687074853566705

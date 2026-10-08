@@ -1,0 +1,52 @@
+state_name,state_abb,state_fips,category,contribution
+Alabama,AL,1,speed_unrestrained,-0.35591711498893075
+Alaska,AK,2,speed_unrestrained,0.4307376482902909
+Arizona,AZ,4,speed_unrestrained,-0.15379921563255514
+Arkansas,AR,5,speed_unrestrained,-0.6856835029701946
+California,CA,6,speed_unrestrained,-0.23148329451354888
+Colorado,CO,8,speed_unrestrained,0.031562379673088004
+Connecticut,CT,9,speed_unrestrained,-0.21355537278739278
+Delaware,DE,10,speed_unrestrained,-0.657702154623444
+District of Columbia,DC,11,speed_unrestrained,0.10113532652624219
+Florida,FL,12,speed_unrestrained,-0.1607225674075797
+Georgia,GA,13,speed_unrestrained,-0.044191717053823076
+Hawaii,HI,15,speed_unrestrained,-0.10758146441290334
+Idaho,ID,16,speed_unrestrained,0.07054778414404078
+Illinois,IL,17,speed_unrestrained,-0.09698223528337269
+Indiana,IN,18,speed_unrestrained,-0.3604438615518845
+Iowa,IA,19,speed_unrestrained,-0.015436236363906647
+Kansas,KS,20,speed_unrestrained,-0.5410683774108443
+Kentucky,KY,21,speed_unrestrained,-0.5683518523154862
+Louisiana,LA,22,speed_unrestrained,-0.6033531033901783
+Maine,ME,23,speed_unrestrained,0.2570810752603444
+Maryland,MD,24,speed_unrestrained,-0.4382713897565337
+Massachusetts,MA,25,speed_unrestrained,-0.0446416231725244
+Michigan,MI,26,speed_unrestrained,-0.13653535872811906
+Minnesota,MN,27,speed_unrestrained,-0.20492665704135324
+Mississippi,MS,28,speed_unrestrained,-0.09116549673849955
+Missouri,MO,29,speed_unrestrained,-0.8953487301497982
+Montana,MT,30,speed_unrestrained,0.034280786989108414
+Nebraska,NE,31,speed_unrestrained,0.5271250003956418
+Nevada,NV,32,speed_unrestrained,-0.17389385831429424
+New Hampshire,NH,33,speed_unrestrained,-0.5410407937411038
+New Jersey,NJ,34,speed_unrestrained,-0.23047960769575723
+New Mexico,NM,35,speed_unrestrained,-0.44827777949648834
+New York,NY,36,speed_unrestrained,0.02707805302140312
+North Carolina,NC,37,speed_unrestrained,-0.14274213961448062
+North Dakota,ND,38,speed_unrestrained,-0.5726469018922793
+Ohio,OH,39,speed_unrestrained,-0.49990692374101314
+Oklahoma,OK,40,speed_unrestrained,-0.27715846848697523
+Oregon,OR,41,speed_unrestrained,0.20252775859514732
+Pennsylvania,PA,42,speed_unrestrained,-0.2176255674679855
+Rhode Island,RI,44,speed_unrestrained,-0.09939752718955527
+South Carolina,SC,45,speed_unrestrained,-1.1323823751519786
+South Dakota,SD,46,speed_unrestrained,-0.27075502223648185
+Tennessee,TN,47,speed_unrestrained,-0.0643693944979312
+Texas,TX,48,speed_unrestrained,-0.1994817293574156
+Utah,UT,49,speed_unrestrained,0.046036718589516676
+Vermont,VT,50,speed_unrestrained,-0.3775696341859337
+Virginia,VA,51,speed_unrestrained,-8.736486875610336e-4
+Washington,WA,53,speed_unrestrained,0.02747322215879198
+West Virginia,WV,54,speed_unrestrained,0.19094639978701516
+Wisconsin,WI,55,speed_unrestrained,-0.17978709716873403
+Wyoming,WY,56,speed_unrestrained,1.0817246335105668

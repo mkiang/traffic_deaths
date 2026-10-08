@@ -1,0 +1,90 @@
+"Notes"	"UCD - Injury Mechanism & All Other Leading Causes"	"UCD - Injury Mechanism & All Other Leading Causes Code"	"Year"	"Year Code"	Deaths	Population	Crude Rate	Crude Rate Lower 95% Confidence Interval	Crude Rate Upper 95% Confidence Interval	Crude Rate Standard Error	Age Adjusted Rate	Age Adjusted Rate Lower 95% Confidence Interval	Age Adjusted Rate Upper 95% Confidence Interval	Age Adjusted Rate Standard Error
+	"Motor Vehicle Traffic"	"GRINJ-008"	"1999"	"1999"	40965	279040168	14.680682102	14.538516075	14.822848129	0.072533687	14.671822977	14.529633170	14.814012784	0.072545820
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2000"	"2000"	41994	281421906	14.922079307	14.779357021	15.064801593	0.072817493	14.891491483	14.748984264	15.033998703	0.072707765
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2001"	"2001"	42443	284968955	14.893903092	14.752205797	15.035600387	0.072294538	14.847053032	14.705712634	14.988393429	0.072112448
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2002"	"2002"	44065	287625193	15.320285244	15.177239139	15.463331348	0.072982706	15.215307286	15.073112006	15.357502567	0.072548613
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2003"	"2003"	43340	290107933	14.939267448	14.798617065	15.079917832	0.071760400	14.860828320	14.720739600	15.000917039	0.071473836
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2004"	"2004"	43432	292805298	14.833064940	14.693562419	14.972567461	0.071174756	14.701265828	14.562721133	14.839810522	0.070686069
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2005"	"2005"	43667	295516599	14.776496531	14.637900476	14.915092586	0.070712273	14.643629227	14.505905381	14.781353073	0.070267268
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2006"	"2006"	43664	298379912	14.633692901	14.496431556	14.770954246	0.070031298	14.488667807	14.352259390	14.625076225	0.069596131
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2007"	"2007"	42031	301231207	13.953069610	13.819674174	14.086465046	0.068058896	13.793358278	13.660896936	13.925819620	0.067582317
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2008"	"2008"	37985	304093966	12.491204774	12.365586063	12.616823486	0.064091179	12.331149429	12.206410319	12.455888540	0.063642403
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2009"	"2009"	34485	306771529	11.241264831	11.122618002	11.359911660	0.060534096	11.084762761	10.966885418	11.202640104	0.060141501
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2010"	"2010"	33687	308745538	10.910926914	10.794410650	11.027443177	0.059447073	10.739955714	10.624233128	10.855678300	0.059042136
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2011"	"2011"	33783	311591917	10.842065585	10.726449305	10.957681866	0.058987898	10.627048167	10.512521383	10.741574950	0.058432032
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2012"	"2012"	34935	313914040	11.128842788	11.012141485	11.245544091	0.059541481	10.889208878	10.773663347	11.004754409	0.058951801
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2013"	"2013"	33804	316128839	10.693108578	10.579116151	10.807101005	0.058159402	10.450745457	10.337861912	10.563629002	0.057593645
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2014"	"2014"	33736	318857056	10.580289620	10.467386269	10.693192972	0.057603751	10.317336668	10.205667681	10.429005655	0.056973973
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2015"	"2015"	36161	321418820	11.250430202	11.134471062	11.366389342	0.059162826	10.944529811	10.829921111	11.059138511	0.058473827
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2016"	"2016"	38748	323127513	11.991550840	11.872150166	12.110951514	0.060918711	11.664154122	11.545990007	11.782318237	0.060287814
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2017"	"2017"	38659	325719178	11.868812956	11.750498436	11.987127477	0.060364551	11.529994427	11.412898738	11.647090116	0.059742698
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2018"	"2018"	37991	327167434	11.612097065	11.495328386	11.728865743	0.059575857	11.235378912	11.120121779	11.350636045	0.058804660
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2019"	"2019"	37595	328239523	11.453526271	11.337747152	11.569305391	0.059070979	11.066068697	10.951772513	11.180364882	0.058314380
+	"Motor Vehicle Traffic"	"GRINJ-008"	"2020"	"2020"	40698	329484123	12.352036763	12.232029339	12.472044186	0.061228277	12.007041933	11.887900007	12.126183859	0.060786697
+"Total"	"Motor Vehicle Traffic"	"GRINJ-008"			857868	6746356647	12.716019103	12.689110137	12.742928069	0.013729064	12.519923135	12.493258064	12.546588206	0.013604628
+"Total"					857868	6746356647	12.716019103	12.689110137	12.742928069	0.013729064	12.519923135	12.493258064	12.546588206	0.013604628
+"---"
+"Dataset: Multiple Cause of Death, 1999-2020"
+"Query Parameters:"
+"UCD - Injury Mechanism & All Other Leading Causes: Motor Vehicle Traffic"
+"Group By: UCD - Injury Mechanism & All Other Leading Causes; Year"
+"Show Totals: True"
+"Show Zero Values: True"
+"Show Suppressed: True"
+"Standard Population: 2000 U.S. Std. Population"
+"Calculate Rates Per: 100,000"
+"Rate Options: Default intercensal populations for years 2001-2009 (except Infant Age Groups)"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/mcd.html for more information."
+"---"
+"Query Date: May 1, 2026 6:11:36 PM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. National Vital Statistics"
+"System, Mortality 1999-2020 on CDC WONDER Online Database, released in 2021. Data are from the Multiple Cause of Death Files,"
+"1999-2020, as compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative"
+"Program. Accessed at http://wonder.cdc.gov/mcd-icd10.html on May 1, 2026 6:11:36 PM"
+"---"
+Caveats:
+"1. As of April 3, 2017, the underlying cause of death has been revised for 125 deaths in 2014. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#2014-Revision."
+"2. Circumstances in Georgia for the years 2008 and 2009 have resulted in unusually high death counts for the ICD-10 cause of"
+"death code R99, ""Other ill-defined and unspecified causes of mortality."" Caution should be used in interpreting these data."
+"More information: http://wonder.cdc.gov/wonder/help/mcd.html#Georgia-Reporting-Anomalies."
+"3. Circumstances in New Jersey for the year 2009 have resulted in unusually high death counts for the ICD-10 cause of death code"
+"R99, ""Other ill-defined and unspecified causes of mortality"" and therefore unusually low death counts in other ICD-10 codes,"
+"most notably R95, ""Sudden Infant Death Syndrome"" and X40-X49, ""Unintentional poisoning."" Caution should be used in"
+"interpreting these data. More information: http://wonder.cdc.gov/wonder/help/mcd.html#New-Jersey-Reporting-Anomalies."
+"4. Circumstances in California resulted in unusually high death counts for the ICD-10 cause of death code R99, ""Other"
+"ill-defined and unspecified causes of mortality"" for deaths occurring in years 2000 and 2001. Caution should be used in"
+"interpreting these data. More information: http://wonder.cdc.gov/wonder/help/mcd.html#California-Reporting-Anomalies."
+"5. The populations used to calculate standard age-adjusted rates are documented here: More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#2000 Standard Population."
+"6. The method used to calculate age-adjusted rates is documented here: More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Age-Adjusted Rates."
+"7. Deaths for persons of unknown age are included in counts and crude rates, but are not included in age-adjusted rates."
+"8. The method used to calculate 95% confidence intervals is documented here: More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Confidence-Intervals."
+"9. The method used to calculate standard errors is documented here: More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Standard-Errors."
+"10. The population figures for year 2020 are bridged-race estimates of the July 1 resident population, from the Vintage 2020"
+"postcensal series released by NCHS on September 22, 2021. The population figures for year 2019 are bridged-race estimates of the"
+"July 1 resident population, from the Vintage 2019 postcensal series released by NCHS on July 9, 2020. The population figures for"
+"year 2018 are bridged-race estimates of the July 1 resident population, from the Vintage 2018 postcensal series released by NCHS"
+"on June 25, 2019. The population figures for year 2017 are bridged-race estimates of the July 1 resident population, from the"
+"Vintage 2017 postcensal series released by NCHS on June 27, 2018. The population figures for year 2016 are bridged-race"
+"estimates of the July 1 resident population, from the Vintage 2016 postcensal series released by NCHS on June 26, 2017. The"
+"population figures for year 2015 are bridged-race estimates of the July 1 resident population, from the Vintage 2015 postcensal"
+"series released by NCHS on June 28, 2016. The population figures for year 2014 are bridged-race estimates of the July 1 resident"
+"population, from the Vintage 2014 postcensal series released by NCHS on June 30, 2015. The population figures for year 2013 are"
+"bridged-race estimates of the July 1 resident population, from the Vintage 2013 postcensal series released by NCHS on June 26,"
+"2014. The population figures for year 2012 are bridged-race estimates of the July 1 resident population, from the Vintage 2012"
+"postcensal series released by NCHS on June 13, 2013. Population figures for 2011 are bridged-race estimates of the July 1"
+"resident population, from the county-level postcensal Vintage 2011 series released by NCHS on July 18, 2012. Population figures"
+"for 2010 are April 1 Census counts. The population figures for years 2001 - 2009, are bridged-race estimates of the July 1"
+"resident population, from the revised intercensal county-level 2000 - 2009 series released by NCHS on October 26, 2012."
+"Population figures for 2000 are April 1 Census counts. Population figures for 1999 are from the 1990-1999 intercensal series of"
+"July 1 estimates. Population figures for Infant Age Groups are the number of live births. <br/><b>Note:</b> Rates and population"
+"figures for years 2001 - 2009 differ slightly from previously published reports, due to use of the population estimates which"
+"were available at the time of release."
+"11. The population figures used in the calculation of death rates for the age group 'under 1 year' are the estimates of the"
+"resident population that is under one year of age. More information: http://wonder.cdc.gov/wonder/help/mcd.html#Age Group."

@@ -1,0 +1,52 @@
+state_name,state_abb,state_fips,category,contribution
+Alabama,AL,1,other_road_users,0.3564794320745724
+Alaska,AK,2,other_road_users,0.030138308195871155
+Arizona,AZ,4,other_road_users,0.2740029502556843
+Arkansas,AR,5,other_road_users,-0.4747478384895437
+California,CA,6,other_road_users,-0.005791878816823054
+Colorado,CO,8,other_road_users,0.22632648364428914
+Connecticut,CT,9,other_road_users,0.0837244966015823
+Delaware,DE,10,other_road_users,0.7713699115977957
+District of Columbia,DC,11,other_road_users,0.5427566949910946
+Florida,FL,12,other_road_users,-0.10758197353658337
+Georgia,GA,13,other_road_users,-0.4035140712212997
+Hawaii,HI,15,other_road_users,-0.18798011401998985
+Idaho,ID,16,other_road_users,-0.7535129453001421
+Illinois,IL,17,other_road_users,0.010741532256525493
+Indiana,IN,18,other_road_users,-0.24633583875785492
+Iowa,IA,19,other_road_users,0.31226377371197406
+Kansas,KS,20,other_road_users,-0.4393791611269847
+Kentucky,KY,21,other_road_users,-0.2055535484919132
+Louisiana,LA,22,other_road_users,-0.029248447044061654
+Maine,ME,23,other_road_users,0.5531574776242817
+Maryland,MD,24,other_road_users,0.17452874261267118
+Massachusetts,MA,25,other_road_users,-0.07929908791378944
+Michigan,MI,26,other_road_users,-0.19575983965809085
+Minnesota,MN,27,other_road_users,0.2023023027175117
+Mississippi,MS,28,other_road_users,0.47194299961820607
+Missouri,MO,29,other_road_users,-0.1742914115439259
+Montana,MT,30,other_road_users,-0.13129876320183076
+Nebraska,NE,31,other_road_users,-0.03149803764750475
+Nevada,NV,32,other_road_users,-0.16313922940626513
+New Hampshire,NH,33,other_road_users,0.3341707987049958
+New Jersey,NJ,34,other_road_users,-0.015170602650400405
+New Mexico,NM,35,other_road_users,-0.4444850474341129
+New York,NY,36,other_road_users,-0.10167959981392101
+North Carolina,NC,37,other_road_users,0.07455113649427973
+North Dakota,ND,38,other_road_users,-0.6307392361274318
+Ohio,OH,39,other_road_users,0.008483601775799252
+Oklahoma,OK,40,other_road_users,0.005869196309076341
+Oregon,OR,41,other_road_users,-0.22239078942015186
+Pennsylvania,PA,42,other_road_users,0.046274006946691745
+Rhode Island,RI,44,other_road_users,0.0891385267818573
+South Carolina,SC,45,other_road_users,-0.0371144205951824
+South Dakota,SD,46,other_road_users,1.0307880148409694
+Tennessee,TN,47,other_road_users,-0.19663370512348155
+Texas,TX,48,other_road_users,-0.1408757876457609
+Utah,UT,49,other_road_users,0.091269097206396893
+Vermont,VT,50,other_road_users,0.06478687632935679
+Virginia,VA,51,other_road_users,-0.033177750775532616
+Washington,WA,53,other_road_users,-0.14617536085733568
+West Virginia,WV,54,other_road_users,0.006158948957678878
+Wisconsin,WI,55,other_road_users,-0.19969896652320807
+Wyoming,WY,56,other_road_users,0.31532836469102055

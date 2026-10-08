@@ -1,0 +1,279 @@
+---
+title: 'Supplemental materials for *Factors Associated With Postpandemic Decline in US Motor Vehicle Mortality*'
+author:
+  - name: "Mathew V. Kiang, ScD"
+    affiliations:
+      - name: "Department of Epidemiology and Population Health, Stanford University"
+    email: "mkiang@stanford.edu"
+    corresponding: true
+  - name: "Monica J. Alexander, PhD"
+    affiliations:
+      - name: "Departments of Sociology and Statistical Sciences, University of Toronto"
+date: today
+format:
+  # html:
+  #   embed-resources: true
+  #   toc: true
+  pdf:
+    toc: true
+    pdf-engine: xelatex
+    geometry:
+      - margin=1in
+    template-partials:
+      - title.tex
+bibliography: refs.bib
+csl: jama.csl
+---
+
+::: {.callout-important title="This is the Author Accepted Manuscript (AAM) version"}
+This is the peer-reviewed, **accepted** version of this article (the "author accepted manuscript" or AAM per NIH parlance). That means it is **not** the final published version of record. It has not been copyedited, typeset, or paginated by the journal, so it differs from the published article. It is shared here only to document the source code of the numbers reproduced by the code in this repository (see the associated `qmd` file).\
+
+This paper was published open access in *JAMA Network Open* on October 8, 2026: \
+
+> Kiang MV, Alexander MJ. Factors Associated With Postpandemic Decline in US Motor Vehicle Mortality. *JAMA Network Open*. 2026;9(10):e2638041. doi:[10.1001/jamanetworkopen.2026.38041](https://doi.org/10.1001/jamanetworkopen.2026.38041)
+
+\
+Please cite and rely on the open-access published version, which is also shared in this repository. 
+:::
+
+{{< pagebreak >}}
+
+```{r emethods-setup, include=FALSE}
+library(tidyverse)
+library(here)
+library(arrow)
+source(here::here("code", "utils.R"))
+
+n_all_bins <- length(return_all_bins())
+n_behavioral <- length(return_behavioral_flagged())
+n_nonself <- length(return_nonself_driven())
+
+sigma_vmt <- config::get("sigma_vmt", file = here::here("config.yml"))
+
+overdisp <- arrow::read_parquet(
+    here::here("data", "overdispersion_window.parquet")
+)
+theta_poisson <- config::get("theta_poisson", file = here::here("config.yml"))
+pct_poisson_floor <- 100 * mean(
+    overdisp$theta[overdisp$level == "deaths_age_bin"] == theta_poisson
+)
+
+panel <- arrow::read_parquet(here::here("data", "panel_state_year.parquet"))
+main_ci <- arrow::read_parquet(
+    here::here("data", "summaries", "main_ci.parquet")
+) |>
+    dplyr::filter(geography == "national")
+n_iter <- max(main_ci$n)
+
+get_ci <- function(df, comp) {
+    r <- df |> dplyr::filter(component == comp)
+    list(mean = r$mean, lower = r$p025, upper = r$p975)
+}
+MINUS <- "−"
+fmt_signed <- function(x, d = 2) {
+    sprintf("%s%.*f", ifelse(x < 0, MINUS, "+"), d, abs(x))
+}
+
+natl_vmt <- panel |>
+    dplyr::group_by(year) |>
+    dplyr::summarise(vmt = sum(vm2_total), .groups = "drop")
+v2020 <- natl_vmt$vmt[natl_vmt$year == 2020]
+v2021 <- natl_vmt$vmt[natl_vmt$year == 2021]
+v2024 <- natl_vmt$vmt[natl_vmt$year == 2024]
+pct_vmt_increase <- 100 * (v2024 - v2021) / v2021
+pct_vmt_trough <- 100 * (v2021 - v2020) / v2021
+
+risk_e <- get_ci(main_ci, "risk_effect")
+vmt_e <- get_ci(main_ci, "vmt_effect")
+
+fars_rt <- arrow::read_parquet(
+    here::here("data", "fars_persons_2018_2024.parquet")
+) |>
+    dplyr::filter(year >= 2021, year <= 2024)
+pct_known_roadtype <- 100 * mean(fars_rt$road_type %in% c("urban", "rural"))
+
+weather_share <- fars_rt |>
+    dplyr::filter(weather_cat %in% c("good", "adverse")) |>
+    dplyr::count(year, weather_cat) |>
+    dplyr::group_by(year) |>
+    dplyr::mutate(pct = 100 * n / sum(n)) |>
+    dplyr::filter(weather_cat == "adverse")
+adverse_lo <- min(weather_share$pct)
+adverse_hi <- max(weather_share$pct)
+
+mv_compare <- panel |>
+    dplyr::filter(year >= 2021, year <= 2024) |>
+    dplyr::group_by(year) |>
+    dplyr::summarise(
+        fars = sum(fars_deaths),
+        wonder = sum(wonder_deaths),
+        r = stats::cor(log10(fars_deaths), log10(wonder_deaths)),
+        .groups = "drop"
+    ) |>
+    dplyr::mutate(excess = 100 * (wonder - fars) / fars)
+wonder_excess_lo <- min(mv_compare$excess)
+wonder_excess_hi <- max(mv_compare$excess)
+fars_nchs_r_min <- min(mv_compare$r)
+```
+
+\newpage 
+
+## Data sources and vintage
+
+### Fatality Analysis Reporting System (FARS)
+
+The Fatality Analysis Reporting System (FARS), maintained by the National Highway Traffic Safety Administration (NHTSA), is a police-reported census of fatal motor vehicle traffic crashes occurring on public roadways and resulting in a death within 30 days of the crash.[@fife1989fars] We used the 2018-2024 FARS files downloaded from the NHTSA website on May 9th, 2026, which include the Final Files for 2018-2023 and the (provisional) Annual Report File for 2024. 
+
+Crash-level behavioral indicators came from the FARS Vehicle and Accident tables. The speeding-related flag (`SPEEDREL`) takes values `1`-`5`, indicating speeding-related contributions to the crash as recorded in the police narrative or inferred from speed-limit or roadway conditions. Consistent with previous work, we treated any of these values as evidence of speeding involvement.[@nhtsa2023speeding] Driver blood alcohol concentration (BAC) is missing for many decedents in FARS and is multiply imputed by NHTSA in the Multiply-Imputed BAC (MIDRVACC) supplementary file, which provides 10 imputed values per driver based on a Bayesian multiple imputation procedure conditioning on observed crash, driver, and police report characteristics.[@nhtsa2023alcohol] We classified a crash as alcohol-impaired if a strict majority of the imputed BAC values for any driver in the crash were $\geq$ 0.08 g/dL, applying this threshold uniformly across all states. This approach has two limitations. First, the majority-rule classification does not propagate between-imputation variance per Rubin's rules; uncertainty intervals on alcohol-involved categories may understate true uncertainty. Second, Utah lowered its legal BAC limit to $\geq$ 0.05 g/dL, which we did not adjust for. 
+
+At the decedent level, the FARS Person table records restraint use (`REST_USENAME`) and helmet use (`HELM_USENAME`). We coded passenger-vehicle occupants without seatbelt (`REST_USENAME = "None Used"`) and motorcyclists without helmet (`HELM_USENAME = "No Helmet"`) as "unrestrained". 
+
+Non-self-driven decedents were classified by person type (`PER_TYP`): pedestrian (`PER_TYP = 5`), bicyclist (`PER_TYP = 6` or `PER_TYP = 7`), and other (bus, large truck, ATV, or other non-self-driven decedent).
+
+We used FARS rather than NCHS death-certificate counts because FARS is the authoritative census of fatal motor vehicle traffic crashes and the standard source for crash-level behavioral detail such as speeding and alcohol involvement, which death-certificate records capture poorly.[@castle2014mvt] The two systems count motor vehicle deaths under different rules. FARS draws on police crash reports and state Department of Transportation submissions, restricts to deaths on public trafficways involving an in-transport motor vehicle, and counts only deaths within 30 days of the crash. In contrast, NCHS multiple-cause-of-death records are coded from death certificates per ICD-10 with no trafficway, vehicle-status, or time-to-death restriction.[@fife1989fars] Across 2021-2024, NCHS counts of motor vehicle deaths exceeded FARS counts by `r sprintf("%.1f", wonder_excess_lo)`-`r sprintf("%.1f", wonder_excess_hi)`% nationally, reflecting these broader inclusion rules, but the two series were highly correlated across states (Pearson $r \geq$ `r sprintf("%.3f", fars_nchs_r_min)`).
+
+### US Census Bureau population denominators
+
+State-level annual population estimates were produced by the US Census Bureau's Population Estimates Program, which applies the cohort-component method (updating the most recent decennial-census base with births, deaths, and net migration), and accessed through the National Center for Health Statistics' CDC WONDER platform, using its Single-Race Postcensal Population Estimates by state and five-year age group. We used two source vintages: Vintage 2020 (covering 2010-2020)[@cdc_wonder_pop_v2020] and Vintage 2024 (covering 2020-2024).[@cdc_wonder_pop_v2024] For the 2020 overlap year, we used the Vintage 2024 estimate for consistency with the 2021-2024 study period. Bridged-race estimates were not used. We summed across age groups to obtain the total state population.
+
+### Federal Highway Administration (FHWA) vehicle miles traveled (VMT)
+
+State-year vehicle miles traveled (VMT) came from the Federal Highway Administration (FHWA) Annual Highway Statistics Table VM-2,[@fhwa_highwaystats_vm2] which aggregates VMT across 14 functional road classes per state-year. These figures come from the Highway Performance Monitoring System (HPMS), the standardized framework under which states report roadway and traffic data. On the functional classes of roadways eligible to receive federal funding (e.g., Interstates and principal arterials), states report VMT at every roadway section (referred to as "full extent"). Segment VMT is the product of annual average daily traffic (AADT), segment length, and 365 days, where AADT is derived from continuous and short-duration traffic counts. VMT for lower functional classes, such as rural minor collectors and local roads, is estimated by the states under HPMS coverage and quality standards.[@fhwa2018hpms] National VMT increased from `r sprintf("%.2f", v2021 / 1000000)` trillion miles in 2021 to `r sprintf("%.2f", v2024 / 1000000)` trillion miles in 2024, a `r sprintf("%.1f", pct_vmt_increase)`% increase over the study period. The 2020 pandemic trough (`r sprintf("%.2f", v2020 / 1000000)` trillion miles) was `r sprintf("%.1f", pct_vmt_trough)`% below 2021.
+
+There is some mismatch between the numerator and denominator that is not accounted for in our analysis. FARS assigns deaths to the state where the crash occurred and FHWA assigns VMT to the state where travel took place; however, population is assigned by state of residence. This mismatch affects only the VMT-per-capita exposure component, not the per-mile risk component. In addition to the mismatch, postcensal population estimates can also lag rapid interstate migration, and interstate commuting and other non-resident driving are not captured. We note that interstate commuting is fairly uncommon nationally (3.8% of US workers in 2011[@mckenzie2013]) but is highly variable across states.[@sivak2011] Both rapid migration and interstate driving would modestly affect a state's VMT per capita but leave the per-mile risk estimate, and thus the direction of the decline, unchanged.
+
+## Decomposition framework
+
+### Two-component rate identity
+
+Let $D_{s,y}$ denote motor vehicle deaths in state $s$ and year $y$, $P_{s,y}$ the population, and $V_{s,y}$ the vehicle miles traveled. Throughout, $g$ indexes a five-year age group, $k$ a risk category, and $w$ a weather category; year-pair contributions carry an $(a,b)$ superscript for adjacent years $a < b$. The crude motor vehicle mortality rate factors as
+
+$$
+R_{s,y} \;=\; \frac{D_{s,y}}{P_{s,y}} \;=\; \underbrace{\frac{V_{s,y}}{P_{s,y}}}_{E_{s,y}} \;\times\; \underbrace{\frac{D_{s,y}}{V_{s,y}}}_{\rho_{s,y}},
+$$
+
+where $E_{s,y}$ is per-capita driving exposure (VMT per person) and $\rho_{s,y}$ is per-mile risk of mortality (deaths per VMT). We then apply a Kitagawa decomposition of the year-to-year rate change into a VMT-exposure component and a per-mile risk component.[@kitagawa1955] The VMT component is the contribution of changes in per-capita driving exposure (VMT per person). That is, how much of the traffic death rate change was due to changes in the amount of driving? In contrast, the per-mile risk component is the contribution of changes in deaths per vehicle mile. That is, how much of the traffic death rate change was due to the risk of death per mile? All rates are crude. Over the 3-year study period, shifts in state age structure are negligible, and demographic standardization is infeasible because VMT is not available by age, sex, or race and ethnicity. FHWA does, however, report VMT separately for urban and rural road classes, which permits a road-type-stratified decomposition (described below).
+
+### Year-pair Kitagawa decomposition
+
+Consistent with prior traffic safety decomposition work,[@griffin2018decomposition] for adjacent years $a < b$, we used the Kitagawa decomposition,
+
+$$
+\Delta R^{(a,b)} \;=\; \underbrace{(E_b - E_a)\;\frac{\rho_a + \rho_b}{2}}_{\text{VMT effect}} \;+\; \underbrace{\frac{E_a + E_b}{2}\;(\rho_b - \rho_a)}_{\text{per-mile risk effect}}.
+$$
+
+After we computed the year-pair decomposition for each of the three adjacent pairs (2021-2022, 2022-2023, 2023-2024), we cumulatively summed the per-component contributions across pairs to obtain the total 2021-2024 decomposition.[@kitagawa1955] The same decomposition was applied at the state level using per 100,000 state population rates.
+
+### The 11-category partition of per-mile risk
+
+We further partitioned per-mile risk into `r n_all_bins` mutually-exclusive and exhaustive categories indexed by $k$:
+
+$$
+\rho_{s,y} \;=\; \sum_{k=1}^{11} \rho_{s,y,k} \;=\; \sum_{k=1}^{11} \frac{D_{s,y,k}}{V_{s,y}},
+$$
+
+where $D_{s,y,k}$ is the number of FARS decedents in state $s$, year $y$, category $k$. The first 7 categories, defined for self-driven occupants (passenger-vehicle occupants plus motorcyclists), enumerate the seven combinations of three binary flags with at least one flag set:
+
+- **Speeding involvement (crash-level):** $\text{SPEEDREL} \in \{1, 2, 3, 4, 5\}$ for any vehicle in the crash.[@nhtsa2023speeding]
+- **Alcohol-impaired driving (crash-level):** majority of 10 multiply-imputed BAC values $\geq$ 0.08 g/dL for any driver in the crash.[@nhtsa2023alcohol]
+- **Unrestrained (decedent-level):** passenger-vehicle occupant without seatbelt or motorcyclist without helmet, as defined above.
+
+Because speeding and alcohol involvement are crash-level attributions, a decedent in a speeding- or alcohol-involved crash is assigned to the corresponding category regardless of whether their own vehicle was speeding or its driver was impaired; the categories thus classify decedents by crash context combined with personal restraint status.
+
+The all-zero combination (none of these flags set) is reported separately as the no-behavioral-flag category.
+
+The remaining 3 categories cover non-self-driven decedents: Pedestrian (`PER_TYP = 5`), Bicyclist (`PER_TYP = 6` or `PER_TYP = 7`), and Other (bus, large truck, ATV, or other non-self-driven decedent). 
+
+Because the categories are mutually exclusive and exhaustive of all FARS decedents, the per-mile risk effect partitions additively across them:
+
+$$
+\text{per-mile risk effect}^{(a,b)} \;=\; \sum_{k=1}^{11} \frac{E_a + E_b}{2}\;(\rho_{b,k} - \rho_{a,k}).
+$$
+
+The 11 category contributions sum to the per-mile risk effect of `r fmt_signed(risk_e$mean)` deaths per 100,000.[@griffin2018decomposition]
+
+Each category's contribution is its additive share of the change in the aggregate per-mile death rate (category-specific deaths per *total* vehicle mile), and a common denominator is necessary for the decomposition to sum to the overall risk change. The category contributions are not group-specific risks per group-specific exposure (e.g., pedestrian deaths per pedestrian-mile), which the data do not support and which is not the aim of the decomposition.
+
+## Uncertainty model
+
+We propagated two sources of uncertainty through the decomposition: stochastic variation in the FARS death counts and sampling error in the FHWA VMT estimates. Death counts were modeled as negative binomial random variables and VMT as a multiplicative lognormal measurement-error model. Uncertainty intervals were obtained by the percentile method from $M$ = `r format(n_iter, big.mark = ",")` Monte Carlo iterations. We used parametric Monte Carlo rather than a nonparametric bootstrap because four annual observations per cell cannot characterize a resampling distribution.[@chernick2008bootstrap]
+
+Although FARS is a complete enumeration of fatal crashes rather than a sample, we treat each observed death count as one realization of a stochastic process and target that natural variability in mortality, not sampling error. While whether a complete count should carry statistical uncertainty is debated,[@brillinger1986; @hoem2008; @berk1995] treating vital events as realizations of an underlying process is consistent with how US vital statistics are interpreted in practice,[@xu2025deaths] and because crash counts are typically overdispersed, the negative binomial is the accepted count model in this setting.[@lordmannering2010]
+
+### Death and VMT draws
+
+In each iteration $m$, the observed death count $D_{s,g,k,y}$ in each state $s$, five-year age group $g$, category $k$, and year $y$ was treated as a realization of a negative-binomial (NB2) random variable,[@cameron2013racd]
+
+$$
+\widetilde{D}^{(m)}_{s,g,k,y} \;\sim\; \text{NB}\!\left(\mu = D_{s,g,k,y},\; \theta_{s,g,k}\right), \qquad \operatorname{Var}\bigl(\widetilde{D}\bigr) = \mu + \frac{\mu^2}{\theta},
+$$
+
+Here $\theta_{s,g,k}$ is the negative-binomial size (inverse-overdispersion) parameter, so larger $\theta$ means less overdispersion, with the Poisson limit as $\theta \to \infty$. It is estimated by pooling the four annual observations and so carries no year index. Draws were taken independently across cells and summed to the state-year-category totals that enter the decomposition.
+
+For VMT, we used a multiplicative lognormal measurement-error model rather than a count distribution, because VMT is a published estimate rather than an enumeration.[@limpert2001; @carroll2006] VMT on the major roadways eligible to receive federal funding is reported at full extent (i.e., a value is reported for every road segment), so those classes carry no sampling error and were held at their reported values. Sampling error was applied only to the state-estimated roadways — rural minor collectors, rural local roads, and urban local roads — which states estimate from expanded short counts. Writing $V_{s,y} = \sum_c V_{s,y,c}$ over the functional road classes $c$ reported in Table VM-2,
+
+$$
+\widetilde{V}^{(m)}_{s,y} \;=\; \sum_c V_{s,y,c}\,\exp\!\left(\epsilon^{(m)}_{s,y,c} - \frac{\sigma_c^2}{2}\right), \qquad \epsilon^{(m)}_{s,y,c} \sim N(0, \sigma_c^2),
+$$
+
+with $\sigma_c = `r sigma_vmt`$ for the three state-estimated classes and $\sigma_c = 0$ for the classes reported at full extent. Errors were drawn independently across classes, and the factor is mean-corrected so the expected state-year total equals the reported total. The value `r sigma_vmt` is the coarsest precision target in the HPMS sample-design table (10% allowable error at 80% confidence, two-sided, as $0.10 / 1.282 = 0.078$); the tighter targets in that table apply only to classes reported at full extent, and the manual specifies no target for local roads, so we applied the coarsest tabulated value to the classes that are sampled.[@fhwa2018hpms] Consistent with common practice, VMT was expressed in millions of miles. Deaths and VMT were drawn independently, and each simulated panel was propagated through the full Kitagawa decomposition and 11-category partition.
+
+### Estimating overdispersion
+
+We estimated each overdispersion parameter by method of moments from the 2021-2024 study window,
+
+$$
+\widehat{\theta} \;=\; \frac{\bar{x}^2}{s^2 - \bar{x}},
+$$
+
+where $\bar{x}$ and $s^2$ are the sample mean and variance of the four annual observations (2021-2024) for that cell. Where the sample variance did not exceed the mean ($s^2 \leq \bar{x}$) — `r sprintf("%.1f", pct_poisson_floor)`% of cells — this estimator is undefined and we drew the cell as Poisson. We do not fit a generalized Poisson or otherwise model underdispersion, so the Poisson draw is a floor on the assumed dispersion.
+
+### Death-draw cell
+
+Because the negative binomial is not additive, the cell at which death draws are taken makes conditional-independence assumption. We drew at the finest cell (state-, five-year-age-group-, and category-specific) for the primary analysis, which assumes deaths of a certain type (e.g., unrestrained) within a five-year age group and state are independent. In sensitivity analyses, we tested this assumption by drawing from coarser cells (S3 below).
+
+### Sensitivity analyses
+
+We used five separate sensitivity analyses to assess our assumptions about uncertainty:
+
+**S1. Fixed VMT:** VMT was held at its FHWA point value, which is the standard practice in official traffic mortality reports. Doing this isolates the death count variation.[@griffin2018decomposition; @nhtsa2024early]
+
+**S2. Worst-case VMT:** Each state-year VMT was multiplied by an independent multiplicative lognormal factor, $\exp(\epsilon)$ with $\epsilon \sim N(0, \sigma^2)$ and $\sigma = `r sigma_vmt`$, applied to *all* roadways (i.e., including those reported at full extent, which have no sampling error) rather than only the state-estimated classes. We calibrated $\sigma$ to the coarsest HPMS precision target of 10% at 80% confidence (two-sided), as $0.10 / 1.282 = 0.078$, where 1.282 is the 90th percentile of the standard normal distribution.[@fhwa2018hpms] Because the perturbation is drawn independently for each state-year, the VMT values entering each year-over-year comparison receive uncorrelated errors, even though a state's errors across years are likely correlated. We consider this a conservative upper bound on the uncertainty that VMT error can contribute. Death draws were identical to the primary, isolating the VMT model.
+
+**S3. Coarser cells:** Death draws were coarsened from the primary cell (state-, five-year-age-group-, and category-specific) to a state- and category-specific cell. The primary cell treats age-specific counts within a category as conditionally independent, so a category's variance is the sum of its age-cell variances. The coarser cell draws each state-category total as a single overdispersed count, generally widening the implied uncertainty, and so probes sensitivity to this across-age conditional-independence assumption.
+
+**S4. Empirical-Bayes dispersion:** Instead of the per-cell method of moments, we estimated the negative-binomial dispersion with a small-sample estimator[@robinson2008] and an empirical Bayes step[@robinson2007; @mccarthy2012] that shrinks each cell's dispersion toward a common trend, addressing small-sample instability in the per-cell estimate.
+
+**S5. Poisson:** Every death cell was redrawn as Poisson, the more conventional approach in vital statistics research[@xu2025deaths]
+
+Our results are qualitatively consistent across all sensitivity analyses.
+
+### Additional analyses
+
+**A1. Road-type-stratified decomposition:** FHWA Table VM-2 reports VMT separately for urban and rural functional road classes, allowing the decomposition to be stratified by road type even though it cannot be stratified by decedent age, sex, or race and ethnicity. We assigned each FARS decedent to urban or rural using the crash land-use code (`RUR_URB`) and decomposed each stratum's crude rate (stratum deaths per 100,000 total state population) into stratum exposure (stratum VMT per total population) and stratum per-mile risk. Deaths were drawn negative-binomial at the state-, age-group-, category-, and road-type-specific cell, and each stratum's VMT was drawn with the primary class-calibrated lognormal model, perturbing that stratum's state-estimated classes (rural minor collectors and local roads for the rural stratum; local roads for the urban stratum). The `r sprintf("%.1f", pct_known_roadtype)`% of fatalities with a known road type partition additively, so the two strata sum to the overall change.
+
+**A2. Weather partition of per-mile risk:** FHWA does not report VMT by weather, so a weather-stratified decomposition analogous to the road-type analysis is not possible. Instead, we partitioned the per-mile risk effect by the weather conditions recorded for the crash (FARS `WEATHERNAME`), grouped as good (clear or cloudy), adverse (rain, snow, sleet, hail, fog, smoke, severe crosswinds, or other adverse conditions), or unknown. 
+
+Each weather category $w$ contributes $\frac{E_a + E_b}{2}\,(\rho_{b,w} - \rho_{a,w})$, where $\rho_{y,w} = D_{y,w} / V_y$ is that category's deaths per total VMT. Because the three categories exhaust all decedents, their contributions sum to the total per-mile risk effect. This analysis assumes the weather distribution of driving was stable over the study window. The adverse-weather share of fatalities with known weather conditions held between `r sprintf("%.1f", adverse_lo)`% and `r sprintf("%.1f", adverse_hi)`% across 2021-2024, consistent with that assumption. Death draws were taken at the state-, age-group-, category-, and weather-specific cell, and total VMT was drawn with the primary class-calibrated lognormal model.
+
+Contributions from both road-type and weather strata were proportional to the share of deaths in each context, with no patterns suggesting a single road type or weather category drove the per-mile risk decline.
+
+## Inference and multiple comparison adjustment
+
+### Percentile uncertainty intervals and multiple comparison adjustment
+
+We report the 2.5th and 97.5th simulation percentiles as our 95% uncertainty intervals. To assess statistical significance while accounting for multiple comparisons across the 51 states,[@bender2001multipletesting] we computed a two-sided *p*-value for each estimand directly from its simulation draws (twice the smaller of the proportion of draws at or below zero and the proportion at or above zero, with a continuity correction[@greenland2004interval]), then adjusted these *p*-values with the Benjamini-Hochberg false discovery rate procedure to obtain *q*-values, applied separately within each component so that the 51 state estimates of a given component form one family of 51 tests.[@benjamini1995controlling] The percentile uncertainty intervals are unadjusted and describe each estimand individually, whereas the *q*-values provide multiplicity-adjusted significance; a state may therefore have an interval excluding zero yet a *q*-value above 0.05.
+
+## Software and reproducibility
+
+Analyses were conducted in R version 4.5.2 (R Foundation for Statistical Computing).[@R-base] Package versions are pinned with the `renv` package[@R-renv] in `renv.lock`; primary packages were `tidyverse`,[@R-tidyverse] `arrow`,[@R-arrow] `duckdb`,[@R-duckdb] `foreach`,[@R-foreach] `doParallel`,[@R-doParallel] `doRNG`,[@R-doRNG] `edgeR`,[@R-edgeR] and `here`.[@R-here]
+
+Full reproducible code and data will be available upon publication at:\
+[`https://github.com/mkiang/traffic_deaths`](https://github.com/mkiang/traffic_deaths).
+
+\newpage
+
+## References {.unnumbered}
+
+::: {#refs}
+:::

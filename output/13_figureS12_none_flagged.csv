@@ -1,0 +1,52 @@
+state_name,state_abb,state_fips,category,contribution
+Alabama,AL,1,none_flagged,0.05146191055846951
+Alaska,AK,2,none_flagged,0.21681229921633477
+Arizona,AZ,4,none_flagged,0.6015880639966265
+Arkansas,AR,5,none_flagged,-1.074849720395241
+California,CA,6,none_flagged,-0.5143843833610255
+Colorado,CO,8,none_flagged,-0.1358401661553641
+Connecticut,CT,9,none_flagged,-0.16272047838195414
+Delaware,DE,10,none_flagged,-1.0606019626092023
+District of Columbia,DC,11,none_flagged,0.11092407245079494
+Florida,FL,12,none_flagged,-0.9376680575157841
+Georgia,GA,13,none_flagged,-1.201603568184505
+Hawaii,HI,15,none_flagged,-0.03436260812659081
+Idaho,ID,16,none_flagged,0.06554730458727079
+Illinois,IL,17,none_flagged,-0.19501886456882694
+Indiana,IN,18,none_flagged,-0.9337655756099336
+Iowa,IA,19,none_flagged,0.0552246204777326
+Kansas,KS,20,none_flagged,-0.8099514298416416
+Kentucky,KY,21,none_flagged,-0.09679363467783109
+Louisiana,LA,22,none_flagged,-1.0595985560205499
+Maine,ME,23,none_flagged,-0.037457041931300505
+Maryland,MD,24,none_flagged,0.533069723508246
+Massachusetts,MA,25,none_flagged,-0.1721770402895998
+Michigan,MI,26,none_flagged,0.22418941201316317
+Minnesota,MN,27,none_flagged,-0.16349662286910965
+Mississippi,MS,28,none_flagged,-1.082058098331423
+Missouri,MO,29,none_flagged,0.1691881140268267
+Montana,MT,30,none_flagged,0.7164992187678035
+Nebraska,NE,31,none_flagged,-0.9027475669602454
+Nevada,NV,32,none_flagged,-0.4764913961323679
+New Hampshire,NH,33,none_flagged,0.33689513800338794
+New Jersey,NJ,34,none_flagged,0.08664594889421254
+New Mexico,NM,35,none_flagged,1.021501617544742
+New York,NY,36,none_flagged,-0.08393863747681021
+North Carolina,NC,37,none_flagged,-1.2724491583591433
+North Dakota,ND,38,none_flagged,-0.31807690238331215
+Ohio,OH,39,none_flagged,0.09826145045777165
+Oklahoma,OK,40,none_flagged,-1.748396052074819
+Oregon,OR,41,none_flagged,-0.38169751995595924
+Pennsylvania,PA,42,none_flagged,0.17177728980863988
+Rhode Island,RI,44,none_flagged,-0.5610647832581208
+South Carolina,SC,45,none_flagged,-0.22684756490568042
+South Dakota,SD,46,none_flagged,-0.3650721553794525
+Tennessee,TN,47,none_flagged,-0.02309030485920921
+Texas,TX,48,none_flagged,-0.2573204897660754
+Utah,UT,49,none_flagged,-0.6591921600705455
+Vermont,VT,50,none_flagged,-1.9231874495866395
+Virginia,VA,51,none_flagged,-0.5123869173353478
+Washington,WA,53,none_flagged,0.17047649239704837
+West Virginia,WV,54,none_flagged,-0.6722898427955379
+Wisconsin,WI,55,none_flagged,-0.21962932783123879
+Wyoming,WY,56,none_flagged,1.9026712706986317

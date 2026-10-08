@@ -1,0 +1,52 @@
+state_name,state_abb,state_fips,category,contribution
+Alabama,AL,1,speed_only,-0.2792758792691844
+Alaska,AK,2,speed_only,1.2979216909646691
+Arizona,AZ,4,speed_only,0.758514629115024
+Arkansas,AR,5,speed_only,0.1687520952843326
+California,CA,6,speed_only,-0.4864140276859745
+Colorado,CO,8,speed_only,0.3303893145179061
+Connecticut,CT,9,speed_only,0.3450692107639055
+Delaware,DE,10,speed_only,-0.21727336139219536
+District of Columbia,DC,11,speed_only,0.24769891318117154
+Florida,FL,12,speed_only,0.02261301113583386
+Georgia,GA,13,speed_only,-0.06480478254872278
+Hawaii,HI,15,speed_only,-0.13275322226067154
+Idaho,ID,16,speed_only,0.42739720156720384
+Illinois,IL,17,speed_only,-0.2102607540071339
+Indiana,IN,18,speed_only,-0.2959137644889325
+Iowa,IA,19,speed_only,-0.32721793830635165
+Kansas,KS,20,speed_only,-0.43938106224947343
+Kentucky,KY,21,speed_only,-0.3019908481834799
+Louisiana,LA,22,speed_only,-0.2075175923738418
+Maine,ME,23,speed_only,0.8262680659283168
+Maryland,MD,24,speed_only,-0.08539783193246431
+Massachusetts,MA,25,speed_only,-0.19480367541740562
+Michigan,MI,26,speed_only,0.013553726751500017
+Minnesota,MN,27,speed_only,-0.049421662295995955
+Mississippi,MS,28,speed_only,0.27028117882201547
+Missouri,MO,29,speed_only,-0.05512297173747219
+Montana,MT,30,speed_only,0.561417459096109
+Nebraska,NE,31,speed_only,0.17388965066173134
+Nevada,NV,32,speed_only,0.2261196201686336
+New Hampshire,NH,33,speed_only,0.5315206461094879
+New Jersey,NJ,34,speed_only,-0.018303978030651064
+New Mexico,NM,35,speed_only,-0.4910172738379707
+New York,NY,36,speed_only,-0.19619688087921355
+North Carolina,NC,37,speed_only,0.6839687588611141
+North Dakota,ND,38,speed_only,-0.3108288382347544
+Ohio,OH,39,speed_only,-0.3011352755900448
+Oklahoma,OK,40,speed_only,0.8530795231506003
+Oregon,OR,41,speed_only,0.23110706558398814
+Pennsylvania,PA,42,speed_only,-0.011355620541908893
+Rhode Island,RI,44,speed_only,-0.1864774497170994
+South Carolina,SC,45,speed_only,-0.7637776462852327
+South Dakota,SD,46,speed_only,0.6218856580618153
+Tennessee,TN,47,speed_only,0.01049292160314333
+Texas,TX,48,speed_only,-0.20642259506061353
+Utah,UT,49,speed_only,-1.0489493993467858
+Vermont,VT,50,speed_only,0.0724172808893391
+Virginia,VA,51,speed_only,-0.4190589145052375
+Washington,WA,53,speed_only,0.3408383753177324
+West Virginia,WV,54,speed_only,-0.132816273516138
+Wisconsin,WI,55,speed_only,-0.31391264715084033
+Wyoming,WY,56,speed_only,-0.5548559461985457

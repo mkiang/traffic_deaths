@@ -1,0 +1,157 @@
+---
+title: "eTable 1. Category-level deaths and per-capita rates, 2021 and 2024"
+format:
+  html:
+    embed-resources: true
+    page-layout: full
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(tidyverse)
+library(here)
+library(gt)
+library(arrow)
+source(here::here("code", "utils.R"))
+
+cats_self <- c(
+    "speeding_only", "alcohol_only", "unrestrained_only", "speed_alc",
+    "speed_unr", "alc_unr", "all_three", "none_flagged"
+)
+cats_other <- c("pedestrian", "bicyclist", "other_nonpv")
+cats_all <- c(cats_self, cats_other)
+
+## Observed national death counts + population (deterministic). The rates
+## carry the uncertainty, the counts are the data.
+nat <- arrow::read_parquet(here::here("data", "panel_state_year.parquet")) |>
+    dplyr::filter(year %in% c(2021, 2024)) |>
+    dplyr::group_by(year) |>
+    dplyr::summarise(population = sum(population),
+        dplyr::across(dplyr::all_of(cats_all), sum), .groups = "drop") |>
+    dplyr::mutate(
+        behavioral = rowSums(
+            dplyr::across(dplyr::all_of(return_behavioral_flagged()))
+        ),
+        other = rowSums(dplyr::across(dplyr::all_of(cats_other))),
+        total_crude = rowSums(dplyr::across(dplyr::all_of(cats_all)))
+    )
+
+pop_2021 <- nat$population[nat$year == 2021]
+pop_2024 <- nat$population[nat$year == 2024]
+
+deaths_n <- function(comp, yr) {
+    nat[[comp]][nat$year == yr]
+}
+
+## Rate uncertainty intervals from the negative-binomial Monte Carlo.
+cr <- arrow::read_parquet(
+    here::here("data", "summaries", "category_rates_ci.parquet")
+) |>
+    dplyr::filter(geography == "national")
+n_iter <- max(cr$n)
+cr <- cr |> dplyr::select(component, metric, mean, p025, p975)
+
+get_ci <- function(comp, met) {
+    row <- cr |> dplyr::filter(component == comp, metric == met)
+    list(mean = row$mean, lower = row$p025, upper = row$p975)
+}
+```
+
+```{r table-data}
+## Non-breaking spaces so gt preserves indentation in HTML (same as Table 1).
+INDENT2 <- strrep("\u00a0", 4)
+INDENT4 <- strrep("\u00a0", 8)
+
+rate_row <- function(label, comp, indent = "") {
+    a <- get_ci(comp, "rate_a")
+    b <- get_ci(comp, "rate_b")
+    d <- get_ci(comp, "rate_change")
+    tibble::tibble(
+        Category = paste0(indent, label),
+        d2021 = fmt_int(deaths_n(comp, 2021)),
+        r2021 = fmt_rate_ci(a$mean, a$lower, a$upper),
+        d2024 = fmt_int(deaths_n(comp, 2024)),
+        r2024 = fmt_rate_ci(b$mean, b$lower, b$upper),
+        change = fmt_val_ci(d$mean, d$lower, d$upper)
+    )
+}
+
+etable_full <- dplyr::bind_rows(
+    rate_row("Total (crude rate)", "total_crude"),
+    rate_row("Behavioral risk factors", "behavioral"),
+    rate_row("Speed-only", "speeding_only", INDENT2),
+    rate_row("Alcohol-only", "alcohol_only", INDENT2),
+    rate_row("Unrestrained-only", "unrestrained_only", INDENT2),
+    rate_row("Speed and Alcohol", "speed_alc", INDENT2),
+    rate_row("Speed and Unrestrained", "speed_unr", INDENT2),
+    rate_row("Alcohol and Unrestrained", "alc_unr", INDENT2),
+    rate_row("All three flagged", "all_three", INDENT2),
+    rate_row("No behavioral risk factor flagged", "none_flagged"),
+    rate_row("Other road users", "other"),
+    rate_row("Pedestrian", "pedestrian", INDENT2),
+    rate_row("Bicyclist", "bicyclist", INDENT2),
+    rate_row("Other (truck/bus/ATV/etc.)", "other_nonpv", INDENT2)
+)
+```
+
+## Table Notes
+
+- Category-level US motor vehicle deaths and per-capita mortality rates, 2021 and 2024.
+- Death counts are the observed FARS totals; rates are deaths per 100,000 population for each of the `r length(return_all_bins())` mutually exclusive categories, grouped into behavioral risk factors, fatalities with no behavioral flag, and other road users.
+- National population denominators are shown in the year headers.
+- The rate change column is the simple 2024-minus-2021 difference in per-capita rates, **not** the Kitagawa per-mile risk contribution shown in Table 1.
+- FARS death counts and US Census Bureau population estimates were used to calculate crude mortality rates (2018-2024).
+- 95% uncertainty intervals were calculated using the percentile method from a `r format(n_iter, big.mark = ",")`-iteration negative-binomial Monte Carlo simulation.
+
+```{r}
+band_idx <- which(
+    etable_full$Category %in% c(
+        "Total (crude rate)", "Behavioral risk factors",
+        "No behavioral risk factor flagged", "Other road users"
+    )
+)
+
+gt::gt(etable_full) |>
+    gt::tab_spanner(
+        label = sprintf("2021 (N=%s)", fmt_int(pop_2021)),
+        columns = c(d2021, r2021)
+    ) |>
+    gt::tab_spanner(
+        label = sprintf("2024 (N=%s)", fmt_int(pop_2024)),
+        columns = c(d2024, r2024)
+    ) |>
+    gt::cols_label(
+        d2021 = "Deaths, N", r2021 = "Rate (95% UI)",
+        d2024 = "Deaths, N", r2024 = "Rate (95% UI)",
+        change = "Rate change (95% UI)"
+    ) |>
+    gt::tab_style(
+        style = list(
+            gt::cell_text(weight = "bold"),
+            gt::cell_fill(color = "#f0f0f0")
+        ),
+        locations = gt::cells_body(rows = band_idx)
+    ) |>
+    gt::cols_align(align = "right", columns = -1) |>
+    gt::cols_align(align = "left", columns = 1) |>
+    gt::tab_options(table.width = gt::pct(100))
+```
+
+```{r write-csv}
+print_df <- etable_full |>
+    dplyr::rename(
+        `Deaths 2021, N` = d2021,
+        `2021 rate (95% UI)` = r2021,
+        `Deaths 2024, N` = d2024,
+        `2024 rate (95% UI)` = r2024,
+        `Rate change (95% UI)` = change
+    )
+
+readr::write_csv(
+    print_df,
+    here::here("output", "etable01_bin_rates.csv")
+)
+```

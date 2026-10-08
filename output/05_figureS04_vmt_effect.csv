@@ -1,0 +1,52 @@
+state_name,state_abb,state_fips,category,contribution
+Alabama,AL,1,vmt_effect,-0.1424463164620935
+Alaska,AK,2,vmt_effect,-0.5164408302450708
+Arizona,AZ,4,vmt_effect,-1.4880958154178472
+Arkansas,AR,5,vmt_effect,0.07700186819979397
+California,CA,6,vmt_effect,0.43284652902221016
+Colorado,CO,8,vmt_effect,-0.020795673618381236
+Connecticut,CT,9,vmt_effect,0.4271017065057749
+Delaware,DE,10,vmt_effect,-0.9950106823315408
+District of Columbia,DC,11,vmt_effect,0.20095571915638505
+Florida,FL,12,vmt_effect,1.0495891159622193
+Georgia,GA,13,vmt_effect,-0.20822923484569628
+Hawaii,HI,15,vmt_effect,0.471654265211464
+Idaho,ID,16,vmt_effect,-0.15492000427996472
+Illinois,IL,17,vmt_effect,0.6793565241021463
+Indiana,IN,18,vmt_effect,1.3911089539200718
+Iowa,IA,19,vmt_effect,0.11668992837699141
+Kansas,KS,20,vmt_effect,-0.15010483384901138
+Kentucky,KY,21,vmt_effect,0.07063386330625948
+Louisiana,LA,22,vmt_effect,0.3359168293633194
+Maine,ME,23,vmt_effect,0.2415358508729476
+Maryland,MD,24,vmt_effect,-0.05416543578800154
+Massachusetts,MA,25,vmt_effect,0.13185887442298877
+Michigan,MI,26,vmt_effect,0.21563778066137346
+Minnesota,MN,27,vmt_effect,0.16593919996775786
+Mississippi,MS,28,vmt_effect,0.4513200834071266
+Missouri,MO,29,vmt_effect,0.20825907182668257
+Montana,MT,30,vmt_effect,-0.009708826442668017
+Nebraska,NE,31,vmt_effect,0.1370459052702479
+Nevada,NV,32,vmt_effect,0.1467013309319259
+New Hampshire,NH,33,vmt_effect,0.3630759709463183
+New Jersey,NJ,34,vmt_effect,0.36287190083563947
+New Mexico,NM,35,vmt_effect,1.2604923994992554
+New York,NY,36,vmt_effect,0.7193314403591041
+North Carolina,NC,37,vmt_effect,0.9098537478836962
+North Dakota,ND,38,vmt_effect,0.7364028032134018
+Ohio,OH,39,vmt_effect,0.16406074305180388
+Oklahoma,OK,40,vmt_effect,0.1882872083707532
+Oregon,OR,41,vmt_effect,0.14080195181800179
+Pennsylvania,PA,42,vmt_effect,-0.7295995144913748
+Rhode Island,RI,44,vmt_effect,0.019573176646501232
+South Carolina,SC,45,vmt_effect,0.4692236367535236
+South Dakota,SD,46,vmt_effect,0.2104184544534501
+Tennessee,TN,47,vmt_effect,-1.4658685061323398
+Texas,TX,48,vmt_effect,0.31690287284912483
+Utah,UT,49,vmt_effect,0.19849979713489957
+Vermont,VT,50,vmt_effect,0.9431592112561956
+Virginia,VA,51,vmt_effect,0.9179785163158624
+Washington,WA,53,vmt_effect,0.18723420908982633
+West Virginia,WV,54,vmt_effect,1.1005784248852786
+Wisconsin,WI,55,vmt_effect,0.502957856782374
+Wyoming,WY,56,vmt_effect,-3.0711756363400653

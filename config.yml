@@ -1,0 +1,14 @@
+default:
+  year_start: 2018              # Start year of data ingestion
+  year_end: 2024                # End year of data ingestion
+  year_i: 2021                  # Start year of decomp
+  year_j: 2024                  # End year of decomp
+  seed: 94304                   # Random seed for simulations
+  n_batch: 100                  # Number of simulation batches
+  batch_size: 250               # Number of simulations per batch
+  max_cores: 16                 # (max) number of cores for simulations
+  targets: [main, partition, category_rates]    # Decomposition targets
+  theta_poisson: 1000000        # NB-theta is underdispersion (Poisson)
+  vmt_scale: 1000000            # VMT is per million miles
+  rate_per: 100000              # Death rate is per 100,000
+  sigma_vmt: 0.078              # VMT lognormal-noise sdlog 

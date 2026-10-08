@@ -1,0 +1,184 @@
+---
+title: "eTable 3. Road-type distribution and stratified decomposition (urban vs rural)"
+format:
+  html:
+    embed-resources: true
+    page-layout: full
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(tidyverse)
+library(here)
+library(gt)
+library(arrow)
+source(here::here("code", "utils.R"))
+
+## Non-breaking spaces so gt preserves indentation in HTML (same as Table 1).
+INDENT2 <- strrep("\u00a0", 4L)
+```
+
+```{r distribution-data}
+fp <- arrow::read_parquet(
+    here::here("data", "fars_persons_2018_2024.parquet")
+) |>
+    dplyr::filter(year %in% c(2021, 2024))
+
+pop <- arrow::read_parquet(here::here("data", "panel_state_year.parquet")) |>
+    dplyr::filter(year %in% c(2021, 2024)) |>
+    dplyr::group_by(year) |>
+    dplyr::summarise(pop = sum(population), .groups = "drop")
+pop_2021 <- pop$pop[pop$year == 2021]
+pop_2024 <- pop$pop[pop$year == 2024]
+
+counts <- fp |> dplyr::count(year, road_type, name = "deaths")
+tot <- function(yr) {
+    sum(counts$deaths[counts$year == yr])
+}
+get_d <- function(rt, yr) {
+    v <- counts$deaths[counts$road_type == rt & counts$year == yr]
+    if (length(v) == 0) 0L else v
+}
+
+dist_row <- function(label, rt, indent = "") {
+    d21 <- if (is.null(rt)) tot(2021) else get_d(rt, 2021)
+    d24 <- if (is.null(rt)) tot(2024) else get_d(rt, 2024)
+    tibble::tibble(
+        Category = paste0(indent, label),
+        d2021 = fmt_int(d21),
+        p2021 = fmt_pct(100 * d21 / tot(2021)),
+        r2021 = fmt_rate(d21, pop_2021),
+        d2024 = fmt_int(d24),
+        p2024 = fmt_pct(100 * d24 / tot(2024)),
+        r2024 = fmt_rate(d24, pop_2024)
+    )
+}
+
+dist_tbl <- dplyr::bind_rows(
+    dist_row("Total (all deaths)", NULL),
+    dist_row("Urban", "urban", INDENT2),
+    dist_row("Rural", "rural", INDENT2),
+    dist_row("Unknown", "unknown", INDENT2)
+)
+
+## Share of decedents with unknown road type, 2021-2024 (for Table Notes).
+fp_window <- arrow::read_parquet(
+    here::here("data", "fars_persons_2018_2024.parquet")
+) |>
+    dplyr::filter(year %in% config::get("year_i"):config::get("year_j"))
+pct_unknown_rt <- 100 * sum(fp_window$road_type == "unknown") / nrow(fp_window)
+pct_known_rt <- 100 - pct_unknown_rt
+```
+
+## Table Notes — distribution
+
+- Distribution of US motor vehicle deaths by road type, 2021 and 2024.
+- Death counts are the observed FARS totals; the "% of deaths" column is each road type's share of all motor vehicle deaths that year (urban + rural + unknown = 100%).
+- Crude rate is deaths per 100,000 total US population (the denominator shown in the year headers); it is not a road-type-specific population rate, because population is not observed by road type.
+- Road type is the FARS crash land-use code (`RUR_URB`); about `r fmt_pct(pct_unknown_rt)` of decedents have an unknown road type, shown here for completeness but excluded from the decomposition below.
+- Comparing the "% of deaths" columns shows whether the road-type distribution of deaths shifted between 2021 and 2024.
+
+```{r tbl-distribution}
+band_idx <- which(dist_tbl$Category == "Total (all deaths)")
+
+gt::gt(dist_tbl) |>
+    gt::tab_spanner(
+        label = sprintf("2021 (N=%s)", fmt_int(pop_2021)),
+        columns = c(d2021, p2021, r2021)
+    ) |>
+    gt::tab_spanner(
+        label = sprintf("2024 (N=%s)", fmt_int(pop_2024)),
+        columns = c(d2024, p2024, r2024)
+    ) |>
+    gt::cols_label(
+        d2021 = "Deaths, N", p2021 = "% of deaths", r2021 = "Crude rate",
+        d2024 = "Deaths, N", p2024 = "% of deaths", r2024 = "Crude rate"
+    ) |>
+    gt::tab_style(
+        style = list(
+            gt::cell_text(weight = "bold"),
+            gt::cell_fill(color = "#f0f0f0")
+        ),
+        locations = gt::cells_body(rows = band_idx)
+    ) |>
+    gt::cols_align(align = "right", columns = -1) |>
+    gt::cols_align(align = "left", columns = 1) |>
+    gt::tab_options(table.width = gt::pct(100))
+```
+
+```{r decomposition-data}
+pt <- arrow::read_parquet(
+    here::here("data", "decomposition_road_type.parquet")
+) |>
+    dplyr::select(road_type, delta_rate, vmt_effect, risk_effect) |>
+    tidyr::pivot_longer(-road_type, names_to = "component", values_to = "mean")
+
+rt_ci <- arrow::read_parquet(
+    here::here("data", "summaries", "road_type_ci.parquet")
+)
+n_iter <- max(rt_ci$n[rt_ci$geography == "national"])
+ui <- rt_ci |>
+    dplyr::filter(
+        component %in% c("delta_rate", "vmt_effect", "risk_effect")
+    ) |>
+    dplyr::select(road_type, component, p025, p975)
+
+dat <- pt |>
+    dplyr::left_join(ui, by = c("road_type", "component")) |>
+    dplyr::mutate(ci = fmt_ci_signed(mean, p025, p975))
+
+comp_order <- c(
+    delta_rate = "Total crude rate change",
+    vmt_effect = paste0(INDENT2, "VMT effect"),
+    risk_effect = paste0(INDENT2, "Per-mile risk effect")
+)
+
+decomp_tbl <- dat |>
+    dplyr::select(road_type, component, ci) |>
+    tidyr::pivot_wider(names_from = road_type, values_from = ci) |>
+    dplyr::mutate(component = factor(component, levels = names(comp_order))) |>
+    dplyr::arrange(component) |>
+    dplyr::transmute(
+        Component = comp_order[as.character(component)],
+        Urban = urban,
+        Rural = rural
+    )
+```
+
+## Table Notes — decomposition
+
+- National motor-vehicle mortality rate change decomposed within road type (urban, rural), 2021-2024.
+- Each stratum's crude rate is its deaths per 100,000 total population; exposure is the stratum's VMT per capita; per-mile risk is the stratum's deaths per stratum vehicle-mile.
+- Deaths were drawn negative-binomial at the state by age group by category by road-type cell; stratum VMT held fixed at its point value; method-of-moments dispersion from the 2021-2024 window (`r format(n_iter, big.mark = ",")` iterations).
+- The two strata sum to the overall change among the `r fmt_pct(pct_known_rt)` of fatalities with a known road type.
+- All values per 100,000 population (95% uncertainty intervals).
+
+```{r tbl-road-type}
+band_idx_d <- which(decomp_tbl$Component == "Total crude rate change")
+
+gt::gt(decomp_tbl) |>
+    gt::tab_style(
+        style = list(
+            gt::cell_text(weight = "bold"),
+            gt::cell_fill(color = "#f0f0f0")
+        ),
+        locations = gt::cells_body(rows = band_idx_d)
+    ) |>
+    gt::cols_align(align = "right", columns = -1) |>
+    gt::cols_align(align = "left", columns = 1) |>
+    gt::tab_options(table.width = gt::pct(100))
+```
+
+```{r write-csv}
+readr::write_csv(
+    dist_tbl,
+    here::here("output", "etable03_road_type_distribution.csv")
+)
+readr::write_csv(
+    decomp_tbl,
+    here::here("output", "etable03_road_type.csv")
+)
+```

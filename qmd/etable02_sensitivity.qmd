@@ -1,0 +1,209 @@
+---
+title: "eTable 2. Sensitivity of uncertainty intervals to modeling choices"
+format:
+  html:
+    embed-resources: true
+    page-layout: full
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(tidyverse)
+library(here)
+library(gt)
+library(arrow)
+library(duckdb)
+source(here::here("code", "utils.R"))
+
+sigma_vmt <- config::get("sigma_vmt")
+
+specs <- tibble::tribble(
+    ~col,         ~main_file,                        ~part_file,                           ~part_dir,
+    "Primary",    "main_ci.parquet",                 "partition_ci.parquet",               here::here("temp_output", "simulations", "partition"),
+    "FixedVMT",   "main_ci_fixedvmt.parquet",        "partition_ci_fixedvmt.parquet",      here::here("temp_output", "sensitivities", "fixedvmt", "partition"),
+    "WorstVMT",   "main_ci_vmtnoise_worst.parquet",  "partition_ci_vmtnoise_worst.parquet",here::here("temp_output", "sensitivities", "vmtnoise_worst", "partition"),
+    "StateGrain", "main_ci_stategrain.parquet",      "partition_ci_stategrain.parquet",    here::here("temp_output", "sensitivities", "stategrain", "partition"),
+    "EBDisp",     "main_ci_ebdisp.parquet",          "partition_ci_ebdisp.parquet",        here::here("temp_output", "sensitivities", "ebdisp", "partition"),
+    "PoissonSim", "main_ci_poissonsim.parquet",      "partition_ci_poissonsim.parquet",    here::here("temp_output", "sensitivities", "poissonsim", "partition")
+)
+
+## Crude-rate levels (2021, 2024) are unsigned. All decomposition
+## contributions (rate change, VMT effect, risk effect, category bins,
+## subtotals) carry a sign.
+load_national <- function(file) {
+    arrow::read_parquet(here::here("data", "summaries", file)) |>
+        dplyr::filter(geography == "national") |>
+        dplyr::transmute(component,
+            ci = dplyr::if_else(component %in% c("rate_a", "rate_b"),
+                fmt_rate_ci(mean, p025, p975),
+                fmt_ci_signed(mean, p025, p975)))
+}
+
+n_iter <- arrow::read_parquet(
+    here::here("data", "summaries", "main_ci.parquet")
+) |>
+    dplyr::filter(geography == "national") |>
+    dplyr::pull(n) |>
+    max()
+
+main_join <- purrr::reduce(
+    purrr::map2(
+        specs$col, specs$main_file,
+        ~ load_national(.y) |> dplyr::rename(!!.x := ci)
+    ),
+    dplyr::full_join, by = "component"
+)
+part_join <- purrr::reduce(
+    purrr::map2(
+        specs$col, specs$part_file,
+        ~ load_national(.y) |> dplyr::rename(!!.x := ci)
+    ),
+    dplyr::full_join, by = "component"
+)
+```
+
+```{r subtotals}
+## Behavioral subtotal = the 7 flagged bins only. none_contrib (no
+## behavioral flag) is its own section, alongside Behavioral and Other.
+behavioral_cols <- unname(return_bin_map()[return_behavioral_flagged()])
+other_cols <- c("ped_contrib", "bike_contrib", "other_nonpv_contrib")
+
+## Subtotal CIs come from the raw partition sims for each specification.
+## Sum the component contributions within each iteration first, then take
+## the mean and the 2.5th and 97.5th percentiles. (gt row-group bands
+## cannot carry per-column values, so the Behavioral and Other section
+## rows hold these sums directly.)
+sum_ci_for_components <- function(part_dir, component_names) {
+    con <- duckdb::dbConnect(duckdb::duckdb(), read_only = TRUE)
+    on.exit(duckdb::dbDisconnect(con, shutdown = TRUE), add = TRUE)
+
+    sims <- dplyr::tbl(
+        con,
+        sprintf("read_parquet('%s')", file.path(part_dir, "*.parquet"))
+    )
+
+    sims |>
+        dplyr::filter(
+            geography == "national",
+            component %in% component_names
+        ) |>
+        dplyr::group_by(batch_id, sim_id) |>
+        dplyr::summarise(sum_value = sum(value), .groups = "drop") |>
+        dplyr::collect() |>
+        dplyr::summarise(
+            mean = mean(sum_value),
+            lower = stats::quantile(sum_value, 0.025),
+            upper = stats::quantile(sum_value, 0.975)
+        )
+}
+
+subtotal_row <- function(component_names) {
+    purrr::map_chr(specs$part_dir, function(d) {
+        s <- sum_ci_for_components(d, component_names)
+        fmt_ci_signed(s$mean, s$lower, s$upper)
+    }) |>
+        setNames(specs$col)
+}
+
+beh_sub <- subtotal_row(behavioral_cols)
+oth_sub <- subtotal_row(other_cols)
+```
+
+```{r table-data}
+## Non-breaking spaces so gt preserves indentation in HTML (same as Table 1).
+INDENT2 <- strrep(" ", 4L)
+col_ids <- specs$col
+blank6 <- setNames(rep("", length(col_ids)), col_ids)
+
+vals <- function(join_df, comp) {
+    r <- join_df |> dplyr::filter(component == comp)
+    setNames(as.character(r[1, col_ids]), col_ids)
+}
+
+mk_row <- function(label, v, indent = "") {
+    tibble::as_tibble(
+        c(list(Component = paste0(indent, label)), as.list(v[col_ids]))
+    )
+}
+header <- function(label, v = blank6) {
+    mk_row(label, v, "")
+}
+comp <- function(label, v) {
+    mk_row(label, v, INDENT2)
+}
+
+full_table <- dplyr::bind_rows(
+    header("Crude mortality rates"),
+    comp("2021", vals(main_join, "rate_a")),
+    comp("2024", vals(main_join, "rate_b")),
+    comp("Rate change", vals(main_join, "delta_rate")),
+    header("National decomposition"),
+    comp("VMT effect", vals(main_join, "vmt_effect")),
+    comp("Per-mile risk effect", vals(main_join, "risk_effect")),
+    header("Behavioral risk factors", beh_sub),
+    comp("Speed-only", vals(part_join, "speed_only_contrib")),
+    comp("Alcohol-only", vals(part_join, "alc_only_contrib")),
+    comp("Unrestrained-only", vals(part_join, "unr_only_contrib")),
+    comp("Speed and Alcohol", vals(part_join, "speed_alc_contrib")),
+    comp("Speed and Unrestrained", vals(part_join, "speed_unr_contrib")),
+    comp("Alcohol and Unrestrained", vals(part_join, "alc_unr_contrib")),
+    comp("All three flagged", vals(part_join, "all_three_contrib")),
+    header(
+        "No behavioral risk factor flagged",
+        vals(part_join, "none_contrib")
+    ),
+    header("Other road users", oth_sub),
+    comp("Pedestrian", vals(part_join, "ped_contrib")),
+    comp("Bicyclist", vals(part_join, "bike_contrib")),
+    comp("Other (truck/bus/ATV/etc.)", vals(part_join, "other_nonpv_contrib"))
+)
+
+header_labels <- c(
+    "Crude mortality rates", "National decomposition",
+    "Behavioral risk factors", "No behavioral risk factor flagged",
+    "Other road users"
+)
+bold_idx <- which(full_table$Component %in% header_labels)
+
+col_names <- c(
+    Primary = "Primary",
+    FixedVMT = "Fixed VMT",
+    WorstVMT = "Worst-case VMT",
+    StateGrain = "Coarser grain",
+    EBDisp = "EB dispersion",
+    PoissonSim = "Poisson"
+)
+full_table <- full_table |>
+    dplyr::rename(!!!setNames(names(col_names), col_names))
+```
+
+## Table Notes
+
+- Sensitivity of 95% uncertainty intervals to the modeling choices, national decomposition.
+- The primary specification draws deaths negative-binomial at the state by five-year-age-group by behavioral-category cell (method-of-moments dispersion, theta = mu^2 / (sigma^2 - mu), under-dispersed cells set to Poisson, estimated from the 2021-2024 window) and draws VMT with a per-functional-class lognormal sampling-error model calibrated to the FHWA HPMS sampling design: only sample-expanded state-estimated roadways (rural minor collectors and local roads) carry sampling error (sigma = `r sigma_vmt`), while roadways eligible to receive federal funding, reported at full extent, are held at their point value (`r format(n_iter, big.mark = ",")` iterations).
+- Each sensitivity changes one element of the primary. **Fixed VMT** holds all VMT at its point value (no VMT sampling error). **Worst-case VMT** applies the sigma = `r sigma_vmt` lognormal error to all VMT, independent across years (no year-to-year cancellation) -- a deliberately conservative bound on total VMT error, detailed in the eMethods. **Coarser grain** draws deaths at the state by behavioral-category cell (dropping age). **EB dispersion** replaces the per-cell method-of-moments dispersion with an empirical-Bayes moderated estimate (edgeR). **Poisson** draws deaths Poisson (no overdispersion).
+- The Behavioral risk factors and Other road users rows are the per-iteration sums of their component categories; the No behavioral risk factor flagged row is a single category (self-driven fatalities with no speed, alcohol, or restraint flag).
+- Point estimates are invariant across specifications; **only the intervals change**. The per-mile risk effect's 95% uncertainty interval excludes zero in every specification. The VMT-exposure effect's interval excludes zero under the primary and all sensitivities except the worst-case VMT scenario, in which it widens to include zero; the exposure finding is therefore directionally positive but not robust to the most conservative VMT-error assumption.
+- All values per 100,000 population.
+
+```{r tbl-sensitivity}
+gt::gt(full_table) |>
+    gt::tab_style(
+        style = list(
+            gt::cell_text(weight = "bold"),
+            gt::cell_fill(color = "#f0f0f0")
+        ),
+        locations = gt::cells_body(rows = bold_idx)
+    ) |>
+    gt::cols_align(align = "right", columns = -1) |>
+    gt::cols_align(align = "left", columns = 1) |>
+    gt::cols_label(Component = "") |>
+    gt::tab_options(table.width = gt::pct(100))
+```
+
+```{r write-csv}
+readr::write_csv(full_table, here::here("output", "etable02_sensitivity.csv"))
+```

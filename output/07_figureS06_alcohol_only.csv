@@ -1,0 +1,52 @@
+state_name,state_abb,state_fips,category,contribution
+Alabama,AL,1,alcohol_only,-0.7185915549610192
+Alaska,AK,2,alcohol_only,-0.3910605849737909
+Arizona,AZ,4,alcohol_only,-0.25964228997193445
+Arkansas,AR,5,alcohol_only,-0.19208457579160146
+California,CA,6,alcohol_only,0.040824949330435525
+Colorado,CO,8,alcohol_only,-0.11643112283378954
+Connecticut,CT,9,alcohol_only,0.31403341196202084
+Delaware,DE,10,alcohol_only,0.32885861498979774
+District of Columbia,DC,11,alcohol_only,0
+Florida,FL,12,alcohol_only,-0.4254328256797668
+Georgia,GA,13,alcohol_only,-0.2710007498199425
+Hawaii,HI,15,alcohol_only,-0.005486416535758015
+Idaho,ID,16,alcohol_only,0.3816356113737461
+Illinois,IL,17,alcohol_only,-0.34039430799083603
+Indiana,IN,18,alcohol_only,0.0935832807185534
+Iowa,IA,19,alcohol_only,0.13855066488608853
+Kansas,KS,20,alcohol_only,0.4068862644823367
+Kentucky,KY,21,alcohol_only,-0.08352622156533865
+Louisiana,LA,22,alcohol_only,-0.7573861458527086
+Maine,ME,23,alcohol_only,0.47948796552967016
+Maryland,MD,24,alcohol_only,0.04118047351791371
+Massachusetts,MA,25,alcohol_only,-0.3256021971998677
+Michigan,MI,26,alcohol_only,0.008588455657854557
+Minnesota,MN,27,alcohol_only,-0.09978293535444699
+Mississippi,MS,28,alcohol_only,0.5887169456762287
+Missouri,MO,29,alcohol_only,0.018197184525303348
+Montana,MT,30,alcohol_only,-0.563949242366414
+Nebraska,NE,31,alcohol_only,-0.2788415443741042
+Nevada,NV,32,alcohol_only,-0.04805350259685149
+New Hampshire,NH,33,alcohol_only,0.05353100406040445
+New Jersey,NJ,34,alcohol_only,-0.07840234713115976
+New Mexico,NM,35,alcohol_only,0.12337733727044867
+New York,NY,36,alcohol_only,-0.12058104322774417
+North Carolina,NC,37,alcohol_only,-0.5047107022786863
+North Dakota,ND,38,alcohol_only,-0.1880274085270469
+Ohio,OH,39,alcohol_only,-0.1377312075699756
+Oklahoma,OK,40,alcohol_only,-0.13290284493696322
+Oregon,OR,41,alcohol_only,-0.5527332521459278
+Pennsylvania,PA,42,alcohol_only,0.0677201696431789
+Rhode Island,RI,44,alcohol_only,-0.27488955312788393
+South Carolina,SC,45,alcohol_only,-0.2735561199005683
+South Dakota,SD,46,alcohol_only,-0.45931090369278843
+Tennessee,TN,47,alcohol_only,0.26666097573121145
+Texas,TX,48,alcohol_only,-0.0839317344611722
+Utah,UT,49,alcohol_only,0.12355974620048542
+Vermont,VT,50,alcohol_only,-0.20605246744633798
+Virginia,VA,51,alcohol_only,0.02100170837142179
+Washington,WA,53,alcohol_only,0.022268709615944904
+West Virginia,WV,54,alcohol_only,-0.1494594276899941
+Wisconsin,WI,55,alcohol_only,0.18457460355853608
+Wyoming,WY,56,alcohol_only,0.29403829497053846
